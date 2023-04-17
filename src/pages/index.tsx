@@ -1,12 +1,14 @@
 import Head from 'next/head'
+import { InitialStyled } from '../styles/initialStyled'
 
 export default function Home() {
   return (
-    <div>
+    <InitialStyled>
       <Head>
       </Head>
 
-      
-    </div>
+        hello, world!
+
+    </InitialStyled>
   )
 }

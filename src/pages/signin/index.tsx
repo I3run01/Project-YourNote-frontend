@@ -19,8 +19,10 @@ const SignIn = () => {
                     />
                 </Link>
 
-                <input type="text" placeholder='Email' name='Email'/>
-                <input type="password" placeholder='Password' />
+                <input type="text" placeholder='Email' name='Email'               onChange={(event)=>{setEmail(event.target.value)}}/>
+
+                <input type="password" placeholder='Password' 
+                onChange={(event)=>{setPassword(event.target.value)}}/>
 
                 <p id='forgetPassword'>I forget my password</p>
                 

@@ -1,5 +1,5 @@
 import Link from 'next/link'
-import { SignInStyled } from '../../styles/signIn'
+import { SignUpStyled } from '../../styles/signUp'
 import Image from 'next/image'
 import GoogleLogo from '../../../public/images/googleLogo.svg'
 import backButton from '../../../public/images/backButton.svg'
@@ -9,9 +9,10 @@ import { useState } from 'react'
 const SignUp = () => {
     const [email, setEmail] = useState<string>('')
     const [password, setPassword] = useState<string>('')
+    const [confirmPassword, setConfirmPassword] = useState<string>('')
 
     return (
-        <SignInStyled>
+        <SignUpStyled>
             <form id='container'>
                 <Link href={'/'} className='backButton'>
                     <Image
@@ -25,11 +26,11 @@ const SignUp = () => {
                 <input type="password" placeholder='Password' 
                 onChange={(event)=>{setPassword(event.target.value)}}/>
 
+
                 <input type="password" placeholder='Confirm password' 
-                onChange={(event)=>{setPassword(event.target.value)}}/>
+                onChange={(event)=>{setConfirmPassword(event.target.value)}}/>
 
-
-                <p id='forgetPassword'>I forget my password</p>
+                <div id='submit'>Submit</div>
                 
                 <div id="GooglesLogin" >
                     <Image
@@ -40,8 +41,9 @@ const SignUp = () => {
                     />
                     <p>Continue with google</p>
                 </div>
+
             </form>
-        </SignInStyled>
+        </SignUpStyled>
     )
 }
 

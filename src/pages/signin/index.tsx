@@ -3,9 +3,11 @@ import { SignInStyled } from '../../styles/signIn'
 import Image from 'next/image'
 import GoogleLogo from '../../../public/images/googleLogo.svg'
 import backButton from '../../../public/images/backButton.svg'
-
+import { useState } from 'react'
 
 const SignIn = () => {
+    const [email, setEmail] = useState<string>('')
+    const [password, setPassword] = useState<string>('')
 
     return (
         <SignInStyled>

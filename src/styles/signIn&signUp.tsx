@@ -35,6 +35,17 @@ export const SignIn_SignUp = styled.div`
         -webkit-backdrop-filter: blur(7.9px);
         border: 1px solid rgba(255, 255, 255, 0.3);
 
+        .backButton {
+            width: min-content;
+            padding: 5px 5px 5px 0;
+
+            filter: brightness(0%);
+
+            :hover {
+                filter: brightness(100%);
+            }
+        }
+
         input {
             border: none;
             border-bottom: 1px solid black;
@@ -61,9 +72,11 @@ export const SignIn_SignUp = styled.div`
             border: 1px solid black;
             box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
 
-            padding: 1px;
+            padding-top: 0;
 
             background-color: #d4d4d4;
+
+            width: 200px;
 
             :hover {
                 cursor: pointer;
@@ -73,8 +86,12 @@ export const SignIn_SignUp = styled.div`
         }
     }
 
-    @media screen {
-        
+    @media screen and (min-width: 500px) {
+        #container {
+            input {
+                width: 300px;
+            }
+        }
     }
 
 

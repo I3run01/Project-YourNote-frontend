@@ -25,6 +25,7 @@ export const InitialMenuStyled = styled.div<props>`
         color: ${ props => props.theme === 'dark' ? textDarkFont : textLightFont};
         font-family: 'Dosis';
         font-size: 18px;
+        text-decoration: none;
     }
 
     #container {
@@ -39,6 +40,8 @@ export const InitialMenuStyled = styled.div<props>`
 
         background-color: ${props => props.theme === 'dark' ?  bgDarktheme02: bgLightYheme02};
         border-bottom: 1px solid black;
+
+        height: 60px;
     
         .signin, .signup {
             margin-right: 20px;
@@ -46,7 +49,7 @@ export const InitialMenuStyled = styled.div<props>`
             :hover {
                 cursor: pointer;
 
-                p {
+                a {
                     color: ${props => props.theme === 'dark' ?  darkGreenTheme: lightGreenTheme};
                 }
             }

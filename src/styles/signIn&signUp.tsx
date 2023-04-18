@@ -39,7 +39,6 @@ export const SignIn_SignUp = styled.div`
             border: none;
             border-bottom: 1px solid black;
             margin-bottom: 20px;
-            
 
             padding: 5px;
 
@@ -72,6 +71,10 @@ export const SignIn_SignUp = styled.div`
 
 
         }
+    }
+
+    @media screen {
+        
     }
 
 

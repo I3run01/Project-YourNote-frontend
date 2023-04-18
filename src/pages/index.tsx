@@ -4,9 +4,6 @@ import { useSelector, useDispatch } from 'react-redux'
 import { changeTheme } from '../slice/themeSlice'
 import type { RootState } from '../store'
 
-
-
-
 export default function Home() {
   const theme = useSelector((state: RootState) => state.theme.value)
   const dispatch = useDispatch()
@@ -14,10 +11,6 @@ export default function Home() {
   return (
     <InitialStyled>
       <InitionalMenu/>
-
-      <h1>{theme}</h1>
-
-      <button onClick={() => {theme === 'dark' ? dispatch(changeTheme('light')) : dispatch(changeTheme('dark'))}}></button>
     </InitialStyled>
   )
 }

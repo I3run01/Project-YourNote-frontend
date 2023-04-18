@@ -1,5 +1,5 @@
 import Link from 'next/link'
-import { SignIn_SignUp } from '../../styles/signIn&signUp'
+import { SignInStyled } from '../../styles/signIn'
 import Image from 'next/image'
 import GoogleLogo from '../../../public/images/googleLogo.svg'
 import backButton from '../../../public/images/backButton.svg'
@@ -8,7 +8,7 @@ import backButton from '../../../public/images/backButton.svg'
 const SignIn = () => {
 
     return (
-        <SignIn_SignUp>
+        <SignInStyled>
             <form id='container'>
                 <Link href={'/'} className='backButton'>
                     <Image
@@ -32,7 +32,7 @@ const SignIn = () => {
                     <p>Continue with google</p>
                 </div>
             </form>
-        </SignIn_SignUp>
+        </SignInStyled>
     )
 }
 

@@ -7,6 +7,8 @@ import { useState } from 'react'
 
 
 const SignUp = () => {
+    const [email, setEmail] = useState<string>('')
+    const [password, setPassword] = useState<string>('')
 
     return (
         <SignInStyled>
@@ -22,6 +24,10 @@ const SignUp = () => {
 
                 <input type="password" placeholder='Password' 
                 onChange={(event)=>{setPassword(event.target.value)}}/>
+
+                <input type="password" placeholder='Confirm password' 
+                onChange={(event)=>{setPassword(event.target.value)}}/>
+
 
                 <p id='forgetPassword'>I forget my password</p>
                 

@@ -12,7 +12,7 @@ const textLightFont = '#000000'
 const lightGreenTheme = '#036D3B'
 
 //dark
-const bgDarktheme02 = '#1D1433'
+const bgDarktheme02 = '#1F1F1F'
 const textDarkFont = '#FFFFFF'
 const darkGreenTheme = '#01EF80'
 
@@ -39,10 +39,6 @@ export const InitialMenuStyled = styled.div<props>`
 
         background-color: ${props => props.theme === 'dark' ?  bgDarktheme02: bgLightYheme02};
         border-bottom: 1px solid black;
-
-        -webkit-box-shadow: 10px 10px 23px -2px rgba(0,0,0,0.75);
-        -moz-box-shadow: 10px 10px 23px -2px rgba(0,0,0,0.75);
-        box-shadow: 10px 10px 23px -2px rgba(0,0,0,0.75);
     
         .signin, .signup {
             margin-right: 20px;

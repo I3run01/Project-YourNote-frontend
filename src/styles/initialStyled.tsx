@@ -10,7 +10,7 @@ const textLightFont = '#222222'
 const lightGreenTheme = '#036D3B'
 
 //dark
-const bgDarktheme01 = '#28203F'
+const bgDarktheme01 = '#121212'
 const textDarkFont = '#FFFFFF'
 const darkGreenTheme = '#01EF80'
 

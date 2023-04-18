@@ -2,11 +2,14 @@ import { InitialStyled } from '../styles/initialStyled'
 import { InitionalMenu } from '../components/initialMenu'
 import Image from 'next/image'
 import InitialImage from '../../public/images/InitialIMG.png'
+import { RootState } from '@/store'
+import { useSelector } from 'react-redux'
 
 export default function Home() {
+  const theme = useSelector((state: RootState) => state.theme.value)
 
   return (
-    <InitialStyled>
+    <InitialStyled theme={theme}>
       <InitionalMenu/>
 
       <h1>YourNote</h1>

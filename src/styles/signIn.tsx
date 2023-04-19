@@ -80,6 +80,7 @@ export const SignInStyled = styled.div`
 
             :hover {
                 cursor: pointer;
+                background-color: #f3f3f3;
             }
 
 

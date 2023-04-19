@@ -1,0 +1,7 @@
+In backend, create a new user, verify if user already exists
+
+deploy frontend in aws amplify
+
+deploy backend in aws code pipeline / elastic beanstalk
+
+connect the login from frontend to backend

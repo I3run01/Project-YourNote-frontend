@@ -1,8 +1,10 @@
+import {  } from './'
+
 const dashboard = () => {
 
     return (
         <>
-            dashboard
+            
         </>
     )
 }

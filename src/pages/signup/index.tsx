@@ -1,6 +1,7 @@
 import { SignUpStyled } from '../../styles/signUp'
-import { useEffect, useState } from 'react'
 import { Auth } from '../../Auth/request'
+import { useEffect, useState } from 'react'
+import { useRouter } from 'next/router';
 import Link from 'next/link'
 import Image from 'next/image'
 import GoogleLogo from '../../../public/images/googleLogo.svg'
@@ -13,6 +14,7 @@ const SignUp = () => {
     const [confirmPassword, setConfirmPassword] = useState<string>('')
     const [corretEmail, setCorrectEmail] = useState<boolean>(false)
     const [mathPassword, setMathPassword] = useState<boolean>(false)
+    const router = useRouter()
 
     useEffect(() => {
         correctDatas()
@@ -26,12 +28,16 @@ const SignUp = () => {
 
     const correctDatas = () => {
         isValidEmail(email) ? setCorrectEmail(true) : setCorrectEmail(false)
-        password === confirmPassword ? setMathPassword(true) : setMathPassword(false)
+        password === confirmPassword && password ? setMathPassword(true) : setMathPassword(false)
     }
 
     const request = async () => {
-        let request = await Auth.signUp(email, password)
-        console.log(request)
+        let response = await Auth.signUp(email, password)
+        let json = JSON.parse(response)
+
+        if (json.data) return router.push('/dashboard')
+        
+        alert(json.message)
     }
 
     return (

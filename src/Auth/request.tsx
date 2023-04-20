@@ -13,8 +13,8 @@ export const Auth = {
             }))
 
             return JSON.stringify(response)
-        } catch(e) {
-            return JSON.stringify({message: 'request failed'})
+        } catch(error) {
+            return JSON.stringify(error)
         }
     },
 
@@ -28,8 +28,8 @@ export const Auth = {
             }))
 
             return JSON.stringify(response)
-        } catch(e) {
-            return JSON.stringify({message: 'request failed'})
+        } catch(error) {
+            return JSON.stringify(error)
         }
     }
 }

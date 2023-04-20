@@ -20,13 +20,13 @@ const SignUp = () => {
         correctDatas()
     }, [email, password, confirmPassword])
 
-    function isValidEmail(email: string): Boolean {
+    const isValidEmail = (email: string): Boolean => {
         const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     
         return emailRegex.test(email);
     }
 
-    const correctDatas = () => {
+    const correctDatas = (): void => {
         isValidEmail(email) ? setCorrectEmail(true) : setCorrectEmail(false)
         password === confirmPassword && password ? setMathPassword(true) : setMathPassword(false)
     }

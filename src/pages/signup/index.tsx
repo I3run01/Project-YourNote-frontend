@@ -59,7 +59,7 @@ const SignUp = () => {
                 onChange={(event)=>{setConfirmPassword(event.target.value)}}/>
                 <p className='mathPassword'>{mathPassword ? "Password match" : "Passwords do not match"}</p>
 
-                <div id='submit'>Submit</div>
+                <div id='submit' onClick={request}>Submit</div>
                 
                 <div id="GooglesLogin" >
                     <Image

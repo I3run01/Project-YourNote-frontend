@@ -1,11 +1,15 @@
-import {  } from './'
+import Layout from '../Layout/layout'
 
 const dashboard = () => {
 
     return (
-        <>
-            
-        </>
+        <Layout
+            children={
+                <>
+                    Dashbaord
+                </>
+            }
+        />
     )
 }
 

@@ -1,9 +1,10 @@
-import Link from 'next/link'
 import { SignUpStyled } from '../../styles/signUp'
+import { useEffect, useState } from 'react'
+import { Auth } from '../../Auth/request'
+import Link from 'next/link'
 import Image from 'next/image'
 import GoogleLogo from '../../../public/images/googleLogo.svg'
 import backButton from '../../../public/images/backButton.svg'
-import { useEffect, useState } from 'react'
 
 
 const SignUp = () => {
@@ -26,6 +27,11 @@ const SignUp = () => {
     const correctDatas = () => {
         isValidEmail(email) ? setCorrectEmail(true) : setCorrectEmail(false)
         password === confirmPassword ? setMathPassword(true) : setMathPassword(false)
+    }
+
+    const request = async () => {
+        let request = await Auth.signUp(email, password)
+        console.log(request)
     }
 
     return (

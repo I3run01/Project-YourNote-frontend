@@ -1,13 +1,27 @@
-import Link from 'next/link'
 import { SignInStyled } from '../../styles/signIn'
+import { useEffect, useState } from 'react'
+import { Auth } from '../../Auth/request'
+import { useRouter } from 'next/router';
+import Link from 'next/link'
 import Image from 'next/image'
 import GoogleLogo from '../../../public/images/googleLogo.svg'
 import backButton from '../../../public/images/backButton.svg'
-import { useState } from 'react'
 
 const SignIn = () => {
     const [email, setEmail] = useState<string>('')
     const [password, setPassword] = useState<string>('')
+    const router = useRouter()
+
+    useEffect(() => {
+        signinRequest()
+    }, [email, password])
+
+    const signinRequest = async () => {
+        let response = await Auth.signIn(email, password)
+        let json = JSON.parse(response)
+
+        if (json.data) return router.push('/dashboard')
+    }
 
     return (
         <SignInStyled>

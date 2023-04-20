@@ -31,7 +31,7 @@ const SignUp = () => {
         password === confirmPassword && password ? setMathPassword(true) : setMathPassword(false)
     }
 
-    const request = async () => {
+    const signupRequest = async () => {
         let response = await Auth.signUp(email, password)
         let json = JSON.parse(response)
 
@@ -65,7 +65,7 @@ const SignUp = () => {
                 onChange={(event)=>{setConfirmPassword(event.target.value)}}/>
                 <p className='mathPassword'>{mathPassword ? "Password match" : "Passwords do not match"}</p>
 
-                <div id='submit' onClick={request}>Submit</div>
+                <div id='submit' onClick={signupRequest}>Submit</div>
                 
                 <div id="GooglesLogin" >
                     <Image

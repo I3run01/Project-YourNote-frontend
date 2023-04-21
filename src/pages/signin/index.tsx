@@ -33,7 +33,8 @@ const SignIn = () => {
                     />
                 </Link>
 
-                <input type="text" placeholder='Email' name='Email'               onChange={(event)=>{setEmail(event.target.value)}}/>
+                <input type="text" placeholder='Email' name='Email'
+                onChange={(event)=>{setEmail(event.target.value)}}/>
 
                 <input type="password" placeholder='Password' 
                 onChange={(event)=>{setPassword(event.target.value)}}/>

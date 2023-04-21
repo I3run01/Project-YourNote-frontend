@@ -37,5 +37,17 @@ export const Auth = {
         } catch(error) {
             return JSON.stringify(error)
         }
-    }
+    },
+
+    user: async (): Promise<string> => {
+        try {
+            let response = await axios.get(Auth.apiLink, {
+                withCredentials: true
+            })
+            
+            return JSON.stringify(response)
+        } catch(error) {
+            return JSON.stringify(error)
+        }
+    },
 }

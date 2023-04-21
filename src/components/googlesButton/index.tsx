@@ -9,13 +9,13 @@ export const GoogleButton = () => {
  
     return (
         <GoogleButtonStyled onClick={googleSignIn}>
-                    <Image
-                        src={GoogleLogo}
-                        alt='logo of google'
+            <Image
+                src={GoogleLogo}
+                alt='logo of google'
 
-                        className='googleLogo'
-                    />
-                    <p>Continue with google</p>
-        </GoogleButtonStyled>
+                className='googleLogo'
+            />
+            <p>Continue with google</p>
+    </GoogleButtonStyled>
     )
 }

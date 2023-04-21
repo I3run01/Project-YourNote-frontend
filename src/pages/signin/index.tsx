@@ -2,9 +2,9 @@ import { SignInStyled } from '../../styles/signIn'
 import { useEffect, useState } from 'react'
 import { Auth } from '../../Auth/request'
 import { useRouter } from 'next/router';
+import { GoogleButton } from '../../components/googlesButton'
 import Link from 'next/link'
 import Image from 'next/image'
-import GoogleLogo from '../../../public/images/googleLogo.svg'
 import backButton from '../../../public/images/backButton.svg'
 
 const SignIn = () => {
@@ -41,15 +41,7 @@ const SignIn = () => {
 
                 <p id='forgetPassword'>I forget my password</p>
                 
-                <div id="GooglesLogin" >
-                    <Image
-                        src={GoogleLogo}
-                        alt='logo of google'
-
-                        className='googleLogo'
-                    />
-                    <p>Continue with google</p>
-                </div>
+                <GoogleButton/>
             </form>
         </SignInStyled>
     )

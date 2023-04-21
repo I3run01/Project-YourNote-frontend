@@ -2,9 +2,9 @@ import { SignUpStyled } from '../../styles/signUp'
 import { Auth } from '../../Auth/request'
 import { useEffect, useState } from 'react'
 import { useRouter } from 'next/router';
+import { GoogleButton } from '../../components/googlesButton'
 import Link from 'next/link'
 import Image from 'next/image'
-import GoogleLogo from '../../../public/images/googleLogo.svg'
 import backButton from '../../../public/images/backButton.svg'
 
 
@@ -67,15 +67,7 @@ const SignUp = () => {
 
                 <div id='submit' onClick={signupRequest}>Submit</div>
                 
-                <div id="GooglesLogin" >
-                    <Image
-                        src={GoogleLogo}
-                        alt='logo of google'
-
-                        className='googleLogo'
-                    />
-                    <p>Continue with google</p>
-                </div>
+                <GoogleButton/>
 
             </form>
         </SignUpStyled>

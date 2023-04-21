@@ -1,4 +1,4 @@
-import { InitialStyled } from '../styles/initialStyled'
+import { InitialPage } from '../styles/initialPage'
 import { InitionalMenu } from '../components/initialMenu'
 import Image from 'next/image'
 import InitialImage from '../../public/images/InitialIMG.png'
@@ -9,7 +9,7 @@ export default function Home() {
   const theme = useSelector((state: RootState) => state.theme.value)
 
   return (
-    <InitialStyled theme={theme}>
+    <InitialPage theme={theme}>
       <InitionalMenu/>
 
       <h1>YourNote</h1>
@@ -35,6 +35,6 @@ export default function Home() {
       </div>
 
 
-    </InitialStyled>
+    </InitialPage>
   )
 }

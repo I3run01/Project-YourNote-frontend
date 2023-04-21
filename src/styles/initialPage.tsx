@@ -14,7 +14,7 @@ const bgDarktheme01 = '#121212'
 const textDarkFont = '#FFFFFF'
 const darkGreenTheme = '#01EF80'
 
-export const InitialStyled = styled.div<props>`
+export const InitialPage = styled.div<props>`
     @import url('https://fonts.googleapis.com/css2?family=Merriweather:wght@300&display=swap');
     @import url('https://fonts.googleapis.com/css2?family=Dosis:wght@700&display=swap');
 

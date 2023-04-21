@@ -14,6 +14,8 @@ export const Auth = {
                 withCredentials: true
             })
 
+            console.log(response)
+
             return JSON.stringify(response)
         } catch(error) {
             return JSON.stringify(error)
@@ -30,6 +32,8 @@ export const Auth = {
             }), {
                 withCredentials: true
             })
+
+            console.log(response)
             
             return JSON.stringify(response)
         } catch(error) {

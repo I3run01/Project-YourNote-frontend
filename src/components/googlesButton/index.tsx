@@ -3,9 +3,12 @@ import GoogleLogo from '../../../public/images/googleLogo.svg'
 import Image from 'next/image'
 
 export const GoogleButton = () => {
-
+    const googleSignIn = () => {
+        alert('googlesSign')
+    }
+ 
     return (
-        <GoogleButtonStyled>
+        <GoogleButtonStyled onClick={googleSignIn}>
                     <Image
                         src={GoogleLogo}
                         alt='logo of google'

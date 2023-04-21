@@ -10,7 +10,9 @@ export const Auth = {
             let response = await axios.post(Auth.apiLink+apiRoute, new URLSearchParams({
                 "email": email,
                 "password": password,
-            }))
+            }), {
+                withCredentials: true
+            })
 
             return JSON.stringify(response)
         } catch(error) {
@@ -25,8 +27,10 @@ export const Auth = {
             let response = await axios.post(Auth.apiLink+apiRoute, new URLSearchParams({
                 "email": email,
                 "password": password,
-            }))
-
+            }), {
+                withCredentials: true
+            })
+            
             return JSON.stringify(response)
         } catch(error) {
             return JSON.stringify(error)

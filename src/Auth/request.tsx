@@ -1,7 +1,7 @@
 import axios from "axios"
 
 export const Auth = {
-    apiLink: 'http://localhost:3000/api/users',
+    apiLink: 'http://localhost:4000/api/users',
 
     signUp: async (email: string, password: string): Promise<string> => {
         let apiRoute = '/signup'
@@ -42,6 +42,22 @@ export const Auth = {
     user: async (): Promise<string> => {
         try {
             let response = await axios.get(Auth.apiLink, {
+                withCredentials: true
+            })
+            
+            return JSON.stringify(response)
+        } catch(error) {
+            return JSON.stringify(error)
+        }
+    },
+
+    googleSignIn: async (email: string): Promise<string> => {
+        let apiRoute = '/googleSignin'
+
+        try {
+            let response = await axios.post(Auth.apiLink+apiRoute, new URLSearchParams({
+                "email": email,
+            }), {
                 withCredentials: true
             })
             

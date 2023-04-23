@@ -51,12 +51,14 @@ export const Auth = {
         }
     },
 
-    googleSignIn: async (email: string): Promise<string> => {
+    googleSignIn: async (email: string, name:string, picture:string): Promise<string> => {
         let apiRoute = '/googleSignin'
 
         try {
             let response = await axios.post(Auth.apiLink+apiRoute, new URLSearchParams({
                 "email": email,
+                "name": name,
+                "picture": picture,
             }), {
                 withCredentials: true
             })

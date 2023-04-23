@@ -3,6 +3,8 @@ import { useGoogleLogin} from '@react-oauth/google';
 import { useEffect, useState } from 'react'
 import { Auth } from '../../Auth/request'
 import { useRouter } from 'next/router';
+import { useDispatch } from 'react-redux'
+import { changeAuth } from '@/slice/authSLice';
 import axios from "axios"
 import GoogleLogo from '../../../public/images/googleLogo.svg'
 import Image from 'next/image'
@@ -11,13 +13,14 @@ import Image from 'next/image'
 export const GoogleButton = () => {
     const [ user, setUser ] = useState<any>();
     const router = useRouter()
+    const dispatch = useDispatch();
 
     const login = useGoogleLogin({
         onSuccess: (codeResponse: any) => setUser(codeResponse),
         onError: (error: unknown) => console.log('Login Failed:', error)
     });
 
-    const userRequqst = async () => {
+    const userRequest = async () => {
         if(!user) return
 
         try {
@@ -33,6 +36,11 @@ export const GoogleButton = () => {
             let userResponse = JSON.parse(await Auth.googleSignIn(googleEmail))
 
             console.log(userResponse.data)
+
+            if(userResponse.data) {
+                dispatch(changeAuth(true))
+                return router.push('/dashboard')
+            }
             
         } catch(error) {
             console.log(error)
@@ -40,7 +48,7 @@ export const GoogleButton = () => {
     }
 
     useEffect(() => {
-        userRequqst()
+        userRequest()
     }, [user])
  
     return (

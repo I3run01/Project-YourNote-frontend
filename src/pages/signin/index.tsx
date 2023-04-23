@@ -3,6 +3,8 @@ import { useEffect, useState } from 'react'
 import { Auth } from '../../Auth/request'
 import { useRouter } from 'next/router';
 import { GoogleButton } from '../../components/googlesButton'
+import { useDispatch } from 'react-redux'
+import { changeAuth } from '@/slice/authSLice';
 import Link from 'next/link'
 import Image from 'next/image'
 import backButton from '../../../public/images/backButton.svg'
@@ -11,6 +13,7 @@ const SignIn = () => {
     const [email, setEmail] = useState<string>('')
     const [password, setPassword] = useState<string>('')
     const router = useRouter()
+    const dispatch = useDispatch();
 
     useEffect(() => {
         signinRequest()
@@ -20,7 +23,10 @@ const SignIn = () => {
         let response = await Auth.signIn(email, password)
         let json = JSON.parse(response)
 
-        if (json.data) return router.push('/dashboard')
+        if (json.data){
+            dispatch(changeAuth(true))
+            return router.push('/dashboard')
+        }
     }
 
     return (

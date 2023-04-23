@@ -3,6 +3,8 @@ import { Auth } from '../../Auth/request'
 import { useEffect, useState } from 'react'
 import { useRouter } from 'next/router';
 import { GoogleButton } from '../../components/googlesButton'
+import { useDispatch } from 'react-redux'
+import { changeAuth } from '@/slice/authSLice';
 import Link from 'next/link'
 import Image from 'next/image'
 import backButton from '../../../public/images/backButton.svg'
@@ -15,6 +17,8 @@ const SignUp = () => {
     const [corretEmail, setCorrectEmail] = useState<boolean>(false)
     const [mathPassword, setMathPassword] = useState<boolean>(false)
     const router = useRouter()
+    const dispatch = useDispatch();
+
 
     useEffect(() => {
         correctDatas()
@@ -35,7 +39,10 @@ const SignUp = () => {
         let response = await Auth.signUp(email, password)
         let json = JSON.parse(response)
 
-        if (json.data) return router.push('/dashboard')
+        if (json.data) {
+            dispatch(changeAuth(true))
+            return router.push('/dashboard')
+        }
         
         alert(json.message)
     }

@@ -31,9 +31,8 @@ export const GoogleButton = () => {
                 }
             })
 
-            let googleEmail = googleResponse.data.email
-
-            let userResponse = JSON.parse(await Auth.googleSignIn(googleEmail))
+            let googleUserData = googleResponse.data
+            let userResponse = JSON.parse(await Auth.googleSignIn(googleUserData.email))
 
             console.log(userResponse.data)
 

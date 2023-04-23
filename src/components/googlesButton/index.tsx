@@ -2,6 +2,7 @@ import { GoogleButtonStyled } from './styled'
 import { useGoogleLogin} from '@react-oauth/google';
 import { useEffect, useState } from 'react'
 import { Auth } from '../../Auth/request'
+import { useRouter } from 'next/router';
 import axios from "axios"
 import GoogleLogo from '../../../public/images/googleLogo.svg'
 import Image from 'next/image'
@@ -9,6 +10,7 @@ import Image from 'next/image'
 
 export const GoogleButton = () => {
     const [ user, setUser ] = useState<any>();
+    const router = useRouter()
 
     const login = useGoogleLogin({
         onSuccess: (codeResponse: any) => setUser(codeResponse),
@@ -26,6 +28,11 @@ export const GoogleButton = () => {
                 }
             })
 
+            let googleEmail = googleResponse.data.email
+
+            let userResponse = JSON.parse(await Auth.googleSignIn(googleEmail))
+
+            console.log(userResponse.data)
             
         } catch(error) {
             console.log(error)

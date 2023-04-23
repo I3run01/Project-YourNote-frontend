@@ -49,6 +49,8 @@ export const GoogleButton = () => {
         } catch(error) {
             console.log(error)
         }
+
+        router.push('/dashboard')
     }
 
     useEffect(() => {

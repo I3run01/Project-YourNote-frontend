@@ -1,6 +1,5 @@
 import { InitialPage } from '../styles/initialPage'
 import { InitionalMenu } from '../components/initialMenu'
-import { Loading } from '../components/loading'
 import { RootState } from '@/store'
 import { useSelector } from 'react-redux'
 import Image from 'next/image'
@@ -11,8 +10,6 @@ export default function Home() {
 
   return (
     <>
-      <Loading/>
-
       <InitialPage theme={theme}>
         <InitionalMenu/>
 

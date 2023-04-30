@@ -5,6 +5,7 @@ import { useRouter } from 'next/router';
 import { GoogleButton } from '../../components/googlesButton'
 import { useDispatch } from 'react-redux'
 import { changeAuth } from '@/slice/authSLice';
+import { Loading } from '../../components/loading'
 import Link from 'next/link'
 import Image from 'next/image'
 import backButton from '../../../public/images/backButton.svg'
@@ -16,6 +17,7 @@ const SignUp = () => {
     const [confirmPassword, setConfirmPassword] = useState<string>('')
     const [corretEmail, setCorrectEmail] = useState<boolean>(false)
     const [mathPassword, setMathPassword] = useState<boolean>(false)
+    const [isLoading, setIsLoanding] = useState<boolean>(false)
     const router = useRouter()
     const dispatch = useDispatch();
 
@@ -36,6 +38,8 @@ const SignUp = () => {
     }
 
     const signupRequest = async () => {
+        setIsLoanding(true)
+        
         let response = await new Auth().signUp(email, password)
         let json = JSON.parse(response)
 
@@ -44,40 +48,46 @@ const SignUp = () => {
             return router.push('/dashboard')
         }
         
-        alert(json.message)
+        setIsLoanding(false)
+        
+        return alert(json.message)
     }
 
     return (
-        <SignUpStyled
-            correctEmail={corretEmail}
-            mathPassword={mathPassword}
-        >
-            <form id='container'>
-                <Link href={'/'} className='backButton'>
-                    <Image
-                        src={backButton}
-                        alt='back button' 
-                    />
-                </Link>
+        <>
+            <Loading/>
 
-                <input type="text" placeholder='Email' name='Email'               onChange={(event)=>{setEmail(event.target.value)}}/>
-                <p className='corretEmail'>{corretEmail ? 'Email is correct' : 'Email is incorrect'}</p>
+            <SignUpStyled
+                correctEmail={corretEmail}
+                mathPassword={mathPassword}
+            >
+                <form id='container'>
+                    <Link href={'/'} className='backButton'>
+                        <Image
+                            src={backButton}
+                            alt='back button' 
+                        />
+                    </Link>
 
-                <input type="password" placeholder='Password' 
-                onChange={(event)=>{setPassword(event.target.value)}}/>
-                <p className='mathPassword'>{mathPassword ? "Password match" : "Passwords do not match"}</p>
+                    <input type="text" placeholder='Email' name='Email'               onChange={(event)=>{setEmail(event.target.value)}}/>
+                    <p className='corretEmail'>{corretEmail ? 'Email is correct' : 'Email is incorrect'}</p>
+
+                    <input type="password" placeholder='Password' 
+                    onChange={(event)=>{setPassword(event.target.value)}}/>
+                    <p className='mathPassword'>{mathPassword ? "Password match" : "Passwords do not match"}</p>
 
 
-                <input type="password" placeholder='Confirm password' 
-                onChange={(event)=>{setConfirmPassword(event.target.value)}}/>
-                <p className='mathPassword'>{mathPassword ? "Password match" : "Passwords do not match"}</p>
+                    <input type="password" placeholder='Confirm password' 
+                    onChange={(event)=>{setConfirmPassword(event.target.value)}}/>
+                    <p className='mathPassword'>{mathPassword ? "Password match" : "Passwords do not match"}</p>
 
-                <div id='submit' onClick={signupRequest}>Submit</div>
-                
-                <GoogleButton/>
+                    <div id='submit' onClick={signupRequest}>Submit</div>
+                    
+                    <GoogleButton/>
 
-            </form>
-        </SignUpStyled>
+                </form>
+            </SignUpStyled>
+        </>
     )
 }
 

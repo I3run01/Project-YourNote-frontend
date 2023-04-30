@@ -20,7 +20,7 @@ const SignIn = () => {
     }, [email, password])
 
     const signinRequest = async () => {
-        let response = await Auth.signIn(email, password)
+        let response = await new Auth().signIn(email, password)
         let json = JSON.parse(response)
 
         if (json.data){

@@ -36,7 +36,7 @@ const SignUp = () => {
     }
 
     const signupRequest = async () => {
-        let response = await Auth.signUp(email, password)
+        let response = await new Auth().signUp(email, password)
         let json = JSON.parse(response)
 
         if (json.data) {

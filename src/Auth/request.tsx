@@ -1,13 +1,17 @@
 import axios from "axios"
 
-export const Auth = {
-    apiLink: 'http://localhost:4000/api/users',
+export class Auth {
+    private apiLink: string
+    
+    constructor() {
+        this.apiLink = 'http:///localhost:4000/api/users'
+    }
 
-    signUp: async (email: string, password: string): Promise<string> => {
+    async signUp(email: string, password: string): Promise<string> {
         let apiRoute = '/signup'
 
         try {
-            let response = await axios.post(Auth.apiLink+apiRoute, new URLSearchParams({
+            let response = await axios.post(this.apiLink+apiRoute, new URLSearchParams({
                 "email": email,
                 "password": password,
             }), {
@@ -20,13 +24,13 @@ export const Auth = {
         } catch(error) {
             return JSON.stringify(error)
         }
-    },
+    }
 
-    signIn: async (email: string, password: string): Promise<string> => {
+    async signIn(email: string, password: string): Promise<string> {
         let apiRoute = '/signin'
 
         try {
-            let response = await axios.post(Auth.apiLink+apiRoute, new URLSearchParams({
+            let response = await axios.post(this.apiLink+apiRoute, new URLSearchParams({
                 "email": email,
                 "password": password,
             }), {
@@ -37,11 +41,11 @@ export const Auth = {
         } catch(error) {
             return JSON.stringify(error)
         }
-    },
+    }
 
-    user: async (): Promise<string> => {
+    async user(): Promise<string> {
         try {
-            let response = await axios.get(Auth.apiLink, {
+            let response = await axios.get(this.apiLink, {
                 withCredentials: true
             })
             
@@ -49,13 +53,13 @@ export const Auth = {
         } catch(error) {
             return JSON.stringify(error)
         }
-    },
+    }
 
-    googleSignIn: async (email: string, name:string, picture:string): Promise<string> => {
+    async googleSignIn(email: string, name:string, picture:string): Promise<string> {
         let apiRoute = '/googleSignin'
 
         try {
-            let response = await axios.post(Auth.apiLink+apiRoute, new URLSearchParams({
+            let response = await axios.post(this.apiLink+apiRoute, new URLSearchParams({
                 "email": email,
                 "name": name,
                 "picture": picture,
@@ -67,5 +71,5 @@ export const Auth = {
         } catch(error) {
             return JSON.stringify(error)
         }
-    },
+    }
 }

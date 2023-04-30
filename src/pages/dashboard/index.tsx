@@ -19,7 +19,7 @@ const dashboard = () => {
 
         if(auth) return
 
-        let response = await Auth.user()
+        let response = await new Auth().user()
         let json = JSON.parse(response)
 
         dispatch(changeAuth(true))

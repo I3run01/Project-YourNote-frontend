@@ -33,7 +33,7 @@ export const GoogleButton = () => {
 
             let googleUserData = googleResponse.data
             
-            let userResponse = JSON.parse(await Auth.googleSignIn(
+            let userResponse = JSON.parse(await new Auth().googleSignIn(
                 googleUserData.email,
                 googleUserData.name,
                 googleUserData.picture,

@@ -1,12 +1,14 @@
 import { useEffect, useState } from 'react'
-import { Auth } from '../../Auth/request'
+import { useSelector, useDispatch } from 'react-redux'
 import { useRouter } from 'next/router';
 import { RootState } from '@/store'
-import { useSelector, useDispatch } from 'react-redux'
-import Layout from '../../Layout/layout'
 import { changeAuth } from '@/slice/authSLice';
+import { Auth } from '../../Auth/request'
+import { Loading } from '../../components/loading'
+import Layout from '../../Layout/layout'
 
 const dashboard = () => {
+    const [isLoading, setIsLoanding] = useState<boolean>(false)
     const router = useRouter()
     const auth = useSelector((state: RootState) => state.auth.value)
     const dispatch = useDispatch();
@@ -28,13 +30,18 @@ const dashboard = () => {
     }
 
     return (
-        <Layout
-            children={
-                <>
-                    Dashbaord
-                </>
-            }
-        />
+        <>
+            {isLoading && <Loading/>}
+
+            <Layout
+                children={
+                    <>
+                        Dashbaord
+                    </>
+                }
+            />
+        </>
+        
     )
 }
 

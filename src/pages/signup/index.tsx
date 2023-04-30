@@ -49,13 +49,13 @@ const SignUp = () => {
         }
         
         setIsLoanding(false)
-        
+
         return alert(json.message)
     }
 
     return (
         <>
-            <Loading/>
+            {isLoading && <Loading/>}
 
             <SignUpStyled
                 correctEmail={corretEmail}

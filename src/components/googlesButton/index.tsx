@@ -32,14 +32,14 @@ export const GoogleButton = () => {
             })
 
             let googleUserData = googleResponse.data
+
+            console.log(googleUserData)
             
             let userResponse = JSON.parse(await new Auth().googleSignIn(
                 googleUserData.email,
                 googleUserData.name,
                 googleUserData.picture,
             ))
-
-            console.log(userResponse.data)
 
             if(userResponse.data) {
                 dispatch(changeAuth(true))

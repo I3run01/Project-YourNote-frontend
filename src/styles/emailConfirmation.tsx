@@ -4,8 +4,10 @@ export const EmailConfirmationDiv = styled.div`
     @import url('https://fonts.googleapis.com/css2?family=Dosis:wght@700&display=swap');
 
     * {
-        font-family: 'Dosis';
-        font-size: 18px;
+        font-size: 24px;
+        font-family: 'Merriweather', serif;
+        font-weight: 400;
+        margin-top: 0px;
     }
 
     display: flex;
@@ -19,11 +21,10 @@ export const EmailConfirmationDiv = styled.div`
     background-position: center center;
     background-size: cover;
 
-    
-
     #container {
         display: flex;
         flex-direction: column;
+        justify-content: center;
 
         padding: 5px;
         border-radius: 10px;
@@ -32,18 +33,20 @@ export const EmailConfirmationDiv = styled.div`
         width: 400px;
 
         /* From https://css.glass */
-        background: rgba(255, 255, 255, 0.2);
+        background: rgba(152, 247, 29, 0.233);
         border-radius: 16px;
         box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
-        backdrop-filter: blur(7.9px);
+        backdrop-filter: blur(20px);
         -webkit-backdrop-filter: blur(7.9px);
-        border: 1px solid rgba(255, 255, 255, 0.3);
+        border: 2px solid black;
 
-        .backButton {
-            margin-top: 0;
-            filter: brightness(0);
+        text-align: center;
+        vertical-align: center;
+        
+        font-weight: lighter;
+
+        #subtitle {
+            font-size: 16px;
         }
     }
-        
-
 `

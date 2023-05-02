@@ -23,34 +23,8 @@ export const GoogleButton = () => {
     const userRequest = async () => {
         if(!user) return
 
-        try {
-            let googleResponse = await axios.get(`https://www.googleapis.com/oauth2/v1/userinfo?access_token=${user.access_token}`, {
-                headers: {
-                    Authorization: `Bearer ${user.access_token}`,
-                    Accept: 'application/json'
-                }
-            })
+        console.log(user.access_token)
 
-            let googleUserData = googleResponse.data
-
-            console.log(googleUserData)
-            
-            let userResponse = JSON.parse(await new Auth().googleSignIn(
-                googleUserData.email,
-                googleUserData.name,
-                googleUserData.picture,
-            ))
-
-            if(userResponse.data) {
-                dispatch(changeAuth(true))
-                return router.push('/dashboard')
-            }
-            
-        } catch(error) {
-            console.log(error)
-        }
-
-        router.push('/dashboard')
     }
 
     useEffect(() => {

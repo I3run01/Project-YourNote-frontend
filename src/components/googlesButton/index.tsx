@@ -5,7 +5,6 @@ import { Auth } from '../../Auth/request'
 import { useRouter } from 'next/router';
 import { useDispatch } from 'react-redux'
 import { changeAuth } from '@/slice/authSLice';
-import axios from "axios"
 import GoogleLogo from '../../../public/images/googleLogo.svg'
 import Image from 'next/image'
 
@@ -23,7 +22,11 @@ export const GoogleButton = () => {
     const userRequest = async () => {
         if(!user) return
 
-        console.log(user.access_token)
+        let requestUser = JSON.parse(await new Auth().googleSignIn(user.access_token))
+        
+        if(requestUser.data) return router.push('/dashboard')
+
+        alert(requestUser.message)
 
     }
 

@@ -55,14 +55,12 @@ export class Auth {
         }
     }
 
-    async googleSignIn(email: string, name:string, picture:string): Promise<string> {
+    async googleSignIn(email: string): Promise<string> {
         let apiRoute = '/googleSignin'
 
         try {
             let response = await axios.post(this.apiLink+apiRoute, new URLSearchParams({
-                "email": email,
-                "name": name,
-                "picture": picture,
+                "googleToken": email,
             }), {
                 withCredentials: true
             })

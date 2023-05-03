@@ -85,6 +85,24 @@ export const SignInStyled = styled.div`
 
 
         }
+
+        #submit {
+            display: flex;
+            justify-content: center;
+
+            border-radius: 10px;
+            border: 1px solid black;
+            padding: 4px;
+
+            margin-bottom: 40px;
+
+            :hover {
+                cursor: pointer;
+
+                background-color: #b2fcb278;
+            }
+
+        }
     }
 
     @media screen and (min-width: 500px) {

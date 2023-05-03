@@ -17,10 +17,6 @@ const SignIn = () => {
     const router = useRouter()
     const dispatch = useDispatch();
 
-    useEffect(() => {
-        signinRequest()
-    }, [email, password])
-
     const signinRequest = async () => {
         setIsLoanding(true)
 
@@ -33,6 +29,10 @@ const SignIn = () => {
         }
 
         setIsLoanding(false)
+
+        console.log(json)
+
+        alert(json.message)
     }
 
     return (
@@ -53,6 +53,8 @@ const SignIn = () => {
 
                     <input type="password" placeholder='Password' 
                     onChange={(event)=>{setPassword(event.target.value)}}/>
+
+                    <div id='submit' onClick={signinRequest}>Submit</div>
 
                     <p id='forgetPassword'>I forget my password</p>
                     

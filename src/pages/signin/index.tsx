@@ -30,8 +30,6 @@ const SignIn = () => {
 
         setIsLoanding(false)
 
-        console.log(json)
-
         alert(json.message)
     }
 

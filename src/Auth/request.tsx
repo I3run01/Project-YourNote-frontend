@@ -70,4 +70,18 @@ export class Auth {
             return JSON.stringify(error)
         }
     }
+
+    async confirmationEmail(token: string): Promise<string> {
+        let apiRoute = `/emailConfirmation/${token}`
+
+        try {
+            let response = await axios.get(this.apiLink+apiRoute, {
+                withCredentials: true
+            })
+            
+            return JSON.stringify(response)
+        } catch(error) {
+            return JSON.stringify(error)
+        }
+    }
 }

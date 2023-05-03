@@ -27,7 +27,7 @@ const SignIn = () => {
         let response = await new Auth().signIn(email, password)
         let json = JSON.parse(response)
 
-        if (json.data){
+        if (json.data && json.data.status === 'Active'){
             dispatch(changeAuth(true))
             return router.push('/dashboard')
         }

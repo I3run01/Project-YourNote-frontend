@@ -45,7 +45,7 @@ const SignUp = () => {
 
         if (json.data) {
             dispatch(changeAuth(true))
-            return router.push('/dashboard')
+            return router.push('/emailConfirmation')
         }
         
         setIsLoanding(false)

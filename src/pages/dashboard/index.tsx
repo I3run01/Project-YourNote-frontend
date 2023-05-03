@@ -26,7 +26,7 @@ const dashboard = () => {
 
         dispatch(changeAuth(true))
 
-        if(!json.data) return router.push('/signin')
+        if(!json.data && json.data.status !== 'Active') return router.push('/signin')
     }
 
     return (

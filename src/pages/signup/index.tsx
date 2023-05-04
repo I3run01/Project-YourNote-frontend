@@ -1,10 +1,7 @@
 import { SignUpStyled } from '../../styles/signUp'
 import { Auth } from '../../Auth/request'
 import { useEffect, useState } from 'react'
-import { useRouter } from 'next/router';
 import { GoogleButton } from '../../components/googlesButton'
-import { useDispatch } from 'react-redux'
-import { changeAuth } from '@/slice/authSLice';
 import { Loading } from '../../components/loading'
 import Link from 'next/link'
 import Image from 'next/image'
@@ -18,9 +15,6 @@ const SignUp = () => {
     const [corretEmail, setCorrectEmail] = useState<boolean>(false)
     const [mathPassword, setMathPassword] = useState<boolean>(false)
     const [isLoading, setIsLoanding] = useState<boolean>(false)
-    const router = useRouter()
-    const dispatch = useDispatch();
-
 
     useEffect(() => {
         correctDatas()
@@ -43,11 +37,11 @@ const SignUp = () => {
         let response = await new Auth().signUp(email, password)
         let json = JSON.parse(response)
 
+        setIsLoanding(false)
+
         if (json.status == 200) {
             return alert('A link was sent in your email to verify your account')
         }
-        
-        setIsLoanding(false)
 
         return alert(json.data.message)
     }

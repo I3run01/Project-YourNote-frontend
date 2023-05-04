@@ -37,7 +37,7 @@ const dashboard = () => {
 
     return (
         <>
-            {isLoading && <Loading/>}
+            {isLoading === true && <Loading/>}
 
             <Layout
                 children={

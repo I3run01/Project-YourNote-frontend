@@ -21,8 +21,8 @@ export class Auth {
             console.log(response)
 
             return JSON.stringify(response)
-        } catch(error) {
-            return JSON.stringify(error)
+        } catch(error: any) {
+            return JSON.stringify(await error.response)
         }
     }
 
@@ -36,10 +36,9 @@ export class Auth {
             }), {
                 withCredentials: true
             })
-            
             return JSON.stringify(response)
-        } catch(error) {
-            return JSON.stringify(error)
+        } catch(error: any) {
+            return JSON.stringify(await error.response)
         }
     }
 
@@ -50,8 +49,8 @@ export class Auth {
             })
             
             return JSON.stringify(response)
-        } catch(error) {
-            return JSON.stringify(error)
+        } catch(error: any) {
+            return JSON.stringify(await error.response)
         }
     }
 
@@ -66,8 +65,8 @@ export class Auth {
             })
             
             return JSON.stringify(response)
-        } catch(error) {
-            return JSON.stringify(error)
+        } catch(error: any) {
+            return JSON.stringify(await error.response)
         }
     }
 
@@ -80,8 +79,8 @@ export class Auth {
             })
             
             return JSON.stringify(response)
-        } catch(error) {
-            return JSON.stringify(error)
+        } catch(error: any) {
+            return JSON.stringify(await error.response)
         }
     }
 }

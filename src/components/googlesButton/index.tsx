@@ -22,12 +22,11 @@ export const GoogleButton = () => {
     const userRequest = async () => {
         if(!user) return
 
-        let requestUser = JSON.parse(await new Auth().googleSignIn(user.access_token))
+        let response = JSON.parse(await new Auth().googleSignIn(user.access_token))
         
-        if(requestUser.data) return router.push('/dashboard')
+        if(response.status == 200) return router.push('/dashboard')
 
-        alert(requestUser.message)
-
+        alert(response.status.message)
     }
 
     useEffect(() => {

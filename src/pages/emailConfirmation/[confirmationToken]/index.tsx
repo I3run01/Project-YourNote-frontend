@@ -29,12 +29,12 @@ const EmailConfirmation = () => {
 
         let json = JSON.parse(response)
 
-        if(json.data) {
+        if(json.status == 200) {
             dispatch(changeAuth(true))
             return router.push('/dashboard')
         }
 
-        alert(json.message)
+        alert(json.data.message)
 
         setIsLoanding(false)
 

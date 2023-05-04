@@ -23,14 +23,14 @@ const SignIn = () => {
         let response = await new Auth().signIn(email, password)
         let json = JSON.parse(response)
 
-        if (json.data && json.data.status === 'Active'){
+        if (json.status == 200 && json.data.status === 'Active'){
             dispatch(changeAuth(true))
             return router.push('/dashboard')
         }
 
         setIsLoanding(false)
 
-        alert(json.message)
+        alert(json.data.message)
     }
 
     return (

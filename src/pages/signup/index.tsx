@@ -43,14 +43,13 @@ const SignUp = () => {
         let response = await new Auth().signUp(email, password)
         let json = JSON.parse(response)
 
-        if (json.data) {
-            dispatch(changeAuth(true))
+        if (json.status == 200) {
             return router.push('/emailConfirmation')
         }
         
         setIsLoanding(false)
 
-        return alert(json.message)
+        return alert(json.data.message)
     }
 
     return (

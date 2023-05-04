@@ -1,12 +1,33 @@
 import { InitialPage } from '../styles/initialPage'
 import { InitionalMenu } from '../components/initialMenu'
 import { RootState } from '@/store'
-import { useSelector } from 'react-redux'
+import { Auth } from '../Auth/request'
+import { useSelector, useDispatch } from 'react-redux'
+import { useEffect } from 'react'
+import { changeAuth } from '@/slice/authSLice';
 import Image from 'next/image'
 import InitialImage from '../../public/images/InitialIMG.png'
 
 export default function Home() {
   const theme = useSelector((state: RootState) => state.theme.value)
+  const auth = useSelector((state: RootState) => state.auth.value)
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    middleware()
+  }, [])
+
+  const middleware = async () => {
+
+      if(auth) return
+
+      let response = await new Auth().user()
+      let json = JSON.parse(response)
+
+      if(json.status != 200  && json.data.status !== 'Active') {
+        dispatch(changeAuth(true))
+      }
+  }
 
   return (
     <>

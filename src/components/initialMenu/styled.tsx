@@ -43,7 +43,7 @@ export const InitialMenuStyled = styled.div<props>`
 
         height: 60px;
     
-        .signin, .signup {
+        .signin, .signup, .dashboard {
             margin-right: 20px;
 
             :hover {

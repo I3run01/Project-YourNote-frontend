@@ -19,14 +19,20 @@ const dashboard = () => {
 
     const middleware = async () => {
 
+        setIsLoanding(true)
+
         if(auth) return
 
         let response = await new Auth().user()
         let json = JSON.parse(response)
 
-        dispatch(changeAuth(true))
+        setIsLoanding(false)
 
-        if(json.status != 200  && json.data.status !== 'Active') return router.push('/signin')
+        if(json.status != 200  || json.data.status !== 'Active') {
+            dispatch(changeAuth(true))
+            return router.push('/signin')
+        }
+
     }
 
     return (
@@ -36,12 +42,11 @@ const dashboard = () => {
             <Layout
                 children={
                     <>
-                        Dashbaord
+                        Dashboard
                     </>
                 }
             />
-        </>
-        
+        </>      
     )
 }
 

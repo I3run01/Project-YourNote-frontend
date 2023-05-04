@@ -24,7 +24,11 @@ export default function Home() {
       let response = await new Auth().user()
       let json = JSON.parse(response)
 
-      if(json.status != 200  && json.data.status !== 'Active') {
+      console.log(json)
+
+      if(json.status === 200  && json.data.status !== 'Active') {
+        
+
         dispatch(changeAuth(true))
       }
   }

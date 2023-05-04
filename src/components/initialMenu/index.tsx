@@ -2,6 +2,7 @@ import { useSelector } from 'react-redux'
 import { InitialMenuStyled } from './styled'
 import { RootState } from '@/store'
 import Link from 'next/link'
+import { useState } from 'react'
 
 export const InitionalMenu = () => {
     const theme = useSelector((state: RootState) => state.theme.value)
@@ -17,14 +18,14 @@ export const InitionalMenu = () => {
                             <Link href={'/signin'}>Sign In</Link>
                         </div>
                         <div className='signup'>
-                            <Link href={'/signup'}>Sign Up</Link>
+                            <Link href={'/signup'}>Sign Up {auth}</Link>
                         </div>
                     </>
                 }
                 {auth &&
                     <>
                         <div className='dashboard'>
-                            <Link href={'/dashboard'}>Dashboard</Link>
+                            <Link href={'/dashboard'}>Dashboard {String(auth)}</Link>
                         </div>
                     </>
                 }

@@ -11,7 +11,7 @@ export const InitionalMenu = () => {
         <InitialMenuStyled
         theme={theme}>
             <div id='container'>
-                {auth &&
+                {!auth &&
                     <>
                         <div className='signin'>
                             <Link href={'/signin'}>Sign In</Link>
@@ -21,7 +21,7 @@ export const InitionalMenu = () => {
                         </div>
                     </>
                 }
-                { !auth &&
+                {auth &&
                     <>
                         <div className='dashboard'>
                             <Link href={'/dashboard'}>Dashboard</Link>

@@ -19,9 +19,9 @@ const dashboard = () => {
 
     const middleware = async () => {
 
-        setIsLoanding(true)
-
         if(auth) return
+        
+        setIsLoanding(true)
 
         let response = await new Auth().user()
         let json = JSON.parse(response)

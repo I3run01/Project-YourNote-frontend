@@ -25,7 +25,7 @@ export const InitionalMenu = () => {
                 {auth &&
                     <>
                         <div className='dashboard'>
-                            <Link href={'/dashboard'}>Dashboard {String(auth)}</Link>
+                            <Link href={'/dashboard'}>Dashboard</Link>
                         </div>
                     </>
                 }

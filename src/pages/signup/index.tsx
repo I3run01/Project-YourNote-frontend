@@ -44,7 +44,7 @@ const SignUp = () => {
         let json = JSON.parse(response)
 
         if (json.status == 200) {
-            return router.push('/emailConfirmation')
+            return alert('A link was sent in your email to verify your account')
         }
         
         setIsLoanding(false)

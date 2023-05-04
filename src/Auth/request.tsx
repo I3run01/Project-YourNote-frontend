@@ -55,7 +55,7 @@ export class Auth {
     }
 
     async googleSignIn(email: string): Promise<string> {
-        let apiRoute = '/googleSignin'
+        let apiRoute = '/google-signin'
 
         try {
             let response = await axios.post(this.apiLink+apiRoute, new URLSearchParams({
@@ -71,7 +71,7 @@ export class Auth {
     }
 
     async confirmationEmail(token: string): Promise<string> {
-        let apiRoute = `/emailConfirmation/${token}`
+        let apiRoute = `/confirm-email/${token}`
 
         try {
             let response = await axios.get(this.apiLink+apiRoute, {

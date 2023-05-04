@@ -6,8 +6,6 @@ import { useDispatch } from 'react-redux'
 import { changeAuth } from '@/slice/authSLice';
 import { Loading } from '../../../components/loading'
 
-
-
 const EmailConfirmation = () => {
     const router = useRouter()
     const dispatch = useDispatch();

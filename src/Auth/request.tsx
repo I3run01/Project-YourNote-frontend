@@ -83,4 +83,18 @@ export class Auth {
             return JSON.stringify(await error.response)
         }
     }
+
+    async reset-password:(token: string): Promise<string> {
+        let apiRoute = `/confirm-email/${token}`
+
+        try {
+            let response = await axios.get(this.apiLink+apiRoute, {
+                withCredentials: true
+            })
+            
+            return JSON.stringify(response)
+        } catch(error: any) {
+            return JSON.stringify(await error.response)
+        }
+    }
 }

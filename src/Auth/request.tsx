@@ -14,9 +14,7 @@ export class Auth {
             let response = await axios.post(this.apiLink+apiRoute, new URLSearchParams({
                 "email": email,
                 "password": password,
-            }), {
-                withCredentials: true,
-            })
+            }))
 
             console.log(response)
 
@@ -84,11 +82,27 @@ export class Auth {
         }
     }
 
-    async reset-password:(token: string): Promise<string> {
-        let apiRoute = `/confirm-email/${token}`
+    async forgotPassword(email: string): Promise<string> {
+        let apiRoute = '/forgot-password'
 
         try {
-            let response = await axios.get(this.apiLink+apiRoute, {
+            let response = await axios.post(this.apiLink+apiRoute, new URLSearchParams({
+                "email": email,
+            }))
+
+            return JSON.stringify(response)
+        } catch(error: any) {
+            return JSON.stringify(await error.response)
+        }
+    }
+
+    async resetPassword(token: string, password: string): Promise<string> {
+        let apiRoute = `/reset-password/${token}`
+
+        try {
+            let response = await axios.post(this.apiLink+apiRoute, new URLSearchParams({
+                "password": password
+            }), {
                 withCredentials: true
             })
             
@@ -97,4 +111,5 @@ export class Auth {
             return JSON.stringify(await error.response)
         }
     }
+
 }

@@ -1,63 +1,62 @@
-import { useEffect, useState } from 'react'
-import { ResetPassword } from '../../../styles/reset-password'
+import { ResetPasswordDiv } from '../../../styles/reset-password'
+import { useState } from 'react'
 import { Auth } from '../../../Auth/request'
-import { useRouter } from 'next/router'
-import { useDispatch } from 'react-redux'
-import { changeAuth } from '@/slice/authSLice';
 import { Loading } from '../../../components/loading'
+import { useRouter } from 'next/router'
+import Link from 'next/link'
+import Image from 'next/image'
+import backButton from '../../../../public/images/backButton.svg'
 
-const EmailConfirmation = () => {
+const ResetPassword = () => {
+    const [password, setPassword] = useState<string>('')
+    const [repeatPassword, setRepeatPasswordPassword] = useState<string>('')
+    const [isLoading, setIsLoanding] = useState<boolean>(false)
     const router = useRouter()
-    const dispatch = useDispatch();
-    
+
     const { token } = router.query
 
-    const [isLoading, setIsLoanding] = useState<boolean>(false)
+    const signinRequest = async () => {
 
-    const request = async () => {
+        if(password !== repeatPassword) return
+
         setIsLoanding(true)
 
-        console.log(token)
-        
-        if(!token) {
-            return
-        }
-        
-        let response = await new Auth().confirmationEmail(String(token))
-
+        let response = await new Auth().resetPassword(String(token), password)
         let json = JSON.parse(response)
-
-        if(json.status == 200) {
-            dispatch(changeAuth(true))
-            return router.push('/dashboard')
-        }
-
-        alert(json.data.message)
 
         setIsLoanding(false)
 
-        return router.push('/signup')
-    }
+        if (json.status == 200 && json.data.status === 'Active'){
+            router.push('/dashboard')
+        }
 
-    useEffect(() => {
-        request()
-    }, [token])
+        alert(json.data.message)   
+    }
 
     return (
         <>
-            {isLoading && <Loading/>}
+            {isLoading === true && <Loading/>}
+        
+            <ResetPasswordDiv>
+                <form id='container'>
+                    <Link href={'/signin'} className='backButton'>
+                        <Image
+                            src={backButton}
+                            alt='back button' 
+                        />
+                    </Link>
 
-            <ResetPassword>
-                <div id='container'>
-                    <p>
-                        Just relax 😎<br />
-                        We are doing all the work <br />
-                    </p>
+                    <input type="password" placeholder='new password' name='Password'
+                    onChange={(event)=>{setPassword(event.target.value)}}/>
 
-                </div>
-            </ResetPassword>
+                    <input type="password" placeholder='repeat the password' name='repeatPassword'
+                    onChange={(event)=>{setPassword(event.target.value)}}/>
+
+                    <div id='submit' onClick={signinRequest}>Submit</div>
+                </form>
+            </ResetPasswordDiv>
         </>
     )
 }
 
-export default EmailConfirmation
+export default ResetPassword

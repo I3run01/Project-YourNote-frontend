@@ -1,13 +1,11 @@
 import styled from "styled-components";
 
-export const ResetPassword = styled.div`
+export const ResetPasswordDiv = styled.div`
     @import url('https://fonts.googleapis.com/css2?family=Dosis:wght@700&display=swap');
 
     * {
-        font-size: 24px;
-        font-family: 'Merriweather', serif;
-        font-weight: 400;
-        margin-top: 0px;
+        font-family: 'Dosis';
+        font-size: 18px;
     }
 
     display: flex;
@@ -24,29 +22,74 @@ export const ResetPassword = styled.div`
     #container {
         display: flex;
         flex-direction: column;
-        justify-content: center;
+        background-color: blue;
 
-        padding: 5px;
+        padding: 20px 40px 40px 20px;
         border-radius: 10px;
 
-        height: 200px;;
-        width: 400px;
-
         /* From https://css.glass */
-        background: rgba(152, 247, 29, 0.233);
+        background: rgba(255, 255, 255, 0.2);
         border-radius: 16px;
         box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
-        backdrop-filter: blur(20px);
+        backdrop-filter: blur(7.9px);
         -webkit-backdrop-filter: blur(7.9px);
-        border: 2px solid black;
+        border: 1px solid rgba(255, 255, 255, 0.3);
 
-        text-align: center;
-        vertical-align: center;
-        
-        font-weight: lighter;
+        .backButton {
+            width: min-content;
+            padding: 1px 5px 5px 0;
 
-        #subtitle {
-            font-size: 16px;
+            filter: brightness(0%);
+
+            :hover {
+                filter: brightness(100%);
+            }
+        }
+
+        input {
+            border: none;
+            border-bottom: 1px solid black;
+            margin-bottom: 20px;
+
+            padding: 5px;
+
+            background: none;
+        }
+
+        #forgetPassword {
+            :hover {
+                cursor: pointer;
+                color: blue;
+            }
+        }
+
+
+        #submit {
+            display: flex;
+            justify-content: center;
+
+            border-radius: 10px;
+            border: 1px solid black;
+            padding: 4px;
+
+            margin-bottom: 40px;
+
+            :hover {
+                cursor: pointer;
+
+                background-color: #b2fcb278;
+            }
+
         }
     }
+
+    @media screen and (min-width: 500px) {
+        #container {
+            input {
+                width: 300px;
+            }
+        }
+    }
+
+
 `

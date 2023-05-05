@@ -10,20 +10,20 @@ const EmailConfirmation = () => {
     const router = useRouter()
     const dispatch = useDispatch();
     
-    const { confirmationToken } = router.query
+    const { token } = router.query
 
     const [isLoading, setIsLoanding] = useState<boolean>(false)
 
     const request = async () => {
         setIsLoanding(true)
 
-        console.log(confirmationToken)
+        console.log(token)
         
-        if(!confirmationToken) {
+        if(!token) {
             return
         }
         
-        let response = await new Auth().confirmationEmail(String(confirmationToken))
+        let response = await new Auth().confirmationEmail(String(token))
 
         let json = JSON.parse(response)
 
@@ -41,7 +41,7 @@ const EmailConfirmation = () => {
 
     useEffect(() => {
         request()
-    }, [confirmationToken])
+    }, [token])
 
     return (
         <>

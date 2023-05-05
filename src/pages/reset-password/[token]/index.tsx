@@ -41,7 +41,7 @@ const ResetPassword = () => {
 
     return (
         <>
-            {isLoading === true && <Loading/>}
+            {(isLoading || !token) && <Loading/>}
         
             <ResetPasswordDiv
                 mathPassword={mathPassword}
@@ -60,9 +60,12 @@ const ResetPassword = () => {
 
                     <input type="password" placeholder='repeat the password' name='repeatPassword'
                     onChange={(event)=>{setRepeatPasswordPassword(event.target.value)}}/>
+
                     <p className='mathPassword'>{mathPassword ? "Password match" : "Passwords do not match"}</p>
 
-                    <div id='submit' onClick={signinRequest}>Submit</div>
+                    { token &&
+                        <div id='submit' onClick={signinRequest}>Submit</div>
+                    }
                 </form>
             </ResetPasswordDiv>
         </>

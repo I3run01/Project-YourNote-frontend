@@ -1,6 +1,10 @@
 import styled from "styled-components";
 
-export const ResetPasswordDiv = styled.div`
+type props = {
+    mathPassword: boolean
+}
+
+export const ResetPasswordDiv = styled.div<props>`
     @import url('https://fonts.googleapis.com/css2?family=Dosis:wght@700&display=swap');
 
     * {
@@ -49,7 +53,7 @@ export const ResetPasswordDiv = styled.div`
         input {
             border: none;
             border-bottom: 1px solid black;
-            margin-bottom: 20px;
+            margin-bottom: 0px;
 
             padding: 5px;
 
@@ -80,6 +84,13 @@ export const ResetPasswordDiv = styled.div`
                 background-color: #b2fcb278;
             }
 
+        }
+
+        .mathPassword {
+            margin-top: 0;
+            margin-bottom: 20px;
+            font-size: 12px;
+            color: ${props => props.mathPassword ? 'green' : 'red'};
         }
     }
 

@@ -1,5 +1,5 @@
 import { ResetPasswordDiv } from '../../../styles/reset-password'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { Auth } from '../../../Auth/request'
 import { Loading } from '../../../components/loading'
 import { useRouter } from 'next/router'
@@ -10,14 +10,20 @@ import backButton from '../../../../public/images/backButton.svg'
 const ResetPassword = () => {
     const [password, setPassword] = useState<string>('')
     const [repeatPassword, setRepeatPasswordPassword] = useState<string>('')
+    const [mathPassword, setMatchPassword] = useState<boolean>(false)
     const [isLoading, setIsLoanding] = useState<boolean>(false)
     const router = useRouter()
 
     const { token } = router.query
 
+    useEffect(() => {
+        if(password === repeatPassword && password) setMatchPassword(true)
+        else setMatchPassword(false)
+    }, [password, repeatPassword])
+
     const signinRequest = async () => {
 
-        if(password !== repeatPassword) return
+        if(!mathPassword) return
 
         setIsLoanding(true)
 
@@ -27,7 +33,7 @@ const ResetPassword = () => {
         setIsLoanding(false)
 
         if (json.status == 200 && json.data.status === 'Active'){
-            router.push('/dashboard')
+            return router.push('/dashboard')
         }
 
         alert(json.data.message)   
@@ -37,7 +43,9 @@ const ResetPassword = () => {
         <>
             {isLoading === true && <Loading/>}
         
-            <ResetPasswordDiv>
+            <ResetPasswordDiv
+                mathPassword={mathPassword}
+            >
                 <form id='container'>
                     <Link href={'/signin'} className='backButton'>
                         <Image
@@ -48,9 +56,11 @@ const ResetPassword = () => {
 
                     <input type="password" placeholder='new password' name='Password'
                     onChange={(event)=>{setPassword(event.target.value)}}/>
+                    <p className='mathPassword'>{mathPassword ? "Password match" : "Passwords do not match"}</p>
 
                     <input type="password" placeholder='repeat the password' name='repeatPassword'
-                    onChange={(event)=>{setPassword(event.target.value)}}/>
+                    onChange={(event)=>{setRepeatPasswordPassword(event.target.value)}}/>
+                    <p className='mathPassword'>{mathPassword ? "Password match" : "Passwords do not match"}</p>
 
                     <div id='submit' onClick={signinRequest}>Submit</div>
                 </form>

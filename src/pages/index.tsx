@@ -4,13 +4,12 @@ import { RootState } from '@/store'
 import { Auth } from '../Auth/request'
 import { useSelector, useDispatch } from 'react-redux'
 import { useEffect } from 'react'
-import { changeAuth } from '@/slice/authSLice';
 import Image from 'next/image'
 import InitialImage from '../../public/images/InitialIMG.png'
 
 export default function Home() {
   const theme = useSelector((state: RootState) => state.theme.value)
-  const auth = useSelector((state: RootState) => state.auth.value)
+  const user = useSelector((state: RootState) => state.user.user)
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -19,16 +18,14 @@ export default function Home() {
 
   const middleware = async () => {
 
-      if(auth) return
+      if(user) return
 
       let response = await new Auth().user()
       let json = JSON.parse(response)
 
-      console.log(json)
+      console.log(json.data)
 
       if(json.status === 200  && json.data.status !== 'Active') {
-        
-
         dispatch(changeAuth(true))
       }
   }

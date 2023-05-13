@@ -26,6 +26,8 @@ const dashboard = () => {
         let response = await new Auth().user()
         let json = JSON.parse(response)
 
+        console.log(json.data)
+
         setIsLoanding(false)
 
         if(json.status != 200  || json.data.status !== 'Active') {

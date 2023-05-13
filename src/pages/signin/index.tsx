@@ -1,10 +1,10 @@
 import { SignInStyled } from '../../styles/signIn'
-import { useEffect, useState } from 'react'
+import { useState } from 'react'
 import { Auth } from '../../Auth/request'
 import { useRouter } from 'next/router';
 import { GoogleButton } from '../../components/googlesButton'
 import { useDispatch } from 'react-redux'
-import { changeAuth } from '@/slice/authSLice';
+import { changeUser } from '../../slice/userSlice';
 import { Loading } from '../../components/loading'
 import Link from 'next/link'
 import Image from 'next/image'
@@ -20,17 +20,16 @@ const SignIn = () => {
     const signinRequest = async () => {
         setIsLoanding(true)
 
-        let response = await new Auth().signIn(email, password)
-        let json = JSON.parse(response)
+        let response = JSON.parse(await new Auth().signIn(email, password))
 
         setIsLoanding(false)
 
-        if (json.status == 200 && json.data.status === 'Active'){
-            dispatch(changeAuth(true))
+        if (response.status == 200 && response.data.status === 'Active'){
+            dispatch(changeUser(response))
             return router.push('/dashboard')
         }
 
-        alert(json.data.message)   
+        alert(response.data.message)   
     }
 
     return (

@@ -4,6 +4,7 @@ import { useRouter } from 'next/router';
 import { RootState } from '@/store'
 import { Auth } from '../../Auth/request'
 import { Loading } from '../../components/loading'
+import { changeUser } from '../../slice/userSlice'
 import Layout from '../../Layout/layout'
 
 const dashboard = () => {
@@ -22,18 +23,19 @@ const dashboard = () => {
         
         setIsLoanding(true)
 
-        let response = await new Auth().user()
-        let json = JSON.parse(response)
+        let response = JSON.parse(await new Auth().user())
 
-        console.log(json.data)
+        console.log(response.data)
 
         setIsLoanding(false)
 
-        if(json.status != 200  || json.data.status !== 'Active') {
+        if(response.status != 200  || response.data.status !== 'Active') {
             return router.push('/signin')
         }
 
-        console.log(json.status)
+        dispatch(changeUser(response.data))
+
+        console.log(response.status)
 
     }
 

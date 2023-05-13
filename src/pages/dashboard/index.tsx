@@ -33,6 +33,8 @@ const dashboard = () => {
             return router.push('/signin')
         }
 
+        console.log(json.status)
+
     }
 
     return (

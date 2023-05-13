@@ -5,6 +5,7 @@ export class Auth {
     
     constructor() {
         this.apiLink = 'https://node-user-api.onrender.com/api/users'
+        //this.apiLink = 'http://localhost:4000/api/users'
     }
 
     async signUp(email: string, password: string): Promise<string> {

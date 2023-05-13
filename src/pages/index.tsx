@@ -3,6 +3,7 @@ import { InitionalMenu } from '../components/initialMenu'
 import { RootState } from '@/store'
 import { Auth } from '../Auth/request'
 import { useSelector, useDispatch } from 'react-redux'
+import { changeUser } from '../slice/userSlice'
 import { useEffect } from 'react'
 import Image from 'next/image'
 import InitialImage from '../../public/images/InitialIMG.png'
@@ -25,8 +26,8 @@ export default function Home() {
 
       console.log(json.data)
 
-      if(json.status === 200  && json.data.status !== 'Active') {
-        dispatch(changeAuth(true))
+      if(json.status === 200  && json.data.status === 'Active') {
+        dispatch(changeUser(json))
       }
   }
 

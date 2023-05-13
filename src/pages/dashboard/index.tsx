@@ -2,7 +2,6 @@ import { useEffect, useState } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import { useRouter } from 'next/router';
 import { RootState } from '@/store'
-import { changeAuth } from '@/slice/authSLice';
 import { Auth } from '../../Auth/request'
 import { Loading } from '../../components/loading'
 import Layout from '../../Layout/layout'
@@ -10,7 +9,7 @@ import Layout from '../../Layout/layout'
 const dashboard = () => {
     const [isLoading, setIsLoanding] = useState<boolean>(false)
     const router = useRouter()
-    const auth = useSelector((state: RootState) => state.auth.value)
+    const auth = useSelector((state: RootState) => state.user.user)
     const dispatch = useDispatch();
 
     useEffect(() => {
@@ -31,7 +30,6 @@ const dashboard = () => {
         setIsLoanding(false)
 
         if(json.status != 200  || json.data.status !== 'Active') {
-            dispatch(changeAuth(true))
             return router.push('/signin')
         }
 

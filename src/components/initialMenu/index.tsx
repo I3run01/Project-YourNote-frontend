@@ -6,7 +6,7 @@ import { useState } from 'react'
 
 export const InitionalMenu = () => {
     const theme = useSelector((state: RootState) => state.theme.value)
-    const auth = useSelector((state: RootState) => state.auth.value)
+    const auth = useSelector((state: RootState) => state.user.user)
 
     return (
         <InitialMenuStyled

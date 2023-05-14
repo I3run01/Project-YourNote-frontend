@@ -9,7 +9,7 @@ import Image from 'next/image'
 import InitialImage from '../../public/images/InitialIMG.png'
 
 export default function Home() {
-  const theme = useSelector((state: RootState) => state.theme.value)
+  const theme = useSelector((state: RootState) => state.theme.isDark)
   const user = useSelector((state: RootState) => state.user.user)
   const dispatch = useDispatch();
 

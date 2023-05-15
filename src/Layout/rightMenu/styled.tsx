@@ -8,7 +8,6 @@ const bgColorDark = '#353535'
 const bgColorlight = '#E3D7CD'
 
 export const RightMenuDiv = styled.div<props>`
-    position: absolute;
     top: 0;
     right: 0;
 
@@ -16,7 +15,9 @@ export const RightMenuDiv = styled.div<props>`
 
     height: 100vh;
 
-    background-color: ${props => props.isDark ? bgColorDark : bgColorlight};
+    background-color: red;
+
+   // background-color: ${props => props.isDark ? bgColorDark : bgColorlight};
 
     
 

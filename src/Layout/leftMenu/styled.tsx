@@ -16,9 +16,8 @@ const fontColorLight = 'black'
 export const LeftMenuDiv = styled.div<props>`
     @import url('https://fonts.googleapis.com/css2?family=Merriweather:wght@300&display=swap');
 
-    position: absolute;
-    top: 0;
-    left: ${props => props.isMenuOpened ? '0px' : '-230px'};
+    position: relative;
+    margin-left: ${props => props.isMenuOpened ? '0px' : '-210px'};
 
     height: 100vh;
     width: 250px;

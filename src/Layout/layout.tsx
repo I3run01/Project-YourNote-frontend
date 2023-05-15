@@ -16,10 +16,12 @@ const Layout = ({children}: props) => {
         <>
             <LayoutStyled isDark={isDark}>
                 <LeftMenu/>
-                <RightMenu/>
-                <main>
+                
+                <main id="main">
                     {children}
                 </main>
+                
+                <RightMenu/>
             </LayoutStyled>
         </>
     )

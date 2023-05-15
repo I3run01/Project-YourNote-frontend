@@ -27,7 +27,7 @@ export const  LeftMenu = () => {
 
     return (
         <LeftMenuDiv
-            id="container" 
+            id='leftMenu'
             isDark={isDark}
             isMenuOpened={isMenuOpend}
         >

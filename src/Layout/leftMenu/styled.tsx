@@ -8,7 +8,7 @@ type props = {
 const themeColor = '#3dc786'
 
 const bgColorDark = '#353535'
-const bgColorlight = '#ded9d4'
+const bgColorlight = '#E3D7CD'
 
 const fontColorDark = '#ececec'
 const fontColorLight = 'black'

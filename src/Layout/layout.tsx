@@ -10,7 +10,7 @@ const Layout = ({children}: props) => {
 
     return (
         <>
-            <div>
+            <div >
                 <LeftMenu/>
                 <RightMenu/>
                 <main>

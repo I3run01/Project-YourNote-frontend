@@ -139,7 +139,7 @@ export const LeftMenuDiv = styled.div<props>`
             
             :hover {
                 cursor: pointer;
-                background-color: #575757;
+                background-color: ${props => props.isDark ? '#575757' : '#b5b5b5'};
             }
         }
     }

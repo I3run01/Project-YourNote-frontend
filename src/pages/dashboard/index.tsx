@@ -46,7 +46,7 @@ const dashboard = () => {
             <Layout
                 children={
                     <>
-                        Dashboard
+                    
                     </>
                 }
             />

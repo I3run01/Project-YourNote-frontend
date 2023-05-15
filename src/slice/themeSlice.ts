@@ -6,7 +6,7 @@ export interface ThemeState {
 }
 
 const initialState: ThemeState = {
-  isDark: true,
+  isDark: false,
 }
 
 export const counterSlice = createSlice({

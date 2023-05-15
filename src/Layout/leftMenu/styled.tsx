@@ -5,10 +5,16 @@ type props = {
     isMenuOpened: boolean
 }
 
-const bgColorDark = '#121212'
+const themeColor = '#8bfcc7'
+
+const bgColorDark = '#353535'
 const bgColorlight = '#E3D7CD'
 
+const fontColorDark = '#ececec'
+const fontColorLight = 'black'
+
 export const LeftMenuDiv = styled.div<props>`
+    @import url('https://fonts.googleapis.com/css2?family=Merriweather:wght@300&display=swap');
 
     position: absolute;
     top: 0;
@@ -28,7 +34,7 @@ export const LeftMenuDiv = styled.div<props>`
 
     #icon {
         position: absolute;
-        top: 10%;
+        top: 2%;
         right: 0%;
 
         display: flex;
@@ -36,9 +42,9 @@ export const LeftMenuDiv = styled.div<props>`
         align-items: center;
 
         background-color: ${props => props.isDark ? bgColorDark : bgColorlight};
-        border: 3px solid ${props => props.isDark ? '#8F8F8F' : '#036D3B'};
+        border: 3px solid ${props => props.isDark ? '#c2c2c2' : themeColor};
 
-        transform: translateX(50%) ${props => props.isMenuOpened ? 'rotate(0deg)' : 'rotate(180deg)'};
+        transform: translateX(50%) ${props => props.isMenuOpened ? 'rotate(180deg)' : 'rotate(0deg)'};
 
         height: 30px;
         width: 30px;
@@ -50,31 +56,91 @@ export const LeftMenuDiv = styled.div<props>`
         #menuIcon {
             width: 40%;
 
-            filter: ${props => props.isDark ? 'grayscale(80%)' : ''};
+            filter: ${props => props.isDark ? 'grayscale(100%)' : ''};
+
+            transition: all 0.5s ease-in-out;
         }
 
         :hover {
-            cursor: pointer; 
-        }
+            cursor: pointer;
 
-        :hover #menuIcon {
-            filter: ${props => props.isDark ? 'grayscale(0%)' : ''};
+            border-color: ${themeColor};
+
+            #menuIcon {
+                filter: grayscale(0%);
+            }
+            
         }
     }
 
-    #newFile {
+    #newFile, #settings {
 
-        width: 100px;
         height: 40px;
+
+        padding: 2px 5px 2px 5px;
         
-        margin-top: 20px;
+        margin-top: 10px;
+        margin-bottom: 10px;
 
-        background-color: red;
-        color: white;
+        background-color: ${props => props.isDark ? '#868686' : themeColor};
+        color: ${props => props.isDark ? fontColorDark : fontColorLight};
 
+        border-radius: 5px;
+        border: 1px solid black;
+
+        box-shadow: 1px 1px 1px black;
+        
         display: flex;
         justify-content: center;
         align-items: center;
+
+        transition: all 0.2s ease-in-out;
+
+        :hover {
+            cursor: pointer;
+            color: ${themeColor};
+            border-color: ${themeColor};
+        }
+    }
+
+    #filerConainer {
+        width: 100%;
+        height: 80%;
+        
+        overflow-y: auto;
+  
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+
+        border-top: 1px solid black;
+        border-bottom: 1px solid black;
+
+        padding-top: 5px;
+        padding-bottom: 5px;
+
+        .item {
+            font-family: 'Dosis';
+            font-size: 18px;
+
+            margin-top: 10px;
+            margin-bottom: 10px;
+
+            padding-top: 15px;
+            padding-bottom: 15px;
+
+            width: 100%;   
+
+            color: ${props => props.isDark ? fontColorDark : fontColorLight};
+
+            text-align: center;
+            
+            :hover {
+                cursor: pointer;
+                background-color: #575757;
+            }
+        }
     }
 
 `

@@ -4,7 +4,7 @@ type props = {
     isDark: boolean
 }
 
-const bgColorDark = '#121212'
+const bgColorDark = '#353535'
 const bgColorlight = '#E3D7CD'
 
 export const RightMenuDiv = styled.div<props>`

@@ -37,6 +37,8 @@ export const LeftMenuDiv = styled.div<props>`
 
     align-items: center;
 
+    border-right: 0.5px solid black;
+
     #icon {
         position: absolute;
         top: 2%;
@@ -108,6 +110,14 @@ export const LeftMenuDiv = styled.div<props>`
         }
     }
 
+    #settings {
+        display: flex;
+
+        img {
+            height: 70%;
+        }
+    }
+
     #filerConainer {
         width: 100%;
         height: 80%;
@@ -122,7 +132,7 @@ export const LeftMenuDiv = styled.div<props>`
         border-top: 1px solid black;
         border-bottom: 1px solid black;
 
-        padding-top: 5px;
+        padding-top: 60px;
         padding-bottom: 5px;
 
         .item {

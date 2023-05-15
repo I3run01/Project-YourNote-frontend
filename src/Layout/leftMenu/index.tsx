@@ -4,6 +4,7 @@ import { RootState } from '@/store'
 import { useState } from 'react'
 import { changeTheme } from '../../slice/themeSlice'
 import menuIcon from '../../../public/images/openAndClosemenuIcon.svg'
+import settingsIcon from '../../../public/images/Settings.svg'
 import Image from 'next/image'
 
 const list = [
@@ -34,32 +35,36 @@ export const  LeftMenu = () => {
             isMenuOpened={isMenuOpend}
         >
             
-        <div id='icon' onClick={() => ( setIsMenuOpened(!isMenuOpend))}>
-            <Image
-                src={menuIcon}
-                alt=''
+            <div id='icon' onClick={() => ( setIsMenuOpened(!isMenuOpend))}>
+                <Image
+                    src={menuIcon}
+                    alt=''
 
-                id='menuIcon'
-            />
-        </div>
+                    id='menuIcon'
+                />
+            </div>
 
-        <div id='newFile'>+ New File</div>
+            <div id='newFile'>+ New File</div>
 
-        <div id='filerConainer'>
-            {
-                list.map((item, key) => {
-                    return (
-                        <div className='item' key={key}>
-                            - {item.title}
-                        </div>
-                    )
-                })
-            }
-        </div>
-        
-        <div id='settings' onClick={() => {
-            dispatch(changeTheme())
-            }}>Change theme</div>
+            <div id='filerConainer'>
+                {
+                    list.map((item, key) => {
+                        return (
+                            <div className='item' key={key}>
+                                - {item.title}
+                            </div>
+                        )
+                    })
+                }
+            </div>
+            
+            <div id='settings' onClick={() => {dispatch(changeTheme())}}>
+                <Image
+                    src={settingsIcon}
+                    alt=''
+                />
+                <p>Change theme</p>
+            </div>
 
         </LeftMenuDiv>
     )

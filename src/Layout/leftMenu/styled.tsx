@@ -15,7 +15,7 @@ export const LeftMenuDiv = styled.div<props>`
     left: 0;
 
     height: 100vh;
-    width: ${props => props.isMenuOpened ? '150px' : '20px'};
+    width: ${props => props.isMenuOpened ? '180px' : '20px'};
     background-color: ${props => props.isDark ? bgColorDark : bgColorlight};
 
     transition: all .5s ease-in-out;

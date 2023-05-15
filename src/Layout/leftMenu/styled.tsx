@@ -18,10 +18,10 @@ export const LeftMenuDiv = styled.div<props>`
 
     position: absolute;
     top: 0;
-    left: ${props => props.isMenuOpened ? '0px' : '-160px'};
+    left: ${props => props.isMenuOpened ? '0px' : '-230px'};
 
     height: 100vh;
-    width: 180px;
+    width: 250px;
     background-color: ${props => props.isDark ? bgColorDark : bgColorlight};
 
     transition: all .5s ease-in-out;
@@ -77,7 +77,7 @@ export const LeftMenuDiv = styled.div<props>`
 
         height: 40px;
 
-        padding: 2px 5px 2px 5px;
+        padding: 2px 10px 2px 10px;
         
         margin-top: 10px;
         margin-bottom: 10px;

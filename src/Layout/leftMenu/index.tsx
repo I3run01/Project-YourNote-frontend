@@ -48,7 +48,7 @@ export const  LeftMenu = () => {
                 list.map((item, key) => {
                     return (
                         <div className='item' key={key}>
-                            {item.title}
+                            - {item.title}
                         </div>
                     )
                 })

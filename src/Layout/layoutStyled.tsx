@@ -7,6 +7,5 @@ type props = {
 export const LayoutStyled = styled.div<props>`
     min-height: 100vh;
 
-    background-color: ${props => props.isDark ? 'black' : '#e4e2e0'};
-
+    background-color: ${props => props.isDark ? '#0f0f0f' : '#e4e2e0'};
 `

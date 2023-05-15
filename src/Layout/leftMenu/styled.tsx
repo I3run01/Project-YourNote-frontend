@@ -22,8 +22,9 @@ export const LeftMenuDiv = styled.div<props>`
 
     display: flex;
     flex-direction: column;
-    justify-content: flex-start;
-    align-content: center;
+    justify-content: start;
+
+    align-items: center;
 
     #icon {
         position: absolute;
@@ -62,14 +63,18 @@ export const LeftMenuDiv = styled.div<props>`
     }
 
     #newFile {
-        position: inherit;
-        left: 0;
 
         width: 100px;
         height: 40px;
+        
+        margin-top: 20px;
 
         background-color: red;
         color: white;
+
+        display: flex;
+        justify-content: center;
+        align-items: center;
     }
 
 `

@@ -16,7 +16,4 @@ export const MainStyled = styled.main<props>`
     min-height: 100vh;
 
     background-color: ${props => props.isDark ? '#0f0f0f' : '#cfcfcf'};
-
-
-
 `

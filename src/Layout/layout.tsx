@@ -1,5 +1,6 @@
 import { ReactElement } from "react"
-import { LeftMenu } from '../Layout/leftMenu'
+import { LeftMenu } from './leftMenu'
+import { RightMenu } from './rightMenu'
 
 type props = {
     children: ReactElement
@@ -11,6 +12,7 @@ const Layout = ({children}: props) => {
         <>
             <div>
                 <LeftMenu/>
+                <RightMenu/>
                 <main>
                     {children}
                 </main>

@@ -5,7 +5,7 @@ type props = {
     isMenuOpened: boolean
 }
 
-const themeColor = '#8bfcc7'
+const themeColor = '#3dc786'
 
 const bgColorDark = '#353535'
 const bgColorlight = '#ded9d4'
@@ -70,7 +70,8 @@ export const LeftMenuDiv = styled.div<props>`
             border-color: ${themeColor};
 
             #menuIcon {
-                filter: grayscale(0%);
+
+                filter: ${props => props.isDark ? 'grayscale(0%)' : 'grayscale(0%)brightness(60%)'};
             }
             
         }

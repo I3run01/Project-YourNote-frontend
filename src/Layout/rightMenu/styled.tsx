@@ -46,12 +46,15 @@ export const RightMenuDiv = styled.div<props>`
 `
 
 export const PopUp = styled.div<props>`
+    @import url('https://fonts.googleapis.com/css2?family=Merriweather:wght@300&display=swap');
+
+
     position: fixed;
 
     bottom: 20px;
     right: 60px;
 
-    height: 100px;
+    padding: 5px;
 
     border: 1px solid black;
 
@@ -59,5 +62,26 @@ export const PopUp = styled.div<props>`
 
     background-color: ${props => props.isDark ? bgColorDark : bgColorlight};
 
+    * {
+        font-family: 'Dosis';
+        font-size: 18px;
+        line-height: 2em;
+        font-weight: lighter;
+    } 
+    
+    div {
+        padding: 4px;
+        margin-top: 5px;
+
+        color: ${props => props.isDark ? fontColorDark : fontColorLight};
+
+        border-bottom: 2px solid ${props => props.isDark ? fontColorDark : fontColorLight};
+
+        cursor: pointer;
+
+        :hover {
+            background-color: ${props => props.isDark ? '#575757' : '#b5b5b5'};
+        }
+    }
 
 `

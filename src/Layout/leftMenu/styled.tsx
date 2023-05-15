@@ -15,14 +15,12 @@ export const LeftMenuDiv = styled.div<props>`
     left: 0;
 
     height: 100vh;
-    width: ${props => props.isMenuOpened ? '150px' : '50px'};
+    width: ${props => props.isMenuOpened ? '150px' : '20px'};
     background-color: ${props => props.isDark ? bgColorDark : bgColorlight};
 
     transition: all .5s ease-in-out;
 
-
     #icon {
-
         position: absolute;
         top: 10%;
         right: 0%;
@@ -36,8 +34,8 @@ export const LeftMenuDiv = styled.div<props>`
 
         transform: translateX(50%) ${props => props.isMenuOpened ? 'rotate(0deg)' : 'rotate(180deg)'};
 
-        height: 40px;
-        width: 40px;
+        height: 30px;
+        width: 30px;
 
         border-radius: 50%;
 
@@ -50,7 +48,11 @@ export const LeftMenuDiv = styled.div<props>`
         }
 
         :hover {
-            cursor: pointer;
+            cursor: pointer; 
+        }
+
+        :hover #menuIcon {
+            filter: ${props => props.isDark ? 'grayscale(0%)' : ''};
         }
     }
 

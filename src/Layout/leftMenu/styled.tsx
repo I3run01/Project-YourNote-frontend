@@ -8,13 +8,19 @@ type props = {
 const themeColor = '#8bfcc7'
 
 const bgColorDark = '#353535'
-const bgColorlight = '#E3D7CD'
+const bgColorlight = '#ded9d4'
 
 const fontColorDark = '#ececec'
 const fontColorLight = 'black'
 
 export const LeftMenuDiv = styled.div<props>`
     @import url('https://fonts.googleapis.com/css2?family=Merriweather:wght@300&display=swap');
+
+    * {
+        font-family: 'Dosis';
+        font-size: 18px;
+        font-weight: lighter;
+    } 
 
     position: relative;
     margin-left: ${props => props.isMenuOpened ? '0px' : '-210px'};
@@ -41,7 +47,7 @@ export const LeftMenuDiv = styled.div<props>`
         align-items: center;
 
         background-color: ${props => props.isDark ? bgColorDark : bgColorlight};
-        border: 3px solid ${props => props.isDark ? '#c2c2c2' : themeColor};
+        border: 3px solid ${props => props.isDark ? '#c2c2c2' : 'black'};
 
         transform: translateX(50%) ${props => props.isMenuOpened ? 'rotate(180deg)' : 'rotate(0deg)'};
 
@@ -50,14 +56,12 @@ export const LeftMenuDiv = styled.div<props>`
 
         border-radius: 50%;
 
-        transition: all 0.5s ease-in-out;
+        transition: transform  0.5s ease-in-out;
         
         #menuIcon {
             width: 40%;
 
-            filter: ${props => props.isDark ? 'grayscale(100%)' : ''};
-
-            transition: all 0.5s ease-in-out;
+            filter: ${props => props.isDark ? 'grayscale(100%)' : 'brightness(0%)'};
         }
 
         :hover {
@@ -93,12 +97,13 @@ export const LeftMenuDiv = styled.div<props>`
         justify-content: center;
         align-items: center;
 
-        transition: all 0.2s ease-in-out;
 
         :hover {
             cursor: pointer;
-            color: ${themeColor};
-            border-color: ${themeColor};
+            color: ${props => props.isDark ? themeColor : '' };
+            border-color: ${props => props.isDark ? themeColor : '' };
+
+            background-color: ${props => props.isDark ? '' : '#5c957a' };
         }
     }
 
@@ -120,9 +125,6 @@ export const LeftMenuDiv = styled.div<props>`
         padding-bottom: 5px;
 
         .item {
-            font-family: 'Dosis';
-            font-size: 18px;
-
             margin-top: 10px;
             margin-bottom: 10px;
 

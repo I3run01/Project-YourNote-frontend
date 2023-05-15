@@ -3,7 +3,7 @@ import { LeftMenu } from './leftMenu'
 import { RightMenu } from './rightMenu'
 import { useSelector } from 'react-redux'
 import { RootState } from '@/store'
-import { LayoutStyled } from './layoutStyled'
+import { LayoutStyled, MainStyled } from './layoutStyled'
 
 type props = {
     children: ReactElement
@@ -14,13 +14,13 @@ const Layout = ({children}: props) => {
 
     return (
         <>
-            <LayoutStyled isDark={isDark}>
+            <LayoutStyled>
                 <LeftMenu/>
                 
-                <main id="main">
+                <MainStyled id="main" isDark={isDark}>
                     {children}
-                </main>
-                
+                </MainStyled>
+
                 <RightMenu/>
             </LayoutStyled>
         </>

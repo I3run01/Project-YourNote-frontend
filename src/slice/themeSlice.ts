@@ -13,13 +13,12 @@ export const counterSlice = createSlice({
   name: 'theme',
   initialState,
   reducers: {
-    changeTheme: (state, action: PayloadAction<boolean>) => {
-      state.isDark = action.payload
+    changeTheme: (state) => {
+      state.isDark ? state.isDark = false : state.isDark = true
     },
   },
 })
 
-// Action creators are generated for each case reducer function
 export const { changeTheme } = counterSlice.actions
 
 export default counterSlice.reducer

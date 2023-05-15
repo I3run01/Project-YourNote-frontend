@@ -1,7 +1,8 @@
 import { LeftMenuDiv } from './styled'
-import { useSelector } from 'react-redux'
+import { useSelector,useDispatch } from 'react-redux'
 import { RootState } from '@/store'
 import { useState } from 'react'
+import { changeTheme } from '../../slice/themeSlice'
 import menuIcon from '../../../public/images/openAndClosemenuIcon.svg'
 import Image from 'next/image'
 
@@ -22,6 +23,7 @@ const list = [
 
 export const  LeftMenu = () => {
     const isDark = useSelector((state: RootState) => state.theme.isDark)
+    const dispatch = useDispatch();
 
     const [isMenuOpend, setIsMenuOpened] = useState<boolean>(false)
 
@@ -55,7 +57,9 @@ export const  LeftMenu = () => {
             }
         </div>
         
-        <div id='settings'>Settings</div>
+        <div id='settings' onClick={() => {
+            dispatch(changeTheme())
+            }}>Change theme</div>
 
         </LeftMenuDiv>
     )

@@ -18,6 +18,8 @@ export const RightMenuDiv = styled.div<props>`
 
     background-color: ${props => props.isDark ? bgColorDark : bgColorlight};
 
+    
+
 
 
 `

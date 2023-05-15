@@ -26,6 +26,8 @@ export const  LeftMenu = () => {
             />
         </div>
 
+        <div id='newFile'>+ New File</div>
+
         </LeftMenuDiv>
     )
 }

@@ -8,7 +8,7 @@ export const RightMenu = () => {
     return (
 
         <RightMenuDiv isDark={isDark}>
-
+            
         </RightMenuDiv>
     )
 }

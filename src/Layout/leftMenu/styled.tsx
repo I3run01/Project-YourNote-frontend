@@ -12,13 +12,18 @@ export const LeftMenuDiv = styled.div<props>`
 
     position: absolute;
     top: 0;
-    left: 0;
+    left: ${props => props.isMenuOpened ? '0px' : '-160px'};
 
     height: 100vh;
-    width: ${props => props.isMenuOpened ? '180px' : '20px'};
+    width: 180px;
     background-color: ${props => props.isDark ? bgColorDark : bgColorlight};
 
     transition: all .5s ease-in-out;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-content: center;
 
     #icon {
         position: absolute;
@@ -54,6 +59,17 @@ export const LeftMenuDiv = styled.div<props>`
         :hover #menuIcon {
             filter: ${props => props.isDark ? 'grayscale(0%)' : ''};
         }
+    }
+
+    #newFile {
+        position: inherit;
+        left: 0;
+
+        width: 100px;
+        height: 40px;
+
+        background-color: red;
+        color: white;
     }
 
 `

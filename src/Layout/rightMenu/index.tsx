@@ -14,7 +14,6 @@ export const RightMenu = () => {
     return (
 
         <>
-
             <PopUp isDark={isDark} isPopUpOpened={isPopUpOpened}>
                 <div>+ New paragraph</div>
                 <div>+ New image</div>

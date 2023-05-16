@@ -6,25 +6,25 @@ import { changeTheme } from '../../redux/slice/themeSlice'
 import menuIcon from '../../../public/images/openAndClosemenuIcon.svg'
 import settingsIcon from '../../../public/images/Settings.svg'
 import Image from 'next/image'
+import { useRouter } from 'next/router';
 
 const list = [
-    {title: 'title'},
-    {title: 'title'},
-    {title: 'title'},
-    {title: 'title'},
-    {title: 'title'},
-    {title: 'title'},
-    {title: 'title'},
-    {title: 'title'},
-    {title: 'title'},
-    {title: 'title'},
-    {title: 'title'},
-    {title: 'title'},
+    {title: 'title', id: 1},
+    {title: 'title', id: 2},
+    {title: 'title', id: 3},
+    {title: 'title', id: 4},
+    {title: 'title', id: 5},
+    {title: 'title', id: 6},
+    {title: 'title', id: 7},
+    {title: 'title', id: 8},
+    {title: 'title', id: 9},
+    {title: 'title', id: 10},
 ]
 
 export const  LeftMenu = () => {
     const isDark = useSelector((state: RootState) => state.theme.isDark)
     const dispatch = useDispatch();
+    const route = useRouter()
 
     const [isMenuOpend, setIsMenuOpened] = useState<boolean>(false)
 
@@ -50,7 +50,7 @@ export const  LeftMenu = () => {
                 {
                     list.map((item, key) => {
                         return (
-                            <div className='item' key={key}>
+                            <div className='item' key={key} onClick={() => {route.push(`dashboard/${item.id}`)}}>
                                 - {item.title}
                             </div>
                         )

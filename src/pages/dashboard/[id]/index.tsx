@@ -2,22 +2,28 @@ import { useEffect, useState } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import { useRouter } from 'next/router';
 import { RootState } from '@/redux/store'
-import { Auth } from '../../Auth/request'
-import { Loading } from '../../components/loading'
-import { changeUser } from '../../redux/slice/userSlice'
-import { DashboardDiv } from '../../styles/dashboardDiv'
-import Layout from '../../Layout/layout'
+import { Auth } from '../../../Auth/request'
+import { Loading } from '../../../components/loading'
+import { changeUser } from '../../../redux/slice/userSlice'
+import { DashboardDiv } from '../../../styles/dashboardDiv'
+import Layout from '../../../Layout/layout'
 
 const dashboard = () => {
     const [isLoading, setIsLoanding] = useState<boolean>(false)
-    const router = useRouter()
+    const [file, setFile] = useState<object>({})
     const user = useSelector((state: RootState) => state.user.user)
     const isDark = useSelector((state: RootState) => state.theme.isDark)
     const dispatch = useDispatch();
+    const router = useRouter()
+    const { id } = router.query;
 
     useEffect(() => {
         middleware()
     }, [])
+
+    useEffect(() => {
+        sendParam()
+    }, [id])
 
     const middleware = async () => {
 
@@ -39,6 +45,10 @@ const dashboard = () => {
 
         console.log(response.status)
 
+    }
+
+    const sendParam = () => {
+        if (id) console.log(id)
     }
 
     return (

@@ -92,7 +92,7 @@ const dashboard = () => {
 
                                 if (item.type === 'paragraph') {
                                     return (
-                                        <div className='paragraph'>{item.paragraph}</div>
+                                        <div className='paragraph'>{item.text}</div>
                                     )
                                 }
 

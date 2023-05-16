@@ -4,7 +4,7 @@ import { Auth } from '../../Auth/request'
 import { useRouter } from 'next/router';
 import { GoogleButton } from '../../components/googlesButton'
 import { useDispatch } from 'react-redux'
-import { changeUser } from '../../slice/userSlice';
+import { changeUser } from '../../redux/slice/userSlice';
 import { Loading } from '../../components/loading'
 import Link from 'next/link'
 import Image from 'next/image'

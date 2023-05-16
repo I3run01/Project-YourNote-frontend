@@ -1,5 +1,5 @@
 import type { AppProps } from 'next/app'
-import { store } from '../store'
+import { store } from '../redux/store'
 import { Provider } from 'react-redux'
 import { GoogleOAuthProvider } from '@react-oauth/google';
 

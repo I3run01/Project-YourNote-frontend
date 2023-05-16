@@ -1,10 +1,10 @@
 import { useEffect, useState } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import { useRouter } from 'next/router';
-import { RootState } from '@/store'
+import { RootState } from '@/redux/store'
 import { Auth } from '../../Auth/request'
 import { Loading } from '../../components/loading'
-import { changeUser } from '../../slice/userSlice'
+import { changeUser } from '../../redux/slice/userSlice'
 import Layout from '../../Layout/layout'
 
 const dashboard = () => {

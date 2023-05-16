@@ -1,6 +1,6 @@
 import { useSelector } from 'react-redux'
 import { InitialMenuStyled } from './styled'
-import { RootState } from '@/store'
+import { RootState } from '@/redux/store'
 import Link from 'next/link'
 import { useState } from 'react'
 

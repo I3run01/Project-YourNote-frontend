@@ -2,7 +2,7 @@ import { ReactElement } from "react"
 import { LeftMenu } from './leftMenu'
 import { RightMenu } from './rightMenu'
 import { useSelector } from 'react-redux'
-import { RootState } from '@/store'
+import { RootState } from '@/redux/store'
 import { LayoutStyled, MainStyled } from './layoutStyled'
 
 type props = {

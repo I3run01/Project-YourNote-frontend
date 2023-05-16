@@ -1,25 +1,24 @@
-export type ParagraphContent = {
-    type: 'paragraph'
+type ParagraphContent = {
+    type: string
     text: string
-  }
+}
   
-  export type ImageContent = {
-    type: 'image'
-    url: string
-    caption?: string
-  }
-  
-  export type IDEContent = {
-    type: 'IDE'
+type ImageContent = {
+    type: string
+    codeBase64: string
+}
+
+type IDEContent = {
+    type: string
     language: string
     code: string
-  }
+}
   
-  export type ContentType = ParagraphContent | ImageContent | IDEContent
+type ContentType = ParagraphContent | ImageContent | IDEContent
   
-  export type Files = {
+export type filesType = {
     id: string
     title: string
     usersAccessIDs: string[]
     content: ContentType[]
-  }
+}

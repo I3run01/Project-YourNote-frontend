@@ -2,6 +2,7 @@ import styled from "styled-components";
 
 type props = {
     isDark: boolean
+    isPopUpOpened?: boolean
 }
 
 const bgColorDark = '#353535'
@@ -61,6 +62,11 @@ export const PopUp = styled.div<props>`
     box-shadow: 1px 1px 5px black;
 
     background-color: ${props => props.isDark ? bgColorDark : bgColorlight};
+
+    transition: all 0.5s ease-in-out;
+
+    scale: ${props => props.isPopUpOpened ? '100%' : '0%'};
+    opacity: ${props => props.isPopUpOpened ? '100%' : '0%'};
 
     * {
         font-family: 'Dosis';

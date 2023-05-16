@@ -50,9 +50,9 @@ const dashboard = () => {
     }
 
     const getFileData = async () => {
-        const response = {
+        const response: filesType = {
             id: '1',
-            title: 'exmpleTitle',
+            title: 'Penguin',
             usersAccessIDs: ['1', '2', '3'],
             content: [
                 {
@@ -92,7 +92,12 @@ const dashboard = () => {
 
                                 if (item.type === 'paragraph') {
                                     return (
-                                        <div className='paragraph'>{item.text}</div>
+                                        <div className='paragraph' key={index}>
+                                            <input
+                                            type="text"
+                                            value={item.text}
+                                            />
+                                        </div>
                                     )
                                 }
 

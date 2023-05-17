@@ -5,7 +5,7 @@ type props = {
 }
 
 //light
-const bgLightYheme01 = '#e9e6e3'
+const bgLightTheme01 = '#e9e6e3'
 const textLightFont = '#222222'
 const lightGreenTheme = '#036D3B'
 
@@ -21,7 +21,7 @@ export const InitialPage = styled.div<props>`
     padding-left: 15px;
     padding-right: 15px;
 
-    background-color: ${props => props.theme === 'dark' ?  bgDarktheme01: bgLightYheme01};;
+    background-color: ${props => props.theme === 'dark' ?  bgDarktheme01: bgLightTheme01};;
 
     * {
         color: ${ props => props.theme === 'dark' ? textDarkFont : textLightFont};

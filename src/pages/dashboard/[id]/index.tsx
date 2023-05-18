@@ -86,18 +86,6 @@ const dashboard = () => {
         if (id) console.log(id)
     }
 
-    const paragraphUpdateFile = (index: number) => {
-        if(!file || !file.content) return
-
-        const fileCopy = {...file}
-
-        if(fileCopy.content[index].type === 'paragraph') {
-
-        }
-
-        console.log(fileCopy.content[index])
-    }
-
     return (
         <>
             {isLoading === true && <Loading/>}
@@ -114,7 +102,7 @@ const dashboard = () => {
                                         <div className='paragraph' key={index}>
                                             <MyEditor
                                             initialTXT= {item.text}
-                                            fction={() => paragraphUpdateFile(index)}
+                                            index={index}
                                             />
                                         </div>
                                     )

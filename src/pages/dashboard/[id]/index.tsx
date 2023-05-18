@@ -8,6 +8,7 @@ import { changeUser } from '../../../redux/slice/userSlice'
 import { DashboardFilesFilesDiv } from '../../../styles/dashboardFiles'
 import { filesType } from '../../../types/files'
 import Layout from '../../../Layout/layout'
+import dynamic from "next/dynamic"
 
 const dashboard = () => {
     const [isLoading, setIsLoanding] = useState<boolean>(false)
@@ -16,7 +17,7 @@ const dashboard = () => {
     const isDark = useSelector((state: RootState) => state.theme.isDark)
     const dispatch = useDispatch();
     const router = useRouter()
-    const { id } = router.query;
+    const { id } = router.query; 
 
     useEffect(() => {
         middleware()
@@ -26,6 +27,10 @@ const dashboard = () => {
     useEffect(() => {
         sendParam()
     }, [id])
+
+    const MyEditor = dynamic(() =>import('../../../components/Editor/myEditor'), {
+        ssr: false
+    } )
 
     const middleware = async () => {
 
@@ -94,7 +99,7 @@ const dashboard = () => {
                                 if (item.type === 'paragraph') {
                                     return (
                                         <div className='paragraph' key={index}>
-                                            {item.text}
+                                            <MyEditor initialTXT= {item.text}/>
                                         </div>
                                     )
                                 }

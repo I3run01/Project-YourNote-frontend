@@ -2,20 +2,22 @@ import { MyEditorContainer } from './myEditorStyled';
 import { Editor, EditorState, ContentState } from 'draft-js';
 import { FC, useState, useEffect } from 'react';
 
-const MyEditor: FC = () => {
+type props = {
+  initialTXT: string
+}
+
+const MyEditor = ({initialTXT}: props) => {
   const [editorState, setEditorState] = useState<EditorState | null>(null);
 
   useEffect(() => {
-    const initialContentState = ContentState.createFromText('Hello World');
+    const initialContentState = ContentState.createFromText(initialTXT);
     const initialEditorState = EditorState.createWithContent(initialContentState);
     setEditorState(initialEditorState);
   }, []);
 
   const handleChange = (state: EditorState) => {
     setEditorState(state);
-  };
 
-  const handleGetText = () => {
     if (editorState) {
       const contentState: ContentState = editorState.getCurrentContent();
       const text: string = contentState.getPlainText();
@@ -29,9 +31,7 @@ const MyEditor: FC = () => {
 
   return (
     <MyEditorContainer>
-      <h1>Reference</h1>
       <Editor editorState={editorState} onChange={handleChange} />
-      <button onClick={handleGetText}>Get Text</button>
     </MyEditorContainer>
   );
 };

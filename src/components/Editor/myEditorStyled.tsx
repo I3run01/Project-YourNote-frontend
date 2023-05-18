@@ -6,8 +6,6 @@ const fontColorLight = 'black'
 export const MyEditorContainer = styled.div`
     @import url('https://fonts.googleapis.com/css2?family=Merriweather:wght@300&display=swap');
 
-    width: 100%;
-
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -24,10 +22,24 @@ export const MyEditorContainer = styled.div`
         line-height: 1.8em;
     }
 
-    .DraftEditor-root {
-        border: 1px solid black;
-        width: 900px;
+    .public-DraftEditor-content {       
+        min-height: 200px;
 
-        min-height: 300px;
+        border: 1px solid #0000;
+
+        width: 60vw;
+
+        transition: all 0.5s ease-in-out;
+
+        padding: 20px;
+
+        :hover {
+            border: 1px solid black;
+
+        }
+
+        
+
+
     }
 `

@@ -4,9 +4,10 @@ import { FC, useState, useEffect } from 'react';
 
 type props = {
   initialTXT: string
+  fction: () => void
 }
 
-const MyEditor = ({initialTXT}: props) => {
+const MyEditor = ({initialTXT, fction}: props) => {
   const [editorState, setEditorState] = useState<EditorState | null>(null);
 
   useEffect(() => {
@@ -21,8 +22,9 @@ const MyEditor = ({initialTXT}: props) => {
     if (editorState) {
       const contentState: ContentState = editorState.getCurrentContent();
       const text: string = contentState.getPlainText();
-      console.log(text);
     }
+
+    fction()
   };
 
   if (!editorState) {

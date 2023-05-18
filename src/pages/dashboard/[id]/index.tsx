@@ -5,6 +5,7 @@ import { RootState } from '@/redux/store'
 import { Auth } from '../../../Auth/request'
 import { Loading } from '../../../components/loading'
 import { changeUser } from '../../../redux/slice/userSlice'
+import { setFile } from '../../../redux/slice/fileSlice'
 import { DashboardFilesFilesDiv } from '../../../styles/dashboardFiles'
 import { filesType } from '../../../types/files'
 import Layout from '../../../Layout/layout'
@@ -12,11 +13,11 @@ import dynamic from "next/dynamic"
 
 const dashboard = () => {
     const [isLoading, setIsLoanding] = useState<boolean>(false)
-    const [file, setFile] = useState<filesType | null>(null)
+    const file = useSelector((state: RootState) => state.file.data)
     const user = useSelector((state: RootState) => state.user.user)
     const isDark = useSelector((state: RootState) => state.theme.isDark)
-    const dispatch = useDispatch();
     const router = useRouter()
+    const dispatch = useDispatch();
     const { id } = router.query; 
 
     useEffect(() => {
@@ -62,7 +63,7 @@ const dashboard = () => {
             content: [
                 {
                     type: 'paragraph',
-                    text: `Penguins are fascinating and charismatic creatures that have captured the hearts of people around the world. These flightless birds are primarily found in the Southern Hemisphere, especially in Antarctica, although some species also inhabit other regions such as South Africa, New Zealand, and South America. Penguins have a unique appearance with their stout bodies, flipper-like wings, and distinctive black and white plumage, which helps them camouflage while swimming and diving in the ocean. They are well adapted to their aquatic lifestyle, with streamlined bodies for efficient swimming and webbed feet for propelling through the water. Penguins are excellent swimmers and can dive to impressive depths in search of food, predominantly fish and krill. Not only are they skilled in the water, but penguins also exhibit fascinating social behaviors. </n>
+                    text: `Penguins are fascinating and charismatic creatures that have captured the hearts of people around the world. These flightless birds are primarily found in the Southern Hemisphere, especially in Antarctica, although some species also inhabit other regions such as South Africa, New Zealand, and South America. Penguins have a unique appearance with their stout bodies, flipper-like wings, and distinctive black and white plumage, which helps them camouflage while swimming and diving in the ocean. They are well adapted to their aquatic lifestyle, with streamlined bodies for efficient swimming and webbed feet for propelling through the water. Penguins are excellent swimmers and can dive to impressive depths in search of food, predominantly fish and krill. Not only are they skilled in the water, but penguins also exhibit fascinating social behaviors.
                     They often form large colonies, where they engage in courtship rituals, nest-building, and cooperative parenting. These endearing birds display remarkable resilience and adaptability, surviving in harsh and extreme environments. Penguins symbolize determination, family values, and the beauty of the natural world`
                 },
                 {
@@ -78,11 +79,23 @@ const dashboard = () => {
             ]
         }
 
-        setFile(response)
+        dispatch(setFile(response))
     }
 
     const sendParam = () => {
         if (id) console.log(id)
+    }
+
+    const paragraphUpdateFile = (index: number) => {
+        if(!file || !file.content) return
+
+        const fileCopy = {...file}
+
+        if(fileCopy.content[index].type === 'paragraph') {
+
+        }
+
+        console.log(fileCopy.content[index])
     }
 
     return (
@@ -99,20 +112,23 @@ const dashboard = () => {
                                 if (item.type === 'paragraph') {
                                     return (
                                         <div className='paragraph' key={index}>
-                                            <MyEditor initialTXT= {item.text}/>
+                                            <MyEditor
+                                            initialTXT= {item.text}
+                                            fction={() => paragraphUpdateFile(index)}
+                                            />
                                         </div>
                                     )
                                 }
 
                                 else if (item.type === 'image') {
                                     return (
-                                        <div className='image'>Image</div>
+                                        <div className='image' key={index}>Image</div>
                                     )
                                 }
 
                                 else if (item.type === 'IDE') {
                                     return (
-                                        <div className='IDE'>IDE</div>
+                                        <div className='IDE' key={index}>IDE</div>
                                     )
                                 }
 

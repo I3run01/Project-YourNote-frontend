@@ -33,6 +33,8 @@ export const MyEditorContainer = styled.div`
 
         padding: 20px;
 
+        text-align: justify;
+        
         :hover {
             border: 1px solid black;
 

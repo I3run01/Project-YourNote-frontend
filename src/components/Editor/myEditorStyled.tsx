@@ -27,7 +27,7 @@ export const MyEditorContainer = styled.div`
 
         border: 1px solid #0000;
 
-        width: 60vw;
+        width: 55vw;
 
         transition: all 0.5s ease-in-out;
 

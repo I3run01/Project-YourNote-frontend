@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react'
-import { useSelector, useDispatch } from 'react-redux'
+import { useSelector, useDispatch, useStore } from 'react-redux'
 import { useRouter } from 'next/router';
 import { RootState } from '@/redux/store'
 import { Auth } from '../../../Auth/request'
@@ -13,7 +13,7 @@ import dynamic from "next/dynamic"
 
 const dashboard = () => {
     const [isLoading, setIsLoanding] = useState<boolean>(false)
-    const file = useSelector((state: RootState) => state.file.data)
+    const file: filesType = (useStore().getState() as any).file.data
     const user = useSelector((state: RootState) => state.user.user)
     const isDark = useSelector((state: RootState) => state.theme.isDark)
     const router = useRouter()

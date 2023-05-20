@@ -30,8 +30,6 @@ const MyEditor = ({initialTXT, index}: props) => {
     const text: string = contentState.getPlainText();
 
     dispatch(updateContentText({ index: index, newText: text }));
-
-    console.log(file?.content[index])
   };
 
   if (!editorState) {

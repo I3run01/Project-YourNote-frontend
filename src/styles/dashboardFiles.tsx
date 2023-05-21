@@ -13,9 +13,6 @@ export const DashboardFilesFilesDiv = styled.div<props>`
     
     height: 100vh;
     overflow-y: auto;
-
-    padding-right: 20%;
-    padding-left: 20%;
     
     text-align: center;
     
@@ -30,11 +27,10 @@ export const DashboardFilesFilesDiv = styled.div<props>`
     }
 
     h1 {
+        text-align: center;
         font-size: 24px;
         font-weight: 600;
         margin-bottom: 20px;
     }
-
-
 
 `

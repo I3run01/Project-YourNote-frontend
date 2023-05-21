@@ -8,6 +8,7 @@ import { changeUser } from '../../../redux/slice/userSlice'
 import { setFile } from '../../../redux/slice/fileSlice'
 import { DashboardFilesFilesDiv } from '../../../styles/dashboardFiles'
 import { filesType } from '../../../types/files'
+import { response } from './responseOBJ'
 import Layout from '../../../Layout/layout'
 import dynamic from "next/dynamic"
 
@@ -56,29 +57,6 @@ const dashboard = () => {
     }
 
     const getFileData = async () => {
-        const response: filesType = {
-            id: '1',
-            title: 'Penguin',
-            usersAccessIDs: ['1', '2', '3'],
-            content: [
-                {
-                    type: 'paragraph',
-                    text: `Penguins are fascinating and charismatic creatures that have captured the hearts of people around the world. These flightless birds are primarily found in the Southern Hemisphere, especially in Antarctica, although some species also inhabit other regions such as South Africa, New Zealand, and South America. Penguins have a unique appearance with their stout bodies, flipper-like wings, and distinctive black and white plumage, which helps them camouflage while swimming and diving in the ocean. They are well adapted to their aquatic lifestyle, with streamlined bodies for efficient swimming and webbed feet for propelling through the water. Penguins are excellent swimmers and can dive to impressive depths in search of food, predominantly fish and krill. Not only are they skilled in the water, but penguins also exhibit fascinating social behaviors.
-                    They often form large colonies, where they engage in courtship rituals, nest-building, and cooperative parenting. These endearing birds display remarkable resilience and adaptability, surviving in harsh and extreme environments. Penguins symbolize determination, family values, and the beauty of the natural world`
-                },
-                {
-                    type: 'IDE',
-                    language: 'python',
-                    code: 'printf("hello, world")'
-                },
-                {
-                    type: 'image',
-                    codeBase64: 'fadrhg',
-                },   
-                
-            ]
-        }
-
         dispatch(setFile(response))
     }
 
@@ -110,7 +88,9 @@ const dashboard = () => {
 
                                 else if (item.type === 'image') {
                                     return (
-                                        <div className='image' key={index}>Image</div>
+                                        <div className='image' key={index}>
+
+                                        </div>
                                     )
                                 }
 

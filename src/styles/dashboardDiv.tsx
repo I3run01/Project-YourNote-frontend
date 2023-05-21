@@ -23,4 +23,5 @@ export const DashboardDiv = styled.div<props>`
         text-align: center;
         color: ${props => props.isDark ? fontColorDark : fontColorLight};
     }
+
 `

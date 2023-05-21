@@ -77,7 +77,7 @@ const dashboard = () => {
 
                                 if (item.type === 'paragraph') {
                                     return (
-                                        <div className='paragraph' key={index}>
+                                        <div key={index}>
                                             <MyEditor
                                             initialTXT= {item.text}
                                             index={index}
@@ -89,7 +89,7 @@ const dashboard = () => {
                                 else if (item.type === 'image') {
                                     return (
                                         <div className='image' key={index}>
-
+                                            <img src={item.codeBase64} alt=""/>
                                         </div>
                                     )
                                 }

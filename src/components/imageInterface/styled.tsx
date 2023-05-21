@@ -16,7 +16,7 @@ export const ImageDiv = styled.div<props>`
     padding-bottom: 50px;
 
     img {
-        width: ${props => props.isZomm ? '100%' : '60vw'};
+        width: ${props => props.isZomm ? '100%' : '55vw'};
 
         transition: all 0.5s ease-in-out;
 

@@ -9,6 +9,7 @@ import { setFile } from '../../../redux/slice/fileSlice'
 import { DashboardFilesFilesDiv } from '../../../styles/dashboardFiles'
 import { filesType } from '../../../types/files'
 import { response } from './responseOBJ'
+import { ImageInterface } from '../../../components/imageInterface'
 import Layout from '../../../Layout/layout'
 import dynamic from "next/dynamic"
 
@@ -89,7 +90,9 @@ const dashboard = () => {
                                 else if (item.type === 'image') {
                                     return (
                                         <div className='image' key={index}>
-                                            <img src={item.codeBase64} alt=""/>
+                                            <ImageInterface 
+                                                src={item.codeBase64} alt=""
+                                            />
                                         </div>
                                     )
                                 }

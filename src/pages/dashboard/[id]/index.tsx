@@ -15,7 +15,7 @@ import dynamic from "next/dynamic"
 
 const dashboard = () => {
     const [isLoading, setIsLoanding] = useState<boolean>(false)
-    const file: filesType = (useStore().getState() as any).file.data
+    const [fileState, setFileState] = useState<filesType | null>(null)
     const user = useSelector((state: RootState) => state.user.user)
     const isDark = useSelector((state: RootState) => state.theme.isDark)
     const router = useRouter()
@@ -58,6 +58,7 @@ const dashboard = () => {
     }
 
     const getFileData = async () => {
+        setFileState(response)
         dispatch(setFile(response))
     }
 
@@ -73,8 +74,8 @@ const dashboard = () => {
                 children={
                     <>
                         <DashboardFilesFilesDiv isDark={isDark}>
-                            <h1>{file?.title}</h1> 
-                            {file?.content.map((item, index) => {
+                            <h1>{fileState?.title}</h1> 
+                            {fileState?.content.map((item, index) => {
 
                                 if (item.type === 'paragraph') {
                                     return (

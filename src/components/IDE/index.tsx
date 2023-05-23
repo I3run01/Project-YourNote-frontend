@@ -1,4 +1,7 @@
 import React, { useRef } from 'react';
+
+import { IdeDiv } from './styled'
+
 import Editor from '@monaco-editor/react';
 import { editor as EditorType } from 'monaco-editor';
 
@@ -18,15 +21,16 @@ const CodeInputComponent: React.FC = () => {
   };
 
   return (
-    <div>
+    <IdeDiv>
       <Editor
-        height="90vh"
+        height="auto"
         defaultLanguage="python"
         defaultValue="// some comment"
         onMount={handleEditorDidMount}
+
+        className='IDE'
       />
-      <button onClick={showValue}>Show Code</button>
-    </div>
+    </IdeDiv>
   );
 };
 

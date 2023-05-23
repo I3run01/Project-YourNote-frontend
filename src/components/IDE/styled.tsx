@@ -6,8 +6,5 @@ export const IdeDiv = styled.div`
     justify-content: center;
     align-items: center;
 
-    .IDE {
-        margin-top: 20px;
-    }
 
 `

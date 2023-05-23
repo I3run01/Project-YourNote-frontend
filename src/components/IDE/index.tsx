@@ -1,23 +1,15 @@
-import React, { useState } from 'react';
+import Editor, { DiffEditor, useMonaco, loader } from '@monaco-editor/react';
 
-const CodeInputComponent: React.FC = () => {
-  const [code, setCode] = useState<string>('');
+const CodeInputComponent = () => {
 
-  const handleCodeChange = (event: React.ChangeEvent<HTMLTextAreaElement>) => {
-    setCode(event.target.value);
-  };
-
-  const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
-    event.preventDefault();
-    console.log('The code entered is: ', code);
-    // Handle code submission here
-  };
 
   return (
-    <form onSubmit={handleSubmit}>
-      <textarea value={code} onChange={handleCodeChange} />
-      <button type="submit">Submit Code</button>
-    </form>
+    <div>
+        <Editor 
+            height="90vh"
+            defaultLanguage="python" 
+            defaultValue="//put some code" />;
+    </div>
   );
 };
 

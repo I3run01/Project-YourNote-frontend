@@ -10,7 +10,6 @@ import { DashboardFilesFilesDiv } from '../../../styles/dashboardFiles'
 import { filesType } from '../../../types/files'
 import { response } from './responseOBJ'
 import { ImageInterface } from '../../../components/imageInterface'
-import IDE from '../../../components/IDE'
 import Layout from '../../../Layout/layout'
 import dynamic from "next/dynamic"
 
@@ -101,9 +100,7 @@ const dashboard = () => {
 
                                 else if (item.type === 'IDE') {
                                     return (
-                                        <div className='IDE' key={index}>
-                                            <IDE/>
-                                        </div>
+                                        <div className='IDE' key={index}>IDE</div>
                                     )
                                 }
 

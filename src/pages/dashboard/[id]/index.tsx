@@ -10,19 +10,12 @@ import { DashboardFilesFilesDiv } from '../../../styles/dashboardFiles'
 import { filesType } from '../../../types/files'
 import { response } from './responseOBJ'
 import { ImageInterface } from '../../../components/imageInterface'
-<<<<<<< HEAD
-<<<<<<< HEAD
-import IDE from '../../../components/IDE'
-=======
->>>>>>> parent of 763e69c (c)
-=======
->>>>>>> parent of 763e69c (c)
 import Layout from '../../../Layout/layout'
 import dynamic from "next/dynamic"
 
 const dashboard = () => {
     const [isLoading, setIsLoanding] = useState<boolean>(false)
-    const [fileState, setFileState] = useState<filesType | null>(null)
+    const [fileState, setFileState] = useState<filesType>()
     const user = useSelector((state: RootState) => state.user.user)
     const isDark = useSelector((state: RootState) => state.theme.isDark)
     const router = useRouter()

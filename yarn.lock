@@ -308,19 +308,6 @@
     "@types/draft-js" "*"
     "@types/react" "*"
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-"@types/react-syntax-highlighter@^15.5.6":
-  version "15.5.6"
-  resolved "https://registry.npmjs.org/@types/react-syntax-highlighter/-/react-syntax-highlighter-15.5.6.tgz"
-  integrity sha512-i7wFuLbIAFlabTeD2I1cLjEOrG/xdMa/rpx2zwzAoGHuXJDhSqp9BSfDlMHSh9JSuNfxHk9eEmMX6D55GiyjGg==
-  dependencies:
-    "@types/react" "*"
-
-=======
->>>>>>> parent of 763e69c (c)
-=======
->>>>>>> parent of 763e69c (c)
 "@types/react@*", "@types/react@^16.8 || ^17.0 || ^18.0", "@types/react@18.0.37":
   version "18.0.37"
   resolved "https://registry.npmjs.org/@types/react/-/react-18.0.37.tgz"
@@ -348,11 +335,6 @@
   version "0.0.3"
   resolved "https://registry.npmjs.org/@types/use-sync-external-store/-/use-sync-external-store-0.0.3.tgz"
   integrity sha512-EwmlvuaxPNej9+T4v5AuBPJa2x2UOJVdjCtDHgcDqitUeOtjnJKJ+apYjVcAoBEMjKW1VVFGZLUb5+qqa09XFA==
-
-ace-builds@^1.4.14:
-  version "1.22.0"
-  resolved "https://registry.npmjs.org/ace-builds/-/ace-builds-1.22.0.tgz"
-  integrity sha512-7IlgBtb/A1qljFLB9Xz+Cuv3vILYHLpxE+9gpujoCzI1G0RpCPc1TKzoCbJ+IWIWtdtbJ0BdXKg3AsO3ZUJosw==
 
 ansi-styles@^3.2.1:
   version "3.2.1"
@@ -395,11 +377,6 @@ babel-plugin-syntax-jsx@^6.18.0:
   version "6.18.0"
   resolved "https://registry.npmjs.org/babel-plugin-syntax-jsx/-/babel-plugin-syntax-jsx-6.18.0.tgz"
   integrity sha512-qrPaCSo9c8RHNRHIotaufGbuOBN8rtdC4QrrFFc43vyWCCz7Kl7GL1PGaXtMGQZUXrkCjNEgxDfmAuAabr/rlw==
-
-brace@^0.11.1:
-  version "0.11.1"
-  resolved "https://registry.npmjs.org/brace/-/brace-0.11.1.tgz"
-  integrity sha512-Fc8Ne62jJlKHiG/ajlonC4Sd66Pq68fFwK4ihJGNZpGqboc324SQk+lRvMzpPRuJOmfrJefdG8/7JdWX4bzJ2Q==
 
 busboy@1.6.0:
   version "1.6.0"
@@ -499,17 +476,6 @@ delayed-stream@~1.0.0:
   resolved "https://registry.npmjs.org/delayed-stream/-/delayed-stream-1.0.0.tgz"
   integrity sha512-ZySD7Nf91aLB0RxL4KGrKHBXl7Eds1DAmEdcoVawXnLD7SDhpNgtuII2aAkg7a7QS41jxPSZ17p4VdGnMHk3MQ==
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-diff-match-patch@^1.0.5:
-  version "1.0.5"
-  resolved "https://registry.npmjs.org/diff-match-patch/-/diff-match-patch-1.0.5.tgz"
-  integrity sha512-IayShXAgj/QMXgB0IWmKx+rOPuGMhqm5w6jvFxmVenXKIzRqTAAsbBPT3kWQeGANj3jGgvcvv4yK6SxqYmikgw==
-
-=======
->>>>>>> parent of 763e69c (c)
-=======
->>>>>>> parent of 763e69c (c)
 "draft-js@^0.10.x || ^0.11.x", draft-js@^0.11.7, draft-js@^0.11.x:
   version "0.11.7"
   resolved "https://registry.npmjs.org/draft-js/-/draft-js-0.11.7.tgz"
@@ -615,16 +581,6 @@ linkify-it@^2.2.0:
   integrity sha512-GnAl/knGn+i1U/wjBz3akz2stz+HrHLsxMwHQGofCDfPvlf+gDKN58UtfmUquTY4/MXeE2x7k19KQmeoZi94Iw==
   dependencies:
     uc.micro "^1.0.1"
-
-lodash.get@^4.4.2:
-  version "4.4.2"
-  resolved "https://registry.npmjs.org/lodash.get/-/lodash.get-4.4.2.tgz"
-  integrity sha512-z+Uw/vLuy6gQe8cfaFWD7p0wVv8fJl3mbzXh33RS+0oW2wvUqiRXiQ69gLWSLpgB5/6sU+r6BlQR0MBILadqTQ==
-
-lodash.isequal@^4.5.0:
-  version "4.5.0"
-  resolved "https://registry.npmjs.org/lodash.isequal/-/lodash.isequal-4.5.0.tgz"
-  integrity sha512-pDo3lu8Jhfjqls6GkMgpahsF9kCyayhgykjyLMNFTKWrpVdAQtYyB4muAMWozBB4ig/dtWAmsMxLEI8wuz+DYQ==
 
 lodash@^4.17.21:
   version "4.17.21"
@@ -749,26 +705,7 @@ proxy-from-env@^1.1.0:
   resolved "https://registry.npmjs.org/proxy-from-env/-/proxy-from-env-1.1.0.tgz"
   integrity sha512-D+zkORCbA9f1tdWRK0RaCR3GPv50cMxcrz4X8k5LTSUD1Dkw47mKJEZQNunItRTkWwgtaUSo1RVFRIG9ZXiFYg==
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-react-ace@^10.1.0:
-  version "10.1.0"
-  resolved "https://registry.npmjs.org/react-ace/-/react-ace-10.1.0.tgz"
-  integrity sha512-VkvUjZNhdYTuKOKQpMIZi7uzZZVgzCjM7cLYu6F64V0mejY8a2XTyPUIMszC6A4trbeMIHbK5fYFcT/wkP/8VA==
-  dependencies:
-    ace-builds "^1.4.14"
-    diff-match-patch "^1.0.5"
-    lodash.get "^4.4.2"
-    lodash.isequal "^4.5.0"
-    prop-types "^15.7.2"
-
-"react-dom@^0.13.0 || ^0.14.0 || ^15.0.1 || ^16.0.0 || ^17.0.0 || ^18.0.0", "react-dom@^16.8 || ^17.0 || ^18.0", react-dom@^18.2.0, "react-dom@>= 16.8.0", react-dom@>=0.14.0, react-dom@>=16.8.0, "react-dom@0.13.x || 0.14.x || ^15.0.0-0 || 15.x.x || ^16.0.0-0 || ^16.x.x || ^17.x.x || ^18.x.x", react-dom@18.2.0:
-=======
 "react-dom@^16.8 || ^17.0 || ^18.0", react-dom@^18.2.0, "react-dom@>= 16.8.0", react-dom@>=0.14.0, react-dom@>=16.8.0, "react-dom@0.13.x || 0.14.x || ^15.0.0-0 || 15.x.x || ^16.0.0-0 || ^16.x.x || ^17.x.x || ^18.x.x", react-dom@18.2.0:
->>>>>>> parent of 763e69c (c)
-=======
-"react-dom@^16.8 || ^17.0 || ^18.0", react-dom@^18.2.0, "react-dom@>= 16.8.0", react-dom@>=0.14.0, react-dom@>=16.8.0, "react-dom@0.13.x || 0.14.x || ^15.0.0-0 || 15.x.x || ^16.0.0-0 || ^16.x.x || ^17.x.x || ^18.x.x", react-dom@18.2.0:
->>>>>>> parent of 763e69c (c)
   version "18.2.0"
   resolved "https://registry.npmjs.org/react-dom/-/react-dom-18.2.0.tgz"
   integrity sha512-6IMTriUmvsjHUjNtEDudZfuDQUoWXVxKHhlEGSk81n4YFS+r/Kl99wXiwlVXtPBtJenozv2P+hxDsw9eA7Xo6g==
@@ -814,26 +751,7 @@ react-redux@*, "react-redux@^7.2.1 || ^8.0.2", react-redux@^8.0.5:
     react-is "^18.0.0"
     use-sync-external-store "^1.0.0"
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-react-syntax-highlighter@^15.5.0:
-  version "15.5.0"
-  resolved "https://registry.npmjs.org/react-syntax-highlighter/-/react-syntax-highlighter-15.5.0.tgz"
-  integrity sha512-+zq2myprEnQmH5yw6Gqc8lD55QHnpKaU8TOcFeC/Lg/MQSs8UknEA0JC4nTZGFAXC2J2Hyj/ijJ7NlabyPi2gg==
-  dependencies:
-    "@babel/runtime" "^7.3.1"
-    highlight.js "^10.4.1"
-    lowlight "^1.17.0"
-    prismjs "^1.27.0"
-    refractor "^3.6.0"
-
-react@*, "react@^0.13.0 || ^0.14.0 || ^15.0.1 || ^16.0.0 || ^17.0.0 || ^18.0.0", "react@^16.8 || ^17.0 || ^18.0", "react@^16.8.0 || ^17.0.0 || ^18.0.0", "react@^16.9.0 || ^17.0.0 || ^18", react@^18.2.0, "react@>= 0.14.0", "react@>= 16.8.0", "react@>= 16.8.0 || 17.x.x || ^18.0.0-0", react@>=0.14.0, react@>=16.8.0, "react@0.13.x || 0.14.x || ^15.0.0-0 || 15.x.x || ^16.0.0-0 || ^16.x.x || ^17.x.x || ^18.x.x", react@18.2.0:
-=======
 react@*, "react@^16.8 || ^17.0 || ^18.0", "react@^16.8.0 || ^17.0.0 || ^18.0.0", "react@^16.9.0 || ^17.0.0 || ^18", react@^18.2.0, "react@>= 16.8.0", "react@>= 16.8.0 || 17.x.x || ^18.0.0-0", react@>=0.14.0, react@>=16.8.0, "react@0.13.x || 0.14.x || ^15.0.0-0 || 15.x.x || ^16.0.0-0 || ^16.x.x || ^17.x.x || ^18.x.x", react@18.2.0:
->>>>>>> parent of 763e69c (c)
-=======
-react@*, "react@^16.8 || ^17.0 || ^18.0", "react@^16.8.0 || ^17.0.0 || ^18.0.0", "react@^16.9.0 || ^17.0.0 || ^18", react@^18.2.0, "react@>= 16.8.0", "react@>= 16.8.0 || 17.x.x || ^18.0.0-0", react@>=0.14.0, react@>=16.8.0, "react@0.13.x || 0.14.x || ^15.0.0-0 || 15.x.x || ^16.0.0-0 || ^16.x.x || ^17.x.x || ^18.x.x", react@18.2.0:
->>>>>>> parent of 763e69c (c)
   version "18.2.0"
   resolved "https://registry.npmjs.org/react/-/react-18.2.0.tgz"
   integrity sha512-/3IjMdb2L9QbBdWiW5e3P2/npwMBaU9mHCSCUzNln0ZCYbcfTsGbTJrU/kGemdH2IWmB2ioZ+zkxtmq6g09fGQ==

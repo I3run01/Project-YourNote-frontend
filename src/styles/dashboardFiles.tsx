@@ -15,22 +15,15 @@ export const DashboardFilesFilesDiv = styled.div<props>`
     overflow-y: auto;
     
     text-align: center;
-    
-    * {
-        color: ${ props => props.isDark ? fontColorDark : fontColorLight};
-        margin-bottom: 0;
-        text-align: justify;
-        font-size: 18px;
-        font-family: 'Merriweather', serif;
-        font-weight: 400;
-        line-height: 1.8em;
-    }
+
 
     h1 {
         text-align: center;
         font-size: 24px;
         font-weight: 600;
         margin-bottom: 20px;
+
+        color: ${ props => props.isDark ? fontColorDark : fontColorLight};
     }
 
 `

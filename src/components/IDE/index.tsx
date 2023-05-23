@@ -23,12 +23,11 @@ const CodeInputComponent: React.FC = () => {
   return (
     <IdeDiv>
       <Editor
-        height="40vh"
+        height="90vh"
         width='55vw'
         defaultLanguage="python"
         defaultValue="// some comment"
         onMount={handleEditorDidMount}
-        className='IDE'
         options={{ 
           padding: { top: 20 }, 
           lineNumbersMinChars: 4,
@@ -36,7 +35,7 @@ const CodeInputComponent: React.FC = () => {
           scrollbar: { vertical: 'hidden' }
         }}
       />
-    
+
     </IdeDiv>
   );
 };

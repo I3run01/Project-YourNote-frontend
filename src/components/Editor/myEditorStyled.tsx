@@ -22,6 +22,10 @@ export const MyEditorContainer = styled.div`
         line-height: 1.8em;
     }
 
+    h1 {
+        color: ${ props => props.theme === 'dark' ? fontColorDark : fontColorLight};
+    }
+
     .public-DraftEditor-content {       
         min-height: 200px;
 

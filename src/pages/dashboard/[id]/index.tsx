@@ -10,7 +10,7 @@ import { DashboardFilesFilesDiv } from '../../../styles/dashboardFiles'
 import { filesType } from '../../../types/files'
 import { response } from './responseOBJ'
 import { ImageInterface } from '../../../components/imageInterface'
-import { IDE } from '../../../components/IDE'
+import IDE from '../../../components/IDE'
 import Layout from '../../../Layout/layout'
 import dynamic from "next/dynamic"
 

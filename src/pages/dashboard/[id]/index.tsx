@@ -11,7 +11,10 @@ import { filesType } from '../../../types/files'
 import { response } from './responseOBJ'
 import { ImageInterface } from '../../../components/imageInterface'
 <<<<<<< HEAD
+<<<<<<< HEAD
 import IDE from '../../../components/IDE'
+=======
+>>>>>>> parent of 763e69c (c)
 =======
 >>>>>>> parent of 763e69c (c)
 import Layout from '../../../Layout/layout'

@@ -309,6 +309,7 @@
     "@types/react" "*"
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 "@types/react-syntax-highlighter@^15.5.6":
   version "15.5.6"
   resolved "https://registry.npmjs.org/@types/react-syntax-highlighter/-/react-syntax-highlighter-15.5.6.tgz"
@@ -316,6 +317,8 @@
   dependencies:
     "@types/react" "*"
 
+=======
+>>>>>>> parent of 763e69c (c)
 =======
 >>>>>>> parent of 763e69c (c)
 "@types/react@*", "@types/react@^16.8 || ^17.0 || ^18.0", "@types/react@18.0.37":
@@ -497,11 +500,14 @@ delayed-stream@~1.0.0:
   integrity sha512-ZySD7Nf91aLB0RxL4KGrKHBXl7Eds1DAmEdcoVawXnLD7SDhpNgtuII2aAkg7a7QS41jxPSZ17p4VdGnMHk3MQ==
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 diff-match-patch@^1.0.5:
   version "1.0.5"
   resolved "https://registry.npmjs.org/diff-match-patch/-/diff-match-patch-1.0.5.tgz"
   integrity sha512-IayShXAgj/QMXgB0IWmKx+rOPuGMhqm5w6jvFxmVenXKIzRqTAAsbBPT3kWQeGANj3jGgvcvv4yK6SxqYmikgw==
 
+=======
+>>>>>>> parent of 763e69c (c)
 =======
 >>>>>>> parent of 763e69c (c)
 "draft-js@^0.10.x || ^0.11.x", draft-js@^0.11.7, draft-js@^0.11.x:
@@ -744,6 +750,7 @@ proxy-from-env@^1.1.0:
   integrity sha512-D+zkORCbA9f1tdWRK0RaCR3GPv50cMxcrz4X8k5LTSUD1Dkw47mKJEZQNunItRTkWwgtaUSo1RVFRIG9ZXiFYg==
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 react-ace@^10.1.0:
   version "10.1.0"
   resolved "https://registry.npmjs.org/react-ace/-/react-ace-10.1.0.tgz"
@@ -756,6 +763,9 @@ react-ace@^10.1.0:
     prop-types "^15.7.2"
 
 "react-dom@^0.13.0 || ^0.14.0 || ^15.0.1 || ^16.0.0 || ^17.0.0 || ^18.0.0", "react-dom@^16.8 || ^17.0 || ^18.0", react-dom@^18.2.0, "react-dom@>= 16.8.0", react-dom@>=0.14.0, react-dom@>=16.8.0, "react-dom@0.13.x || 0.14.x || ^15.0.0-0 || 15.x.x || ^16.0.0-0 || ^16.x.x || ^17.x.x || ^18.x.x", react-dom@18.2.0:
+=======
+"react-dom@^16.8 || ^17.0 || ^18.0", react-dom@^18.2.0, "react-dom@>= 16.8.0", react-dom@>=0.14.0, react-dom@>=16.8.0, "react-dom@0.13.x || 0.14.x || ^15.0.0-0 || 15.x.x || ^16.0.0-0 || ^16.x.x || ^17.x.x || ^18.x.x", react-dom@18.2.0:
+>>>>>>> parent of 763e69c (c)
 =======
 "react-dom@^16.8 || ^17.0 || ^18.0", react-dom@^18.2.0, "react-dom@>= 16.8.0", react-dom@>=0.14.0, react-dom@>=16.8.0, "react-dom@0.13.x || 0.14.x || ^15.0.0-0 || 15.x.x || ^16.0.0-0 || ^16.x.x || ^17.x.x || ^18.x.x", react-dom@18.2.0:
 >>>>>>> parent of 763e69c (c)
@@ -805,6 +815,7 @@ react-redux@*, "react-redux@^7.2.1 || ^8.0.2", react-redux@^8.0.5:
     use-sync-external-store "^1.0.0"
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 react-syntax-highlighter@^15.5.0:
   version "15.5.0"
   resolved "https://registry.npmjs.org/react-syntax-highlighter/-/react-syntax-highlighter-15.5.0.tgz"
@@ -817,6 +828,9 @@ react-syntax-highlighter@^15.5.0:
     refractor "^3.6.0"
 
 react@*, "react@^0.13.0 || ^0.14.0 || ^15.0.1 || ^16.0.0 || ^17.0.0 || ^18.0.0", "react@^16.8 || ^17.0 || ^18.0", "react@^16.8.0 || ^17.0.0 || ^18.0.0", "react@^16.9.0 || ^17.0.0 || ^18", react@^18.2.0, "react@>= 0.14.0", "react@>= 16.8.0", "react@>= 16.8.0 || 17.x.x || ^18.0.0-0", react@>=0.14.0, react@>=16.8.0, "react@0.13.x || 0.14.x || ^15.0.0-0 || 15.x.x || ^16.0.0-0 || ^16.x.x || ^17.x.x || ^18.x.x", react@18.2.0:
+=======
+react@*, "react@^16.8 || ^17.0 || ^18.0", "react@^16.8.0 || ^17.0.0 || ^18.0.0", "react@^16.9.0 || ^17.0.0 || ^18", react@^18.2.0, "react@>= 16.8.0", "react@>= 16.8.0 || 17.x.x || ^18.0.0-0", react@>=0.14.0, react@>=16.8.0, "react@0.13.x || 0.14.x || ^15.0.0-0 || 15.x.x || ^16.0.0-0 || ^16.x.x || ^17.x.x || ^18.x.x", react@18.2.0:
+>>>>>>> parent of 763e69c (c)
 =======
 react@*, "react@^16.8 || ^17.0 || ^18.0", "react@^16.8.0 || ^17.0.0 || ^18.0.0", "react@^16.9.0 || ^17.0.0 || ^18", react@^18.2.0, "react@>= 16.8.0", "react@>= 16.8.0 || 17.x.x || ^18.0.0-0", react@>=0.14.0, react@>=16.8.0, "react@0.13.x || 0.14.x || ^15.0.0-0 || 15.x.x || ^16.0.0-0 || ^16.x.x || ^17.x.x || ^18.x.x", react@18.2.0:
 >>>>>>> parent of 763e69c (c)

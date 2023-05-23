@@ -32,7 +32,10 @@
     "nodemailer": "^6.9.1",
     "react": "18.2.0",
 <<<<<<< HEAD
+<<<<<<< HEAD
     "react-ace": "^10.1.0",
+=======
+>>>>>>> parent of 763e69c (c)
 =======
 >>>>>>> parent of 763e69c (c)
     "react-dom": "18.2.0",

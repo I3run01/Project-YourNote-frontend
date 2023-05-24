@@ -47,6 +47,12 @@ const CodeInputComponent: React.FC = () => {
           scrollBeyondLastLine: false,
           padding: { top: 10 },
           fontSize: 16,
+          minimap: { enabled: false },
+          scrollbar: {
+            vertical: 'hidden',
+            verticalScrollbarSize: 0,
+            handleMouseWheel:false,
+          },
         }}
       />
     </IdeDiv>

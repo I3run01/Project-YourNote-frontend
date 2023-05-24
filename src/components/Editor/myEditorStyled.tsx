@@ -3,7 +3,11 @@ import styled from "styled-components";
 const fontColorDark = '#ececec'
 const fontColorLight = 'black'
 
-export const MyEditorContainer = styled.div`
+type props = {
+    isDark: boolean
+}
+
+export const MyEditorContainer = styled.div<props>`
     @import url('https://fonts.googleapis.com/css2?family=Merriweather:wght@300&display=swap');
 
     display: flex;
@@ -12,7 +16,7 @@ export const MyEditorContainer = styled.div`
     align-items: center;
 
     * {
-        color: ${ props => props.theme === 'dark' ? fontColorDark : fontColorLight};
+        color: ${ props => props.isDark ? fontColorDark : fontColorLight};
         font-size: 18px;
         margin-bottom: 0;
         text-align: justify;
@@ -23,7 +27,7 @@ export const MyEditorContainer = styled.div`
     }
 
     h1 {
-        color: ${ props => props.theme === 'dark' ? fontColorDark : fontColorLight};
+        color: ${ props => props.isDark ? fontColorDark : fontColorLight};
     }
 
     .public-DraftEditor-content {       
@@ -40,12 +44,8 @@ export const MyEditorContainer = styled.div`
         text-align: justify;
         
         :hover {
-            border: 1px solid black;
+            border: 1px solid ${ props => props.isDark ? fontColorDark : fontColorLight};
 
         }
-
-        
-
-
     }
 `

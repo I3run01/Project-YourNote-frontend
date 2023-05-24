@@ -12,7 +12,7 @@ type props = {
 
 const MyEditor = ({initialTXT, index}: props) => {
   const [editorState, setEditorState] = useState<EditorState | null>(null);
-  const file = useSelector((state: RootState) => state.file.data)
+  const isDark = useSelector((state: RootState) => state.theme.isDark)
   const dispatch = useDispatch()
 
   useEffect(() => {
@@ -37,7 +37,7 @@ const MyEditor = ({initialTXT, index}: props) => {
   }
 
   return (
-    <MyEditorContainer>
+    <MyEditorContainer isDark={isDark}>
       <Editor editorState={editorState} onChange={handleChange} />
     </MyEditorContainer>
   );

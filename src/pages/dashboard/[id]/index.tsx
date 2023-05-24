@@ -102,7 +102,7 @@ const dashboard = () => {
                                 else if (item.type === 'IDE') {
                                     return (
                                         <div className='IDE' key={index}>
-                                            <IDE/>
+                                            <IDE defaultValue={item.code} index={index}/>
                                         </div>
                                     )
                                 }

@@ -4,10 +4,16 @@ import { IdeDiv } from './styled'
 
 import Editor from '@monaco-editor/react';
 import { editor as EditorType } from 'monaco-editor';
+
 import { useSelector } from 'react-redux';
 import { RootState } from '@/redux/store';
 
-const CodeInputComponent: React.FC = () => {
+type props = {
+  defaultValue: string
+  index: number
+}
+
+const CodeInputComponent = ({defaultValue, index}: props) => {
   const editorRef = useRef<EditorType.IStandaloneCodeEditor | null>(null);
   const theme = useSelector((state: RootState) => state.theme)
 
@@ -40,7 +46,7 @@ const CodeInputComponent: React.FC = () => {
         height={`${lines*23 + 25}px`}
         width='55vw'
         defaultLanguage="python"
-        defaultValue="// some comment"
+        defaultValue={defaultValue}
         onMount={handleEditorDidMount}
         options={{
           theme: theme.isDark ? 'vs-dark' : 'vs',

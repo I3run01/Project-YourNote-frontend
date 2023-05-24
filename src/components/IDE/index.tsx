@@ -18,6 +18,7 @@ const CodeInputComponent = ({defaultValue, index}: props) => {
   const theme = useSelector((state: RootState) => state.theme)
 
   const [lines, setLines] = useState<number>(0)
+  const [editorContent, setEditorContent] = useState<string>(defaultValue);
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -37,6 +38,14 @@ const CodeInputComponent = ({defaultValue, index}: props) => {
 
   const handleEditorDidMount = (editor: EditorType.IStandaloneCodeEditor,) => {
     editorRef.current = editor;
+
+    editor.onDidChangeModelContent(() => {
+      const model = editor.getModel();
+      
+      if (model) {
+        setEditorContent(model.getValue());
+      }
+    });
   };
 
   return (
@@ -62,6 +71,7 @@ const CodeInputComponent = ({defaultValue, index}: props) => {
         }}
       />
     </IdeDiv>
+    
   );
 };
 

@@ -1,5 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit'
-import { filesType, ContentType, ParagraphContent } from '../../types/files'
+import { filesType, ParagraphContent,IDEContent } from '../../types/files'
 import type { PayloadAction } from '@reduxjs/toolkit'
 
 export interface FileState {
@@ -30,9 +30,22 @@ export const fileSlice = createSlice({
         }
       }
     },
+
+    updateContentCode: (state, action: PayloadAction<{ index: number; newCode: string }>) => {
+      const { index, newCode } = action.payload;
+      const file = state.data;
+
+      if (file) {
+        const contentItem = file.content[index];
+
+        if (contentItem && contentItem.type === 'IDE') {
+          (contentItem as IDEContent).code = newCode;
+        }
+      }
+    },
   },
 });
 
-export const { setFile, updateContentText } = fileSlice.actions
+export const { setFile, updateContentText, updateContentCode } = fileSlice.actions
 
 export default fileSlice.reducer

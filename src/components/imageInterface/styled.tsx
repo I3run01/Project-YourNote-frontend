@@ -6,20 +6,42 @@ type props = {
 
 export const ImageDiv = styled.div<props>`
 
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    margin: auto;
 
-    width: 100%;
-
+    width: ${props => props.isZomm ? '100%' : '55vw'};
+    transition: all 0.5s ease-in-out;
 
     padding-bottom: 50px;
+   
+    .changeImage {
+        width: 100%;
 
-    img {
-        width: ${props => props.isZomm ? '100%' : '55vw'};
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
 
-        transition: all 0.5s ease-in-out;
+        #icon {
+            width: 40px;
+            height: 30px;
 
+            img {
+                height: 100%;
+            }
+        }
+
+        #text {
+            p {
+                color: red;
+            }
+        }
+
+
+
+        
+    }
+
+    .mainImage {
+        width: 100%;
         cursor: pointer;
     }
 

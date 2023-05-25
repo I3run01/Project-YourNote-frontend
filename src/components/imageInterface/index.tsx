@@ -1,5 +1,7 @@
 import { useState } from 'react'
 import { ImageDiv } from './styled'
+import changeIMAGE from '../../../public/images/icons/change.svg'
+import Image from 'next/image'
 
 type props = {
     src: string
@@ -11,7 +13,16 @@ export const ImageInterface = ({src, alt}: props) => {
 
     return (
         <ImageDiv isZomm={isZoom}>
-            <img src={src} alt={alt} onClick={() => {setIdZoom(!isZoom)}}/>
+            <div className='changeImage'>
+                <div id='icon'>
+                    <Image src={changeIMAGE} alt=''/>
+                </div>
+                <div id='text'>
+                    <p>Change image</p>
+                </div>
+
+            </div>
+            <img src={src} alt={alt} className='mainImage' onClick={() => {setIdZoom(!isZoom)}}/>
         </ImageDiv>
     ) 
 }

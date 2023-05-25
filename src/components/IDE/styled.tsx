@@ -6,7 +6,9 @@ export const IdeDiv = styled.div`
     justify-content: center;
     align-items: center;
 
-    margin-bottom: 50px;
+    margin-top: 30px;
+
+    margin-bottom: 30px;
 
 
 

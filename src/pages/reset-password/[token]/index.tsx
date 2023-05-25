@@ -5,7 +5,7 @@ import { Loading } from '../../../components/loading'
 import { useRouter } from 'next/router'
 import Link from 'next/link'
 import Image from 'next/image'
-import backButton from '../../../../public/images/backButton.svg'
+import backButton from '../../../../public/images/icons/backButton.svg'
 
 const ResetPassword = () => {
     const [password, setPassword] = useState<string>('')

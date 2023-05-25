@@ -4,7 +4,7 @@ import { Auth } from '../../Auth/request'
 import { Loading } from '../../components/loading'
 import Link from 'next/link'
 import Image from 'next/image'
-import backButton from '../../../public/images/backButton.svg'
+import backButton from '../../../public/images/icons/backButton.svg'
 
 const SignIn = () => {
     const [email, setEmail] = useState<string>('')

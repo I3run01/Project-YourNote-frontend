@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 type props = {
-    theme: 'dark' | 'light'
+    isDark: boolean
 }
 
 const menuHeight = '#60px'
@@ -22,7 +22,7 @@ export const InitialMenuStyled = styled.div<props>`
     height: ${menuHeight};
 
     * {
-        color: ${ props => props.theme === 'dark' ? textDarkFont : textLightFont};
+        color: ${ props => props.isDark ? textDarkFont : textLightFont};
         font-family: 'Dosis';
         font-size: 18px;
         text-decoration: none;
@@ -38,7 +38,7 @@ export const InitialMenuStyled = styled.div<props>`
         flex-direction: row;
         justify-content: flex-end;
 
-        background-color: ${props => props.theme === 'dark' ?  bgDarktheme02: bgLightYheme02};
+        background-color: ${props => props.isDark ?  bgDarktheme02: bgLightYheme02};
         border-bottom: 1px solid black;
 
         height: 60px;
@@ -50,7 +50,7 @@ export const InitialMenuStyled = styled.div<props>`
                 cursor: pointer;
 
                 a {
-                    color: ${props => props.theme === 'dark' ?  darkGreenTheme: lightGreenTheme};
+                    color: ${props => props.isDark ?  darkGreenTheme: lightGreenTheme};
                 }
             }
         }

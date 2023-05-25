@@ -3,7 +3,7 @@ import { EmailConfirmationToken } from '../../../styles/emailConfirmationToken'
 import { Auth } from '../../../Auth/request'
 import { useRouter } from 'next/router'
 import { useDispatch } from 'react-redux'
-import { changeAuth } from '@/slice/authSLice';
+import { changeUser } from '../../../redux/slice/userSlice';
 import { Loading } from '../../../components/loading'
 
 const EmailConfirmation = () => {
@@ -23,16 +23,14 @@ const EmailConfirmation = () => {
             return
         }
         
-        let response = await new Auth().confirmationEmail(String(token))
+        let response = JSON.parse(await new Auth().confirmationEmail(String(token)))
 
-        let json = JSON.parse(response)
-
-        if(json.status == 200) {
-            dispatch(changeAuth(true))
+        if(response.status == 200) {
+            dispatch(changeUser(response.data))
             return router.push('/dashboard')
         }
 
-        alert(json.data.message)
+        alert(response.data.message)
 
         setIsLoanding(false)
 

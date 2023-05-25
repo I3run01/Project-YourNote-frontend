@@ -6,7 +6,7 @@ import { useRouter } from 'next/router';
 import { useDispatch } from 'react-redux'
 import { changeUser } from '../../redux/slice/userSlice';
 import { Loading } from '../../components/loading'
-import GoogleLogo from '../../../public/images/googleLogo.svg'
+import GoogleLogo from '../../../public/images/icons/googleLogo.svg'
 import Image from 'next/image'
 
 

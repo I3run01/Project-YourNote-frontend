@@ -3,8 +3,8 @@ import { useSelector,useDispatch } from 'react-redux'
 import { RootState } from '@/redux/store'
 import { useState } from 'react'
 import { changeTheme } from '../../redux/slice/themeSlice'
-import menuIcon from '../../../public/images/openAndClosemenuIcon.svg'
-import settingsIcon from '../../../public/images/Settings.svg'
+import menuIcon from '../../../public/images/icons/openAndClosemenuIcon.svg'
+import settingsIcon from '../../../public/images/icons/Settings.svg'
 import Image from 'next/image'
 import { useRouter } from 'next/router';
 

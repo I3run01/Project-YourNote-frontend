@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useRef, useState } from 'react';
 
 import { IdeDiv } from './styled'
 
@@ -38,6 +38,8 @@ const CodeInputComponent = ({defaultValue, index}: props) => {
         dispatch(updateContentCode({index, newCode: codeValue}))
       }
     });
+
+    
   };
 
   return (

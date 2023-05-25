@@ -2,7 +2,7 @@ import { RightMenuDiv } from './styled'
 import { useSelector } from 'react-redux'
 import { RootState } from '@/redux/store'
 import Image from 'next/image'
-import newElement from '../../../public/images/newElement.svg'
+import newElement from '../../../public/images/icons/newElement.svg'
 import { PopUp } from './styled'
 import { useState } from 'react'
 

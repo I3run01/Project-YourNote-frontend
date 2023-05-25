@@ -6,7 +6,7 @@ import { useSelector, useDispatch } from 'react-redux'
 import { changeUser } from '../redux/slice/userSlice'
 import { useEffect } from 'react'
 import Image from 'next/image'
-import InitialImage from '../../public/images/InitialIMG.png'
+import InitialImage from '../../public/images/bgImages/InitialIMG.png'
 
 export default function Home() {
   const theme = useSelector((state: RootState) => state.theme.isDark)

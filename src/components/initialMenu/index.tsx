@@ -2,15 +2,14 @@ import { useSelector } from 'react-redux'
 import { InitialMenuStyled } from './styled'
 import { RootState } from '@/redux/store'
 import Link from 'next/link'
-import { useState } from 'react'
 
 export const InitionalMenu = () => {
-    const theme = useSelector((state: RootState) => state.theme.value)
+    const isDark = useSelector((state: RootState) => state.theme.isDark)
     const auth = useSelector((state: RootState) => state.user.user)
 
     return (
         <InitialMenuStyled
-        theme={theme}>
+        isDark={isDark}>
             <div id='container'>
                 {!auth &&
                     <>

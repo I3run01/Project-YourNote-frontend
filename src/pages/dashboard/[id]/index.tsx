@@ -75,15 +75,17 @@ const dashboard = () => {
                 children={
                     <>
                         <DashboardFilesFilesDiv isDark={isDark}>
+
                             <h1>{fileState?.title}</h1> 
+
                             {fileState?.content.map((item, index) => {
 
                                 if (item.type === 'paragraph') {
                                     return (
                                         <div key={index}>
                                             <MyEditor
-                                            initialTXT= {item.text}
-                                            index={index}
+                                                initialTXT= {item.text}
+                                                index={index}
                                             />
                                         </div>
                                     )

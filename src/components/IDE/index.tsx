@@ -5,8 +5,9 @@ import { IdeDiv } from './styled'
 import Editor from '@monaco-editor/react';
 import { editor as EditorType } from 'monaco-editor';
 
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import { RootState } from '@/redux/store';
+import { updateContentCode } from '../../redux/slice/fileSlice'
 
 type props = {
   defaultValue: string
@@ -15,26 +16,12 @@ type props = {
 
 const CodeInputComponent = ({defaultValue, index}: props) => {
   const editorRef = useRef<EditorType.IStandaloneCodeEditor | null>(null);
+  const dispatch = useDispatch()
+
   const theme = useSelector((state: RootState) => state.theme)
+  const file = useSelector((state: RootState) => state.file.data)
 
-  const [lines, setLines] = useState<number>(0)
-  const [editorContent, setEditorContent] = useState<string>(defaultValue);
-
-  useEffect(() => {
-    const interval = setInterval(() => {
-      if (!editorRef.current) return;
-  
-      const model = editorRef.current.getModel();
-  
-      if (!model) return;
-  
-      const lineCount = model.getLineCount();
-      setLines(lineCount);
-  
-    }, 50);
-
-    return () => clearInterval(interval);
-  }, [])
+  const [lines, setLines] = useState<number>(1)
 
   const handleEditorDidMount = (editor: EditorType.IStandaloneCodeEditor,) => {
     editorRef.current = editor;
@@ -43,7 +30,12 @@ const CodeInputComponent = ({defaultValue, index}: props) => {
       const model = editor.getModel();
       
       if (model) {
-        setEditorContent(model.getValue());
+        let codeValue = model.getValue()
+        let numbersLine = model.getLineCount()
+
+        setLines(numbersLine)
+
+        dispatch(updateContentCode({index, newCode: codeValue}))
       }
     });
   };

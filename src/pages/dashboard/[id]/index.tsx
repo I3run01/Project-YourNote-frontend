@@ -16,11 +16,12 @@ import IDE from '../../../components/IDE'
 import Layout from '../../../Layout/layout'
 
 import { ImageInterface } from '../../../components/imageInterface'
+import { filesType } from '@/types/files'
 
 
 const dashboard = () => {
     const [isLoading, setIsLoanding] = useState<boolean>(false)
-    const fileState = useSelector((state: RootState) => state.file.data)
+    const [fileState, setFileState] = useState<filesType>()
     const user = useSelector((state: RootState) => state.user.user)
     const isDark = useSelector((state: RootState) => state.theme.isDark)
     const router = useRouter()
@@ -64,6 +65,7 @@ const dashboard = () => {
     const getFileData = async () => {
         if (id) console.log(id)
 
+        setFileState(response)
         dispatch(setFile(response))
     }
 
@@ -75,16 +77,16 @@ const dashboard = () => {
                 children={
                     <>
                         <DashboardFilesFilesDiv isDark={isDark}>
-
+                            
                             <h1>{fileState?.title}</h1> 
-
                             {fileState?.content.map((item, index) => {
 
                                 if (item.type === 'paragraph') {
                                     return (
                                         <div key={index}>
                                             <MyEditor
-                                                index={index}
+                                            initialTXT={item.text}
+                                            index={index}
                                             />
                                         </div>
                                     )

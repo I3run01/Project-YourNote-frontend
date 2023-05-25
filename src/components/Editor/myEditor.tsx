@@ -6,16 +6,17 @@ import { updateContentText } from '../../redux/slice/fileSlice'
 import { useSelector, useDispatch } from 'react-redux';
 
 type props = {
+  initialTXT: string
   index: number
 }
 
-const MyEditor = ({index}: props) => {
+const MyEditor = ({initialTXT, index}: props) => {
   const [editorState, setEditorState] = useState<EditorState | null>(null);
   const isDark = useSelector((state: RootState) => state.theme.isDark)
   const dispatch = useDispatch()
 
   useEffect(() => {
-    const initialContentState = ContentState.createFromText('Initial text');
+    const initialContentState = ContentState.createFromText(initialTXT);
     const initialEditorState = EditorState.createWithContent(initialContentState);
     setEditorState(initialEditorState);
   }, []);

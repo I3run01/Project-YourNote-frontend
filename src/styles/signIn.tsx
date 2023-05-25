@@ -15,7 +15,7 @@ export const SignInStyled = styled.div`
 
     height: 100vh;
 
-    background-image: url('/images/bgLogin.png');
+    background-image: url('/images/bgImages/bgLogin.png');
     background-position: center center;
     background-size: cover;
 

@@ -16,7 +16,7 @@ import dynamic from "next/dynamic"
 
 const dashboard = () => {
     const [isLoading, setIsLoanding] = useState<boolean>(false)
-    const [fileState, setFileState] = useState<filesType>()
+    const fileState = useSelector((state: RootState) => state.file.data)
     const user = useSelector((state: RootState) => state.user.user)
     const isDark = useSelector((state: RootState) => state.theme.isDark)
     const router = useRouter()
@@ -60,7 +60,6 @@ const dashboard = () => {
     const getFileData = async () => {
         if (id) console.log(id)
 
-        setFileState(response)
         dispatch(setFile(response))
     }
 

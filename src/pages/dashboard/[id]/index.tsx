@@ -25,11 +25,10 @@ const dashboard = () => {
 
     useEffect(() => {
         middleware()
-        getFileData()
     }, [])
 
     useEffect(() => {
-        sendParam()
+        getFileData()
     }, [id])
 
     const MyEditor = dynamic(() =>import('../../../components/Editor/myEditor'), {
@@ -59,12 +58,10 @@ const dashboard = () => {
     }
 
     const getFileData = async () => {
+        if (id) console.log(id)
+
         setFileState(response)
         dispatch(setFile(response))
-    }
-
-    const sendParam = () => {
-        if (id) console.log(id)
     }
 
     return (

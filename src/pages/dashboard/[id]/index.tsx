@@ -1,5 +1,7 @@
-import { useEffect, useState } from 'react'
+import { useEffect, useReducer, useState } from 'react'
 import dynamic from "next/dynamic"
+
+import { fileReducer,  } from './Reducer'
 
 import { useSelector, useDispatch } from 'react-redux'
 import { RootState } from '@/redux/store'
@@ -21,7 +23,7 @@ import { filesType } from '@/types/files'
 
 const dashboard = () => {
     const [isLoading, setIsLoanding] = useState<boolean>(false)
-    const [fileState, setFileState] = useState<filesType>()
+    const [fileState, fileDispatch] = useReducer(fileReducer, initialFileState);
     const user = useSelector((state: RootState) => state.user.user)
     const isDark = useSelector((state: RootState) => state.theme.isDark)
     const router = useRouter()

@@ -1,18 +1,22 @@
 import { useEffect, useState } from 'react'
+import dynamic from "next/dynamic"
+
 import { useSelector, useDispatch } from 'react-redux'
-import { useRouter } from 'next/router';
 import { RootState } from '@/redux/store'
-import { Auth } from '../../../Auth/request'
-import { Loading } from '../../../components/loading'
 import { changeUser } from '../../../redux/slice/userSlice'
 import { setFile } from '../../../redux/slice/fileSlice'
+
+import { useRouter } from 'next/router';
+
+import { Auth } from '../../../Auth/request'
+import { Loading } from '../../../components/loading'
 import { DashboardFilesFilesDiv } from '../../../styles/dashboardFiles'
-import { filesType } from '../../../types/files'
 import { response } from './responseOBJ'
-import { ImageInterface } from '../../../components/imageInterface'
 import IDE from '../../../components/IDE'
 import Layout from '../../../Layout/layout'
-import dynamic from "next/dynamic"
+
+import { ImageInterface } from '../../../components/imageInterface'
+
 
 const dashboard = () => {
     const [isLoading, setIsLoanding] = useState<boolean>(false)

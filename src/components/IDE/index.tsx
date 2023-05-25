@@ -54,7 +54,7 @@ const CodeInputComponent = ({defaultValue, index}: props) => {
         className="customEditor"
         height={`${lines*23 + 25}px`}
         width='55vw'
-        defaultLanguage="python"
+        defaultLanguage="javascript"
         defaultValue={defaultValue}
         onMount={handleEditorDidMount}
         options={{

@@ -84,7 +84,6 @@ const dashboard = () => {
                                     return (
                                         <div key={index}>
                                             <MyEditor
-                                                initialTXT= {item.text}
                                                 index={index}
                                             />
                                         </div>

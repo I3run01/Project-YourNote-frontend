@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import React, { useState, useRef } from 'react'
 import { ImageDiv } from './styled'
 import { useSelector } from 'react-redux'
 import { RootState } from '@/redux/store'
@@ -6,41 +6,50 @@ import { RootState } from '@/redux/store'
 type Props = {
     src: string
     alt: string
+    index: number
+    onDataReceived: (index:number, data:string) => void
 }
 
-export const ImageInterface = ({src, alt}: Props) => {
+export const ImageInterface = ({src, alt, index, onDataReceived}: Props) => {
     const [isZoom, setIdZoom] = useState<boolean>(false)
     const [imageSrc, setImageSrc] = useState<string>(src)
-
+    const fileInputRef = useRef<HTMLInputElement>(null);
+    
     const isDark = useSelector((state: RootState) => state.theme.isDark)
 
     const handleChangeImage = (event: React.ChangeEvent<HTMLInputElement>) => {
-        if (event.target.files && event.target.files[0]) {
-            const fileReader = new FileReader()
+        const file = event.target.files ? event.target.files[0] : null;
+        const reader = new FileReader();
+        reader.onloadend = function () {
+            if (reader.result) {
+                let imageCode64 = reader.result.toString()
 
-            fileReader.onload = (event: ProgressEvent<FileReader>) => {
-                setImageSrc(event.target?.result as string)
+                setImageSrc(imageCode64)
+                onDataReceived(index, imageCode64)
             }
+        }
+        if (file) {
+            reader.readAsDataURL(file);
+        }
+    }
 
-            fileReader.readAsDataURL(event.target.files[0])
+    const handleFileInput = () => {
+        if (fileInputRef.current) {
+            fileInputRef.current.click();
         }
     }
 
     return (
         <ImageDiv isZoom={isZoom} isDark={isDark}>
-            <div className='changeImage'>
+            <div className='changeImage' onClick={handleFileInput}>
                 <div id='icon'>
                     <img src='/images/icons/change.svg' alt=''/>
                 </div>
                 <div id='text'>
-                    <input type="file" accept="image/*" 
-                        onChange={handleChangeImage}    
-                        style={{ display: 'none' }} 
-                        id="change-image-input" 
-                    />
-                    <label htmlFor="change-image-input">
+                    <div>
                         <p>Change image</p>
-                    </label>
+                        <input ref={fileInputRef} type='file' style={{display: 'none'}} onChange={handleChangeImage} />
+                    </div>
                 </div>
             </div>
             <img src={imageSrc} alt={alt} 

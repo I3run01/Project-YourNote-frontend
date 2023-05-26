@@ -103,6 +103,24 @@ const dashboard = () => {
         });
         
     };
+
+    const changeImage = (Index: number, imageCode64: string) => {
+        setFileState(prevState => {
+            const newState = {...prevState};
+    
+            const content = newState?.content[Index];
+            if (!content || content.type !== 'image') {
+                console.error(`Content at index ${Index} is not a image code 64`);
+                return prevState;
+            }
+    
+            content.codeBase64 = imageCode64
+
+            console.log(fileState)
+
+            return newState;
+        });
+    };
     
 
 
@@ -134,8 +152,11 @@ const dashboard = () => {
                                 else if (item.type === 'image') {
                                     return (
                                         <div className='image' key={index}>
-                                            <ImageInterface 
-                                                src={item.codeBase64} alt=""
+                                            <ImageInterface
+                                                src={item.codeBase64}
+                                                index={index}
+                                                onDataReceived={changeImage}
+                                                alt=""
                                             />
                                         </div>
                                     )

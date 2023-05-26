@@ -4,8 +4,16 @@ export type ActionType = {
     type: string;
     payload: any;
   };
+
+export const initialFileState: filesType = {
+    id: "",
+    title: "",
+    usersAccessIDs: [],
+    content: [],
+};
   
-export const fileReducer = (state: filesType | null, action: ActionType): filesType => {
+  
+export const fileReducer = (state: filesType, action: ActionType): filesType => {
     switch (action.type) {
         case "REPLACE_STATE":
             return action.payload;
@@ -15,8 +23,8 @@ export const fileReducer = (state: filesType | null, action: ActionType): filesT
 
             if (newState.content[action.payload.index]?.type === "paragraph") {
                 newState.content[action.payload.index] = {
-                type: "paragraph",
-                text: action.payload.newText,
+                    type: "paragraph",
+                    text: action.payload.newText,
                 };
             }
             

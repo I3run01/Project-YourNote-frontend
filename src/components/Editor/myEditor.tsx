@@ -8,9 +8,10 @@ import { useSelector, useDispatch } from 'react-redux';
 type props = {
   initialTXT: string
   index: number
+  onDataReceived: (index:number, data:string) => void
 }
 
-const MyEditor = ({initialTXT, index}: props) => {
+const MyEditor = ({initialTXT, index, onDataReceived}: props) => {
   const [editorState, setEditorState] = useState<EditorState | null>(null);
   const isDark = useSelector((state: RootState) => state.theme.isDark)
   const dispatch = useDispatch()
@@ -24,13 +25,13 @@ const MyEditor = ({initialTXT, index}: props) => {
   const handleChange = (state: EditorState) => {
     setEditorState(state);
 
-    if(!editorState) return
-
-    const contentState: ContentState = editorState.getCurrentContent();
+    const contentState: ContentState = state.getCurrentContent();
     const text: string = contentState.getPlainText();
 
     dispatch(updateContentText({ index: index, newText: text }));
-  };
+
+    onDataReceived(index, text)
+}
 
   if (!editorState) {
     return <div>Loading...</div>;

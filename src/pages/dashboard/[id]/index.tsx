@@ -1,7 +1,7 @@
 import { useEffect, useReducer, useState } from 'react'
 import dynamic from "next/dynamic"
 
-import { fileReducer,  } from './Reducer'
+import { fileReducer, initialFileState,  } from './Reducer'
 
 import { useSelector, useDispatch } from 'react-redux'
 import { RootState } from '@/redux/store'
@@ -18,8 +18,6 @@ import IDE from '../../../components/IDE'
 import Layout from '../../../Layout/layout'
 
 import { ImageInterface } from '../../../components/imageInterface'
-import { filesType } from '@/types/files'
-
 
 const dashboard = () => {
     const [isLoading, setIsLoanding] = useState<boolean>(false)
@@ -58,6 +56,7 @@ const dashboard = () => {
             return router.push('/signin')
         }
 
+        
         dispatch(changeUser(response.data))
 
         console.log(response.status)
@@ -67,8 +66,14 @@ const dashboard = () => {
     const getFileData = async () => {
         if (id) console.log(id)
 
-        setFileState(response)
+        fileDispatch({ type: "REPLACE_STATE", payload: response });
         dispatch(setFile(response))
+    }
+
+    const changeFileParagraph = (index:number, data: string) => {
+
+        console.log(fileState)
+        fileDispatch({type: "CHANGE_PARAGRAPH", payload: {index, data}})
     }
 
     return (
@@ -80,7 +85,8 @@ const dashboard = () => {
                     <>
                         <DashboardFilesFilesDiv isDark={isDark}>
                             
-                            <h1>{fileState?.title}</h1> 
+                            <h1>{fileState?.title}</h1>
+
                             {fileState?.content.map((item, index) => {
 
                                 if (item.type === 'paragraph') {
@@ -89,6 +95,7 @@ const dashboard = () => {
                                             <MyEditor
                                                 initialTXT={item.text}
                                                 index={index}
+                                                onDataReceived={changeFileParagraph}
                                             />
                                         </div>
                                     )

@@ -98,9 +98,9 @@ const dashboard = () => {
                     <>
                         <DashboardFilesFilesDiv isDark={isDark}>
                             
-                            <h1>{response?.title}</h1>
+                            <h1>{fileState?.title}</h1>
 
-                            {response?.content.map((item, index) => {
+                            {fileState?.content.map((item, index) => {
 
                                 if (item.type === 'paragraph') {
                                     return (

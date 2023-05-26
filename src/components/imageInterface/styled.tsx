@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 type props = {
-    isZomm: boolean
+    isZoom: boolean
     isDark: boolean
 }
 
@@ -13,7 +13,7 @@ export const ImageDiv = styled.div<props>`
 
     margin: auto;
 
-    width: ${props => props.isZomm ? '100%' : '55vw'};
+    width: ${props => props.isZoom ? '100%' : '55vw'};
     transition: all 0.5s ease-in-out;
 
     padding-bottom: 50px;
@@ -63,9 +63,6 @@ export const ImageDiv = styled.div<props>`
                 }
 
         }
-
-
-
         
     }
 

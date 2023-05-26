@@ -2,8 +2,7 @@ import { RootState } from '@/redux/store';
 import { MyEditorContainer } from './myEditorStyled';
 import { Editor, EditorState, ContentState } from 'draft-js';
 import { useState, useEffect } from 'react';
-import { updateContentText } from '../../redux/slice/fileSlice'
-import { useSelector, useDispatch } from 'react-redux';
+import { useSelector } from 'react-redux';
 
 type props = {
   initialTXT: string
@@ -14,7 +13,6 @@ type props = {
 const MyEditor = ({initialTXT, index, onDataReceived}: props) => {
   const [editorState, setEditorState] = useState<EditorState | null>(null);
   const isDark = useSelector((state: RootState) => state.theme.isDark)
-  const dispatch = useDispatch()
 
   useEffect(() => {
     const initialContentState = ContentState.createFromText(initialTXT);
@@ -27,9 +25,7 @@ const handleChange = (state: EditorState) => {
 
     const contentState: ContentState = state.getCurrentContent();
     const text: string = contentState.getPlainText();
-
-    //dispatch(updateContentText({ index: index, newText: text }));
-
+    
     onDataReceived(index, text)
   }
   

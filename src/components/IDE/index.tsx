@@ -7,19 +7,17 @@ import { editor as EditorType } from 'monaco-editor';
 
 import { useSelector, useDispatch } from 'react-redux';
 import { RootState } from '@/redux/store';
-import { updateContentCode } from '../../redux/slice/fileSlice'
 
 type props = {
   defaultValue: string
   index: number
+  onDataReceived: (index:number, data:string) => void
 }
 
-const CodeInputComponent = ({defaultValue, index}: props) => {
+const CodeInputComponent = ({defaultValue, index, onDataReceived}: props) => {
   const editorRef = useRef<EditorType.IStandaloneCodeEditor | null>(null);
-  const dispatch = useDispatch()
 
   const theme = useSelector((state: RootState) => state.theme)
-  const file = useSelector((state: RootState) => state.file.data)
 
   const [lines, setLines] = useState<number>(1)
 
@@ -35,7 +33,7 @@ const CodeInputComponent = ({defaultValue, index}: props) => {
 
         setLines(numbersLine)
 
-        dispatch(updateContentCode({index, newCode: codeValue}))
+        onDataReceived(index, codeValue)
       }
     });
 

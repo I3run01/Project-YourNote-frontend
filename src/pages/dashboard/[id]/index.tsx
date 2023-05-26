@@ -1,5 +1,4 @@
 import { useEffect, useState } from 'react'
-import dynamic from "next/dynamic"
 
 import { useSelector, useDispatch } from 'react-redux'
 import { RootState } from '@/redux/store'
@@ -79,6 +78,24 @@ const dashboard = () => {
             }
     
             content.text = newText;
+    
+            return newState;
+        });
+        
+    };
+
+    const changeFileCode = (Index: number, newCode: string) => {
+      
+        setFileState(prevState => {
+            const newState = {...prevState};
+    
+            const content = newState?.content[Index];
+            if (!content || content.type !== 'IDE') {
+                console.error(`Content at index ${Index} is not a programming code`);
+                return prevState;
+            }
+    
+            content.code = newCode
 
             console.log(fileState)
     
@@ -127,7 +144,11 @@ const dashboard = () => {
                                 else if (item.type === 'IDE') {
                                     return (
                                         <div className='IDE' key={index}>
-                                            <IDE defaultValue={item.code} index={index}/>
+                                            <IDE 
+                                                defaultValue={item.code} 
+                                                index={index}
+                                                onDataReceived={changeFileCode}
+                                            />
                                         </div>
                                     )
                                 }

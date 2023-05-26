@@ -33,7 +33,11 @@ export const ImageInterface = ({src, alt}: Props) => {
                     <img src='/images/icons/change.svg' alt=''/>
                 </div>
                 <div id='text'>
-                    <input type="file" accept="image/*" onChange={handleChangeImage} style={{ display: 'none' }} id="change-image-input" />
+                    <input type="file" accept="image/*" 
+                        onChange={handleChangeImage}    
+                        style={{ display: 'none' }} 
+                        id="change-image-input" 
+                    />
                     <label htmlFor="change-image-input">
                         <p>Change image</p>
                     </label>

@@ -58,9 +58,9 @@ export const ImageDiv = styled.div<props>`
             display: flex;
             align-items: center;
 
-                p {
-                    color: ${props => props.isDark ? fontColorDark : fontColorLight};
-                }
+            p {
+                color: ${props => props.isDark ? fontColorDark : fontColorLight};
+            }
 
         }
         

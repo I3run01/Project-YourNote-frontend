@@ -35,7 +35,7 @@ const handleChange = (state: EditorState) => {
   
 
   if (!editorState) {
-    return <div>Loading...</div>;
+    return 
   }
 
   return (

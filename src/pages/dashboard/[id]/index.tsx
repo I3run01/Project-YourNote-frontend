@@ -17,6 +17,8 @@ import Layout from '../../../Layout/layout'
 import { ImageInterface } from '../../../components/imageInterface'
 import { filesType } from '@/types/files'
 
+import MyEditor from '../../../components/Editor/myEditor'
+
 const dashboard = () => {
     const [isLoading, setIsLoanding] = useState<boolean>(false)
     const [fileState, setFileState] = useState<filesType>(
@@ -36,10 +38,6 @@ const dashboard = () => {
     useEffect(() => {
         getFileData()
     }, [id])
-
-    const MyEditor = dynamic(() =>import('../../../components/Editor/myEditor'), {
-        ssr: false
-    } )
 
     const middleware = async () => {
 
@@ -70,13 +68,7 @@ const dashboard = () => {
     }
 
     const changeFileParagraph = (paragraphIndex: number, newText: string) => {
-
-        const index = paragraphIndex
-        const text = newText
-
-        setEx({index, text})
-
-        /*
+      
         setFileState(prevState => {
             const newState = {...prevState};
     
@@ -87,10 +79,12 @@ const dashboard = () => {
             }
     
             content.text = newText;
+
+            console.log(fileState)
     
             return newState;
         });
-        */
+        
     };
     
 

@@ -21,17 +21,18 @@ const MyEditor = ({initialTXT, index, onDataReceived}: props) => {
     const initialEditorState = EditorState.createWithContent(initialContentState);
     setEditorState(initialEditorState);
   }, []);
-
-  const handleChange = (state: EditorState) => {
+  
+const handleChange = (state: EditorState) => {
     setEditorState(state);
 
     const contentState: ContentState = state.getCurrentContent();
     const text: string = contentState.getPlainText();
 
-    dispatch(updateContentText({ index: index, newText: text }));
+    //dispatch(updateContentText({ index: index, newText: text }));
 
     onDataReceived(index, text)
-}
+  }
+  
 
   if (!editorState) {
     return <div>Loading...</div>;

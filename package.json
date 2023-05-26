@@ -27,6 +27,7 @@
     "axios": "^1.4.0",
     "draft-js": "^0.11.7",
     "install": "^0.13.0",
+    "lodash.debounce": "^4.0.8",
     "next": "13.3.0",
     "next-redux-wrapper": "^8.1.0",
     "nodemailer": "^6.9.1",
@@ -39,6 +40,7 @@
     "typescript": "5.0.4"
   },
   "devDependencies": {
+    "@types/lodash.debounce": "^4.0.7",
     "@types/react-draft-wysiwyg": "^1.13.4",
     "babel-plugin-styled-components": "^2.1.1"
   }

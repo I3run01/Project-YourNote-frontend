@@ -1,12 +1,9 @@
-import { useEffect, useReducer, useState } from 'react'
+import { useEffect, useState } from 'react'
 import dynamic from "next/dynamic"
-
-import { fileReducer, initialFileState,  } from './Reducer'
 
 import { useSelector, useDispatch } from 'react-redux'
 import { RootState } from '@/redux/store'
 import { changeUser } from '../../../redux/slice/userSlice'
-import { setFile } from '../../../redux/slice/fileSlice'
 
 import { useRouter } from 'next/router';
 
@@ -18,10 +15,14 @@ import IDE from '../../../components/IDE'
 import Layout from '../../../Layout/layout'
 
 import { ImageInterface } from '../../../components/imageInterface'
+import { filesType } from '@/types/files'
 
 const dashboard = () => {
     const [isLoading, setIsLoanding] = useState<boolean>(false)
-    const [fileState, fileDispatch] = useReducer(fileReducer, initialFileState);
+    const [fileState, setFileState] = useState<filesType>(
+        {id: '', title: '', usersAccessIDs: [], content: []}
+    )
+    const [ex, setEx] = useState<any>()
     const user = useSelector((state: RootState) => state.user.user)
     const isDark = useSelector((state: RootState) => state.theme.isDark)
     const router = useRouter()
@@ -65,16 +66,34 @@ const dashboard = () => {
 
     const getFileData = async () => {
         if (id) console.log(id)
-
-        fileDispatch({ type: "REPLACE_STATE", payload: response });
-        dispatch(setFile(response))
+        setFileState(response)
     }
 
-    const changeFileParagraph = (index:number, data: string) => {
+    const changeFileParagraph = (paragraphIndex: number, newText: string) => {
 
-        console.log(fileState)
-        fileDispatch({type: "CHANGE_PARAGRAPH", payload: {index, data}})
-    }
+        const index = paragraphIndex
+        const text = newText
+
+        setEx({index, text})
+
+        /*
+        setFileState(prevState => {
+            const newState = {...prevState};
+    
+            const content = newState?.content[paragraphIndex];
+            if (!content || content.type !== 'paragraph') {
+                console.error(`Content at index ${paragraphIndex} is not a paragraph`);
+                return prevState;
+            }
+    
+            content.text = newText;
+    
+            return newState;
+        });
+        */
+    };
+    
+
 
     return (
         <>
@@ -85,9 +104,9 @@ const dashboard = () => {
                     <>
                         <DashboardFilesFilesDiv isDark={isDark}>
                             
-                            <h1>{fileState?.title}</h1>
+                            <h1>{response?.title}</h1>
 
-                            {fileState?.content.map((item, index) => {
+                            {response?.content.map((item, index) => {
 
                                 if (item.type === 'paragraph') {
                                     return (

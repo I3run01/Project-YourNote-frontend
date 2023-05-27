@@ -19,16 +19,22 @@ export const ImageInterface = ({src, alt, index, onDataReceived}: Props) => {
 
     const handleChangeImage = (event: React.ChangeEvent<HTMLInputElement>) => {
         const file = event.target.files ? event.target.files[0] : null;
-        const reader = new FileReader();
-        reader.onloadend = function () {
-            if (reader.result) {
-                let imageCode64 = reader.result.toString()
-
-                setImageSrc(imageCode64)
-                onDataReceived(index, imageCode64)
-            }
-        }
         if (file) {
+            // Check if file is an image
+            const validImageTypes = ['image/gif', 'image/jpeg', 'image/png', 'image/svg'];
+            if (!validImageTypes.includes(file.type)) {
+                // If the file is not an image, show an alert and do not continue
+                alert("Only image files are allowed");
+                return;
+            }
+            const reader = new FileReader();
+            reader.onloadend = function () {
+                if (reader.result) {
+                    let imageCode64 = reader.result.toString()
+                    setImageSrc(imageCode64)
+                    onDataReceived(index, imageCode64)
+                }
+            }
             reader.readAsDataURL(file);
         }
     }

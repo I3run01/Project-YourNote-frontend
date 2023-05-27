@@ -7,23 +7,24 @@ import { changeUser } from '../../../redux/slice/userSlice'
 import { useRouter } from 'next/router';
 
 import { Auth } from '../../../Auth/request'
-import { Loading } from '../../../components/loading'
-import { DashboardFilesFilesDiv } from '../../../styles/dashboardFiles'
 import { response } from './responseOBJ'
+
+import { Loading } from '../../../components/loading'
+import { DashboardFilesDiv } from '../../../styles/dashboardFiles'
+import { Title } from '../../../components/Title/title'
 import IDE from '../../../components/IDE'
 import Layout from '../../../Layout/layout'
+import MyEditor from '../../../components/Editor/myEditor'
 
 import { ImageInterface } from '../../../components/imageInterface'
 import { filesType } from '@/types/files'
 
-import MyEditor from '../../../components/Editor/myEditor'
 
 const dashboard = () => {
     const [isLoading, setIsLoanding] = useState<boolean>(false)
     const [fileState, setFileState] = useState<filesType>(
         {id: '', title: '', usersAccessIDs: [], content: []}
     )
-    const [ex, setEx] = useState<any>()
     const user = useSelector((state: RootState) => state.user.user)
     const isDark = useSelector((state: RootState) => state.theme.isDark)
     const router = useRouter()
@@ -64,6 +65,16 @@ const dashboard = () => {
     const getFileData = async () => {
         if (id) console.log(id)
         setFileState(response)
+    }
+
+    const changeTitle = (newTitle: string) => {
+        setFileState(prevState => {
+            const newState = {...prevState}
+
+            newState.title = newTitle
+
+            return newState
+        })
     }
 
     const changeFileParagraph = (paragraphIndex: number, newText: string) => {
@@ -116,8 +127,6 @@ const dashboard = () => {
     
             content.codeBase64 = imageCode64
 
-            console.log(fileState)
-
             return newState;
         });
     };
@@ -131,9 +140,12 @@ const dashboard = () => {
             <Layout
                 children={
                     <>
-                        <DashboardFilesFilesDiv isDark={isDark}>
+                        <DashboardFilesDiv isDark={isDark}>
                             
-                            <h1>{fileState?.title}</h1>
+                            <Title
+                                title={fileState?.title}
+                                onDataReceived={changeTitle}
+                            />
 
                             {fileState?.content.map((item, index) => {
 
@@ -175,7 +187,7 @@ const dashboard = () => {
                                 }
 
                             })}
-                        </DashboardFilesFilesDiv>
+                        </DashboardFilesDiv>
                     </>
                 }
             />

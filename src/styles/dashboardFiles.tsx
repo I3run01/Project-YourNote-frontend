@@ -7,7 +7,7 @@ type props = {
 const fontColorDark = '#ececec'
 const fontColorLight = 'black'
 
-export const DashboardFilesFilesDiv = styled.div<props>`
+export const DashboardFilesDiv = styled.div<props>`
     @import url('https://fonts.googleapis.com/css2?family=Dosis:wght@700&display=swap');
     @import url('https://fonts.googleapis.com/css2?family=Merriweather:wght@300&display=swap');
     

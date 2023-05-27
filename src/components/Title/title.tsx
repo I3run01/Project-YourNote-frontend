@@ -12,6 +12,10 @@ export const Title = ({title, onDataReceived}:props) => {
     const isDark = useSelector((state: RootState) => state.theme.isDark)
     const [newTitle, setNewTitle] = useState<string>(title)
 
+    useEffect(() => {
+        setNewTitle(title);
+      }, [title]);
+
     useEffect(()=>{onDataReceived(newTitle)},[newTitle])
  
     return (

@@ -31,28 +31,29 @@ const dashboard = () => {
 
         setIsLoanding(false)
 
-        if(response.status != 200  || response.data.status !== 'Active') {
-            return router.push('/signin')
+        if(response.status === 200  && response.data.status === 'Active') {
+            return dispatch(changeUser(response.data))
         }
 
-        dispatch(changeUser(response.data))
-
-        console.log(response.status)
+        router.push('/signin')      
     }
 
     return (
         <>
             {isLoading === true && <Loading/>}
-
-            <Layout
-                children={
-                    <>
-                        <DashboardDiv isDark={isDark}>
-                            <h1> Create or select some file</h1>    
-                        </DashboardDiv>
-                    </>
-                }
-            />
+            
+            {user &&
+                <Layout
+                    children={
+                        <>
+                            <DashboardDiv isDark={isDark}>
+                                <h1> Create or select some file</h1>    
+                            </DashboardDiv>
+                        </>
+                    }
+                />
+            }
+            
         </>      
     )
 }

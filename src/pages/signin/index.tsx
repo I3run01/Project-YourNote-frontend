@@ -29,7 +29,13 @@ const SignIn = () => {
             return router.push('/dashboard')
         }
 
-        alert(response.data.message)   
+        else if (response.message) return alert(response.message)
+
+        else if (response.data && response.data.message) {
+            return alert(response.data.message)
+        }
+        
+        alert('something wrong happened')
     }
 
     return (

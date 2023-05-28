@@ -47,19 +47,15 @@ const dashboard = () => {
 
         let response = JSON.parse(await new Auth().user())
 
-        console.log(response.data)
+        console.log(response)
 
         setIsLoanding(false)
 
-        if(response.status != 200  || response.data.status !== 'Active') {
-            return router.push('/signin')
+        if(response.status === 200  && response.data.status === 'Active') {
+            return dispatch(changeUser(response.data))
         }
 
-        
-        dispatch(changeUser(response.data))
-
-        console.log(response.status)
-
+        router.push('/signin')      
     }
 
     const getFileData = async () => {
@@ -135,60 +131,62 @@ const dashboard = () => {
         <>
             {isLoading === true && <Loading/>}
 
-            <Layout
-                children={
-                    <>
-                        <DashboardFilesDiv isDark={isDark}>
-                            
-                            <Title
-                                title={fileState?.title}
-                                onDataReceived={changeTitle}
-                            />
+            {user &&
+                <Layout
+                    children={
+                        <>
+                            <DashboardFilesDiv isDark={isDark}>
+                                
+                                <Title
+                                    title={fileState?.title}
+                                    onDataReceived={changeTitle}
+                                />
 
-                            {fileState?.content.map((item, index) => {
+                                {fileState?.content.map((item, index) => {
 
-                                if (item.type === 'paragraph') {
-                                    return (
-                                        <div key={index}>
-                                            <MyEditor
-                                                initialTXT={item.text}
-                                                index={index}
-                                                onDataReceived={changeFileParagraph}
-                                            />
-                                        </div>
-                                    )
-                                }
+                                    if (item.type === 'paragraph') {
+                                        return (
+                                            <div key={index}>
+                                                <MyEditor
+                                                    initialTXT={item.text}
+                                                    index={index}
+                                                    onDataReceived={changeFileParagraph}
+                                                />
+                                            </div>
+                                        )
+                                    }
 
-                                else if (item.type === 'image') {
-                                    return (
-                                        <div className='image' key={index}>
-                                            <ImageInterface
-                                                src={item.codeBase64}
-                                                index={index}
-                                                onDataReceived={changeImage}
-                                                alt=""
-                                            />
-                                        </div>
-                                    )
-                                }
+                                    else if (item.type === 'image') {
+                                        return (
+                                            <div className='image' key={index}>
+                                                <ImageInterface
+                                                    src={item.codeBase64}
+                                                    index={index}
+                                                    onDataReceived={changeImage}
+                                                    alt=""
+                                                />
+                                            </div>
+                                        )
+                                    }
 
-                                else if (item.type === 'IDE') {
-                                    return (
-                                        <div className='IDE' key={index}>
-                                            <IDE 
-                                                defaultValue={item.code} 
-                                                index={index}
-                                                onDataReceived={changeFileCode}
-                                            />
-                                        </div>
-                                    )
-                                }
+                                    else if (item.type === 'IDE') {
+                                        return (
+                                            <div className='IDE' key={index}>
+                                                <IDE 
+                                                    defaultValue={item.code} 
+                                                    index={index}
+                                                    onDataReceived={changeFileCode}
+                                                />
+                                            </div>
+                                        )
+                                    }
 
-                            })}
-                        </DashboardFilesDiv>
-                    </>
-                }
-            />
+                                })}
+                            </DashboardFilesDiv>
+                        </>
+                    }
+                />
+            }
         </>      
     )
 }

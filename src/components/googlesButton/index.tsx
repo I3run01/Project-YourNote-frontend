@@ -33,8 +33,6 @@ export const GoogleButton = () => {
         let response = JSON.parse(await new Auth().googleSignIn(user.access_token))
 
         setIsLoanding(false)
-
-        console.log(response)
         
         if(response.status == 200) {
             dispatch(changeUser(response))

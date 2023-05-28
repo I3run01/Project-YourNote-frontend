@@ -34,16 +34,22 @@ const SignUp = () => {
     const signupRequest = async () => {
         setIsLoanding(true)
         
-        let response = await new Auth().signUp(email, password)
-        let json = JSON.parse(response)
+        let response = JSON.parse(await new Auth().signUp(email, password))
 
         setIsLoanding(false)
 
-        if (json.status == 200) {
+        if (response.status == 200) {
             return alert('A link was sent in your email to verify your account')
         }
 
-        return alert(json.data.message)
+        else if (response.message) return alert(response.message)
+
+        else if (response.data && response.data.message) {
+            return alert(response.data.message)
+        }
+        
+        alert('something wrong happened')
+        
     }
 
     return (

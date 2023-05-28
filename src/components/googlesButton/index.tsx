@@ -41,9 +41,11 @@ export const GoogleButton = () => {
             return router.push('/dashboard')
         }
 
-        else if (response.data.error) alert(response.data.error)
+        else if (response.message) return alert(response.message)
 
-        else if (response.status.message) alert(response.status.message)
+        else if (response.data && response.data.message) {
+            return alert(response.data.message)
+        }
         
         alert('something wrong happened')
     }

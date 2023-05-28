@@ -5,7 +5,7 @@ export class Auth {
     
     constructor() {
         //this.apiLink = 'https://node-user-api.onrender.com/api/users'
-        this.apiLink = 'http://localhost:4000/apgi/users'
+        this.apiLink = 'http://lkocalhost:4000/api/users'
     }
 
     async signUp(email: string, password: string): Promise<string> {
@@ -65,7 +65,12 @@ export class Auth {
             
             return JSON.stringify(response)
         } catch(error: any) {
-            return JSON.stringify(await error.response)
+
+            if(error.response) JSON.stringify(await error.response)
+
+            console.log(error)
+
+            return JSON.stringify(error)
         }
     }
 

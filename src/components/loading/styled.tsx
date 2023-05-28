@@ -27,7 +27,6 @@ export const LoadingDiv = styled.div`
     width: 40px;
     height: 40px;
     animation: spin 0.8s linear infinite;
-    box-shadow: 1px 1px 1px black;
   }
 `
 

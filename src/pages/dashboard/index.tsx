@@ -27,7 +27,7 @@ const dashboard = () => {
 
         let response = JSON.parse(await new Auth().user())
 
-        console.log(response.data)
+        console.log(response)
 
         setIsLoanding(false)
 
@@ -38,7 +38,6 @@ const dashboard = () => {
         dispatch(changeUser(response.data))
 
         console.log(response.status)
-
     }
 
     return (

@@ -21,27 +21,34 @@ export const GoogleButton = () => {
         onError: (error: unknown) => console.log('Login Failed:', error)
     });
 
+    useEffect(() => {
+        userRequest()
+    }, [user])
+
     const userRequest = async () => {
         if(!user) return
 
-        setIsLoanding(false)
+        setIsLoanding(true)
 
         let response = JSON.parse(await new Auth().googleSignIn(user.access_token))
 
-        setIsLoanding(true)
+        setIsLoanding(false)
+
+        console.log(response)
         
         if(response.status == 200) {
             dispatch(changeUser(response))
             return router.push('/dashboard')
         }
+
+        else if (response.data.error) alert(response.data.error)
+
+        else if (response.status.message) alert(response.status.message)
         
-        
-        alert(response.status.message)
+        alert('something wrong happened')
     }
 
-    useEffect(() => {
-        userRequest()
-    }, [user])
+    
  
     return (
         <>

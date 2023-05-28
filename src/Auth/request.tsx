@@ -21,7 +21,10 @@ export class Auth {
 
             return JSON.stringify(response)
         } catch(error: any) {
-            return JSON.stringify(await error.response)
+            
+            if(error.response) JSON.stringify(await error.response)
+
+            return JSON.stringify(error)
         }
     }
 
@@ -37,7 +40,10 @@ export class Auth {
             })
             return JSON.stringify(response)
         } catch(error: any) {
-            return JSON.stringify(await error.response)
+
+            if(error.response) JSON.stringify(await error.response)
+
+            return JSON.stringify(error)
         }
     }
 
@@ -49,7 +55,10 @@ export class Auth {
             
             return JSON.stringify(response)
         } catch(error: any) {
-            return JSON.stringify(await error.response)
+
+            if(error.response) JSON.stringify(await error.response)
+
+            return JSON.stringify(error)
         }
     }
 
@@ -68,8 +77,6 @@ export class Auth {
 
             if(error.response) JSON.stringify(await error.response)
 
-            console.log(error)
-
             return JSON.stringify(error)
         }
     }
@@ -84,7 +91,10 @@ export class Auth {
             
             return JSON.stringify(response)
         } catch(error: any) {
-            return JSON.stringify(await error.response)
+
+            if(error.response) JSON.stringify(await error.response)
+
+            return JSON.stringify(error)
         }
     }
 
@@ -98,7 +108,10 @@ export class Auth {
 
             return JSON.stringify(response)
         } catch(error: any) {
-            return JSON.stringify(await error.response)
+
+            if(error.response) JSON.stringify(await error.response)
+
+            return JSON.stringify(error)
         }
     }
 
@@ -114,7 +127,10 @@ export class Auth {
             
             return JSON.stringify(response)
         } catch(error: any) {
-            return JSON.stringify(await error.response)
+
+            if(error.response) JSON.stringify(await error.response)
+
+            return JSON.stringify(error)
         }
     }
 

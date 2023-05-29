@@ -1,48 +1,50 @@
 import { useEffect, useState } from 'react'
+
 import { useSelector, useDispatch } from 'react-redux'
-import { useRouter } from 'next/router';
 import { RootState } from '@/redux/store'
+import { changeUser, fetchUser } from '../../redux/slice/userSlice'
+
+import { useRouter } from 'next/router';
+
 import { Auth } from '../../Auth/request'
+
 import { Loading } from '../../components/loading'
-import { changeUser } from '../../redux/slice/userSlice'
 import { DashboardDiv } from '../../styles/dashboardDiv'
 import Layout from '../../Layout/layout'
 
 const dashboard = () => {
-    const [isLoading, setIsLoanding] = useState<boolean>(false)
+    const [isAuth, setIsAuth] = useState<boolean>(false)
     const router = useRouter()
     const user = useSelector((state: RootState) => state.user.user)
     const isDark = useSelector((state: RootState) => state.theme.isDark)
     const dispatch = useDispatch();
 
     useEffect(() => {
-        middleware()
+        dispatch(fetchUser())
     }, [])
+
+    useEffect(() => {
+        middleware()
+        console.log(user)
+    }, [user])
 
     const middleware = async () => {
 
-        if(user) return
-        
-        setIsLoanding(true)
+        if(!user) return
 
-        let response = JSON.parse(await new Auth().user())
-
-        console.log(response)
-
-        setIsLoanding(false)
-
-        if(response.status === 200  && response.data.status === 'Active') {
-            return dispatch(changeUser(response.data))
+        if(user.status === 200  && user.data.status === 'Active') {
+            return setIsAuth(true)
         }
 
-        router.push('/signin')      
+        router.push('/signin')
+             
     }
 
     return (
         <>
-            {isLoading === true && <Loading/>}
+            {!isAuth === true && <Loading/>}
             
-            {user &&
+            {isAuth &&
                 <Layout
                     children={
                         <>

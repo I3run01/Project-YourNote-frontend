@@ -13,12 +13,13 @@ export const userSlice = createSlice({
   name: 'user',
   initialState,
   reducers: {
+    fetchUser: state => { console.log('fetchUser') },
     changeUser: (state, action: PayloadAction<object>) => {
       state.user = action.payload
     },
   },
 })
 
-export const { changeUser } = userSlice.actions
+export const { changeUser, fetchUser } = userSlice.actions
 
 export default userSlice.reducer

@@ -1,8 +1,9 @@
 import { createSlice } from '@reduxjs/toolkit'
 import type { PayloadAction } from '@reduxjs/toolkit'
+import { userType } from '../../types/user'
 
 export interface userState {
-  user: object | null
+  user: userType | null
 }
 
 const initialState: userState = {
@@ -14,7 +15,7 @@ export const userSlice = createSlice({
   initialState,
   reducers: {
     fetchUser: state => { console.log('fetchUser') },
-    changeUser: (state, action: PayloadAction<object>) => {
+    changeUser: (state, action: PayloadAction<userType>) => {
       state.user = action.payload
     },
   },

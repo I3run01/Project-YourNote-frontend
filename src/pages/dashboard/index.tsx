@@ -2,11 +2,9 @@ import { useEffect, useState } from 'react'
 
 import { useSelector, useDispatch } from 'react-redux'
 import { RootState } from '@/redux/store'
-import { changeUser, fetchUser } from '../../redux/slice/userSlice'
+import { fetchUser } from '../../redux/slice/userSlice'
 
 import { useRouter } from 'next/router';
-
-import { Auth } from '../../Auth/request'
 
 import { Loading } from '../../components/loading'
 import { DashboardDiv } from '../../styles/dashboardDiv'
@@ -25,19 +23,17 @@ const dashboard = () => {
 
     useEffect(() => {
         middleware()
-        console.log(user)
     }, [user])
 
     const middleware = async () => {
 
         if(!user) return
 
-        if(user.status === 200  && user.data.status === 'Active') {
+        if('data' in user && user.status === 200  && user.data.status === 'Active') {
             return setIsAuth(true)
         }
 
-        router.push('/signin')
-             
+        router.push('/signin')    
     }
 
     return (

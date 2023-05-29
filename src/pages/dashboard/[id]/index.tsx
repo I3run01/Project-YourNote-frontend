@@ -2,11 +2,10 @@ import { useEffect, useState } from 'react'
 
 import { useSelector, useDispatch } from 'react-redux'
 import { RootState } from '@/redux/store'
-import { changeUser } from '../../../redux/slice/userSlice'
+import { fetchUser } from '../../../redux/slice/userSlice'
 
 import { useRouter } from 'next/router';
 
-import { Auth } from '../../../Auth/request'
 import { response } from './responseOBJ'
 
 import { Loading } from '../../../components/loading'
@@ -21,7 +20,7 @@ import { filesType } from '@/types/files'
 
 
 const dashboard = () => {
-    const [isLoading, setIsLoanding] = useState<boolean>(false)
+    const [isAuth, setIsAuth] = useState<boolean>(false)
     const [fileState, setFileState] = useState<filesType>(
         {id: '', title: '', usersAccessIDs: [], content: []}
     )
@@ -32,8 +31,12 @@ const dashboard = () => {
     const { id } = router.query; 
 
     useEffect(() => {
-        middleware()
+        dispatch(fetchUser())
     }, [])
+
+    useEffect(() => {
+        middleware()
+    }, [user])
 
     useEffect(() => {
         getFileData()
@@ -41,21 +44,13 @@ const dashboard = () => {
 
     const middleware = async () => {
 
-        if(user) return
-        
-        setIsLoanding(true)
+        if(!user) return
 
-        let response = JSON.parse(await new Auth().user())
-
-        console.log(response)
-
-        setIsLoanding(false)
-
-        if(response.status === 200  && response.data.status === 'Active') {
-            return dispatch(changeUser(response.data))
+        if('data' in user && user.status === 200  && user.data.status === 'Active') {
+            return setIsAuth(true)
         }
 
-        router.push('/signin')      
+        router.push('/signin')    
     }
 
     const getFileData = async () => {
@@ -129,9 +124,9 @@ const dashboard = () => {
 
     return (
         <>
-            {isLoading === true && <Loading/>}
+            {!isAuth === true && <Loading/>}
 
-            {user &&
+            {isAuth &&
                 <Layout
                     children={
                         <>

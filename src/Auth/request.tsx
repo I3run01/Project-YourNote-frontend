@@ -22,7 +22,7 @@ export class Auth {
             return JSON.stringify(response)
         } catch(error: any) {
             
-            if(error.response) JSON.stringify(await error.response)
+            if(await error.response) return JSON.stringify(await error.response)
 
             return JSON.stringify(error)
         }
@@ -41,7 +41,7 @@ export class Auth {
             return JSON.stringify(response)
         } catch(error: any) {
 
-            if(error.response) JSON.stringify(await error.response)
+            if(await error.response) return JSON.stringify(await error.response)
 
             return JSON.stringify(error)
         }
@@ -56,7 +56,7 @@ export class Auth {
             return JSON.stringify(response)
         } catch(error: any) {
 
-            if(error.response) JSON.stringify(await error.response)
+            if(await error.response) return JSON.stringify(await error.response)
 
             return JSON.stringify(error)
         }
@@ -75,7 +75,7 @@ export class Auth {
             return JSON.stringify(response)
         } catch(error: any) {
 
-            if(error.response) JSON.stringify(await error.response)
+            if(await error.response) return JSON.stringify(await error.response)
 
             return JSON.stringify(error)
         }
@@ -92,7 +92,7 @@ export class Auth {
             return JSON.stringify(response)
         } catch(error: any) {
 
-            if(error.response) JSON.stringify(await error.response)
+            if(await error.response) return JSON.stringify(await error.response)
 
             return JSON.stringify(error)
         }
@@ -109,7 +109,7 @@ export class Auth {
             return JSON.stringify(response)
         } catch(error: any) {
 
-            if(error.response) JSON.stringify(await error.response)
+            if(await error.response) return JSON.stringify(await error.response)
 
             return JSON.stringify(error)
         }
@@ -128,7 +128,7 @@ export class Auth {
             return JSON.stringify(response)
         } catch(error: any) {
 
-            if(error.response) JSON.stringify(await error.response)
+            if(await error.response) return JSON.stringify(await error.response)
 
             return JSON.stringify(error)
         }

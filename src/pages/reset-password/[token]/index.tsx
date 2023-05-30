@@ -27,16 +27,21 @@ const ResetPassword = () => {
 
         setIsLoanding(true)
 
-        let response = await new Auth().resetPassword(String(token), password)
-        let json = JSON.parse(response)
+        let response = JSON.parse(await new Auth().resetPassword(String(token), password))
 
         setIsLoanding(false)
 
-        if (json.status == 200 && json.data.status === 'Active'){
+        if (response.status == 200 && response.data.status === 'Active'){
             return router.push('/dashboard')
         }
 
-        alert(json.data.message)   
+        else if (response.message) return alert(response.message)
+
+        else if (response.data && response.data.message) {
+            return alert(response.data.message)
+        }
+        
+        alert('something wrong happened')
     }
 
     return (

@@ -14,6 +14,10 @@ const EmailConfirmation = () => {
 
     const [isLoading, setIsLoanding] = useState<boolean>(false)
 
+    useEffect(() => {
+        request()
+    }, [token])
+
     const request = async () => {
         setIsLoanding(true)
 
@@ -26,20 +30,21 @@ const EmailConfirmation = () => {
         let response = JSON.parse(await new Auth().confirmationEmail(String(token)))
 
         if(response.status == 200) {
-            dispatch(changeUser(response.data))
             return router.push('/dashboard')
         }
 
-        alert(response.data.message)
+        else if (response.message) return alert(response.message)
 
-        setIsLoanding(false)
+        else if (response.data && response.data.message) {
+            return alert(response.data.message)
+        }
+        
+        alert('something wrong happened')
 
         return router.push('/signup')
     }
 
-    useEffect(() => {
-        request()
-    }, [token])
+    
 
     return (
         <>

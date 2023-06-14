@@ -28,6 +28,7 @@
     "draft-js": "^0.11.7",
     "install": "^0.13.0",
     "lodash.debounce": "^4.0.8",
+    "monaco-editor": "^0.39.0",
     "next": "13.3.0",
     "next-redux-wrapper": "^8.1.0",
     "nodemailer": "^6.9.1",

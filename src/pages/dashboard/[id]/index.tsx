@@ -6,7 +6,7 @@ import { fetchUser } from '../../../redux/slice/userSlice'
 
 import { useRouter } from 'next/router';
 
-import { response } from './responseOBJ'
+import { response } from '../../../Object/responseOBJ'
 
 import { Loading } from '../../../components/loading'
 import { DashboardFilesDiv } from '../../../styles/dashboardFiles'

@@ -1,4 +1,4 @@
-import { filesType } from '../../../types/files'
+import { filesType } from '../types/files'
 
 export const response: filesType = {
     id: '1',

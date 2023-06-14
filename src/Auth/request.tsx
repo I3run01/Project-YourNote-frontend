@@ -5,7 +5,7 @@ export class Auth {
     
     constructor() {
         this.apiLink = 'https://nodejs-login-dhly.onrender.com/api/users'
-        this.apiLink = 'http://localhost:4000/api/users'
+        //this.apiLink = 'http://localhost:4000/api/users'
     }
 
     async signUp(email: string, password: string): Promise<string> {

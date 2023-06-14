@@ -4,7 +4,7 @@ export class Auth {
     private apiLink: string
     
     constructor() {
-        //this.apiLink = 'https://node-user-api.onrender.com/api/users'
+        this.apiLink = 'https://nodejs-login-dhly.onrender.com/api/users'
         this.apiLink = 'http://localhost:4000/api/users'
     }
 

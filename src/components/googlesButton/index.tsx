@@ -36,7 +36,7 @@ export const GoogleButton = () => {
         
         if(response.status == 200) {
             dispatch(changeUser(response))
-            return router.push('/dashboard')
+            return router.push('/')
         }
 
         else if (response.message) return alert(response.message)

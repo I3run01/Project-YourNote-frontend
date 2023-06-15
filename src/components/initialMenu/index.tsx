@@ -24,7 +24,6 @@ export const InitionalMenu = () => {
                 {user &&
                     <>
                         <div className='dashboard'>
-                            {user && 'data' in user && <h1>{user.data.name}</h1>}
                             <Link href={'/dashboard'}>Dashboard</Link>
                         </div>
                     </>

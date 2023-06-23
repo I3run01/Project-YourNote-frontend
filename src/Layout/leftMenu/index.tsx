@@ -11,7 +11,7 @@ import { FilesRequest } from '../../Request/filesRequests'
 
 type Files = {
     title: string
-    id: string
+    _id: string
 }
 
 

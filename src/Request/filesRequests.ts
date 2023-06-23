@@ -13,7 +13,7 @@ export class FilesRequest {
         const apiRoute = '';
 
         try {
-            const response = await this.api.post(apiRoute, {
+            const response = await this.api.post(apiRoute, new URLSearchParams(), {
                 withCredentials: true
             });
 

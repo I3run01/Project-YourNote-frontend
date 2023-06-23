@@ -23,8 +23,6 @@ const dashboard = () => {
 
     useEffect(() => {
         middleware()
-
-        console.log(user)
     }, [user])
 
     const middleware = async () => {

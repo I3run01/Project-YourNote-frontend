@@ -9,34 +9,46 @@ import Image from 'next/image'
 import { useRouter } from 'next/router';
 import { FilesRequest } from '../../Request/filesRequests'
 
-const list = [
-    {title: 'title', id: 1},
-    {title: 'title', id: 2},
-    {title: 'title', id: 3},
-    {title: 'title', id: 4},
-    {title: 'title', id: 5},
-    {title: 'title', id: 6},
-    {title: 'title', id: 7},
-    {title: 'title', id: 8},
-    {title: 'title', id: 9},
-    {title: 'title', id: 10},
-]
+type Files = {
+    title: string
+    id: string
+}
+
 
 export const  LeftMenu = () => {
     const isDark = useSelector((state: RootState) => state.theme.isDark)
     const dispatch = useDispatch();
-    const route = useRouter()
+    const router = useRouter()
 
     const [isMenuOpend, setIsMenuOpened] = useState<boolean>(false)
+    const [files, setFiles] = useState<Files[]>([])
 
     useEffect(() => {
         request()
-    })
+    }, [])
 
     const request = async () => {
         let response =  JSON.parse(await new FilesRequest().retrieveFiles())
 
+        setFiles(response.data)
+    }
+
+    const handldeNewButton = async () =>{
+        let response = JSON.parse(await new FilesRequest().createFile())
+
+        let fileID = response.data._id
+
+        await request()
+
+        if(response.status == 200) {
+            router.push(`../dashboard/${fileID}`)
+        }
+
         console.log(response)
+
+        
+
+        // router.push(`/${fileID}`)
     }
 
     return (
@@ -55,13 +67,13 @@ export const  LeftMenu = () => {
                 />
             </div>
 
-            <div id='newFile' onClick={}>+ New File</div>
+            <div id='newFile' onClick={() => {handldeNewButton()}}>+ New File</div>
 
             <div id='filerConainer'>
                 {
-                    list.map((item, key) => {
+                    files.map((item, key) => {
                         return (
-                            <div className='item' key={key} onClick={() => {route.push(`../dashboard/${item.id}`)}}>
+                            <div className='item' key={key} onClick={() => {router.push(`../dashboard/${item._id}`)}}>
                                 - {item.title}
                             </div>
                         )

@@ -4,8 +4,8 @@ export class Auth {
     private apiLink: string
     
     constructor() {
-        this.apiLink = 'https://yournoteapi.shop/api/users'
-        //this.apiLink = 'http://localhost:4000/api/users'
+        // this.apiLink = 'https://yournoteapi.shop/api/users'
+        this.apiLink = 'http://localhost:4000/api/users'
     }
 
     async signUp(email: string, password: string): Promise<string> {
@@ -16,9 +16,7 @@ export class Auth {
                 "email": email,
                 "password": password,
             }))
-
-            console.log(response)
-
+            
             return JSON.stringify(response)
         } catch(error: any) {
             

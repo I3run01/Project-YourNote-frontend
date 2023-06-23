@@ -1,12 +1,13 @@
 import { LeftMenuDiv } from './styled'
 import { useSelector,useDispatch } from 'react-redux'
 import { RootState } from '@/redux/store'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { changeTheme } from '../../redux/slice/themeSlice'
 import menuIcon from '../../../public/images/icons/openAndClosemenuIcon.svg'
 import settingsIcon from '../../../public/images/icons/Settings.svg'
 import Image from 'next/image'
 import { useRouter } from 'next/router';
+import { FilesRequest } from '../../Request/filesRequests'
 
 const list = [
     {title: 'title', id: 1},
@@ -28,6 +29,16 @@ export const  LeftMenu = () => {
 
     const [isMenuOpend, setIsMenuOpened] = useState<boolean>(false)
 
+    useEffect(() => {
+        request()
+    })
+
+    const request = async () => {
+        let response =  JSON.parse(await new FilesRequest().retrieveFiles())
+
+        console.log(response)
+    }
+
     return (
         <LeftMenuDiv
             id='leftMenu'
@@ -44,7 +55,7 @@ export const  LeftMenu = () => {
                 />
             </div>
 
-            <div id='newFile'>+ New File</div>
+            <div id='newFile' onClick={}>+ New File</div>
 
             <div id='filerConainer'>
                 {

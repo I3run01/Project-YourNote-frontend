@@ -23,10 +23,10 @@ export const LeftMenuDiv = styled.div<props>`
     } 
 
     position: relative;
-    margin-left: ${props => props.isMenuOpened ? '0px' : '-210px'};
+    margin-left: ${props => props.isMenuOpened ? '0px' : '-270px'};
 
     height: 100vh;
-    width: 250px;
+    width: 300px;
     background-color: ${props => props.isDark ? bgColorDark : bgColorlight};
 
     transition: all .5s ease-in-out;
@@ -138,9 +138,6 @@ export const LeftMenuDiv = styled.div<props>`
         .item {
             margin-top: 10px;
             margin-bottom: 10px;
-
-            padding-top: 15px;
-            padding-bottom: 15px;
 
             width: 100%;   
 

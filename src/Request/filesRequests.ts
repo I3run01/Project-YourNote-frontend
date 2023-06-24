@@ -24,6 +24,38 @@ export class FilesRequest {
         }
     }
 
+    async updateTitle(fileID: string, title: string): Promise<string> {
+        const apiRoute = `${fileID}/title`;
+
+        try {
+            const response = await this.api.put(apiRoute, new URLSearchParams({
+                "title": title
+            }), {
+                withCredentials: true
+            });
+
+            return JSON.stringify(response);
+        } catch(error: any) {
+            if(await error.response) return JSON.stringify(await error.response);
+            return JSON.stringify(error);
+        }
+    }
+
+    async deleteFile(fileID: string): Promise<string> {
+        const apiRoute = `${fileID}`;
+
+        try {
+            const response = await this.api.delete(apiRoute, {
+                withCredentials: true
+            });
+
+            return JSON.stringify(response);
+        } catch(error: any) {
+            if(await error.response) return JSON.stringify(await error.response);
+            return JSON.stringify(error);
+        }
+    }
+
     async retrieveFiles(): Promise<string> {
         const apiRoute = '';
 

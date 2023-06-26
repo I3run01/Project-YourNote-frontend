@@ -3,6 +3,7 @@ import { useSelector,useDispatch } from 'react-redux'
 import { RootState } from '@/redux/store'
 import { useEffect, useState } from 'react'
 import { changeTheme } from '../../redux/slice/themeSlice'
+import { changeFilesTitles, deleteFileInTheList } from '@/redux/slice/filesTitles'
 import menuIcon from '../../../public/images/icons/openAndClosemenuIcon.svg'
 import settingsIcon from '../../../public/images/icons/Settings.svg'
 import Image from 'next/image'
@@ -10,26 +11,24 @@ import { useRouter } from 'next/router';
 import { FilesRequest } from '../../Request/filesRequests'
 import { ShowTilte } from './showTitle/showTitle'
 
-type Files = {
-    title: string
-    _id: string
-}
-
-
 export const  LeftMenu = () => {
     const isDark = useSelector((state: RootState) => state.theme.isDark)
+    const filesTitle = useSelector((state: RootState) => state.filesTitles.files)
     const dispatch = useDispatch();
     const router = useRouter()
     const [isMenuOpend, setIsMenuOpened] = useState<boolean>(false)
-    const [files, setFiles] = useState<Files[]>([])
 
     useEffect(() => {
         request()
     }, [])
 
+    useEffect(() => {
+        console.log(filesTitle)
+    }, [filesTitle])
+
     const request = async () => {
         let response =  JSON.parse(await new FilesRequest().retrieveFiles())
-        setFiles(response.data)
+        dispatch(changeFilesTitles(response.data))
     }
 
     const deleteFile = async (fileID: string) => {
@@ -38,15 +37,9 @@ export const  LeftMenu = () => {
         if(isUserConfirmed){
             let response = JSON.parse(await new FilesRequest().deleteFile(fileID))
 
-            deleteFileInFrontEnd(fileID)
-
-            console.log(files)
+            dispatch(deleteFileInTheList(fileID))
         }
         return
-    }
-
-    const deleteFileInFrontEnd = (id: string) => {
-        setFiles(prevFiles => prevFiles.filter(file => file._id !== id));
     }
 
     const handldeNewButton = async () =>{
@@ -59,12 +52,6 @@ export const  LeftMenu = () => {
         if(response.status == 200) {
             router.push(`../dashboard/${fileID}`)
         }
-
-        console.log(response)
-
-        
-
-        // router.push(`/${fileID}`)
     }
 
     return (
@@ -87,13 +74,14 @@ export const  LeftMenu = () => {
 
             <div id='fileConainer'>
                 {
-                    files.map((item, key) => {
+                    filesTitle.map((item, key) => {
                         return (
                             <div className='item' key={key}>
                                 <ShowTilte
                                     title={item.title}
                                     fileID={item._id}
                                     deleteFile={deleteFile}
+                                    index={key}
                                 />
                             </div>
                         )

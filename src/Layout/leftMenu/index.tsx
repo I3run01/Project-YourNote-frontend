@@ -37,11 +37,16 @@ export const  LeftMenu = () => {
         
         if(isUserConfirmed){
             let response = JSON.parse(await new FilesRequest().deleteFile(fileID))
-            console.log(response)
 
-            request()
+            deleteFileInFrontEnd(fileID)
+
+            console.log(files)
         }
         return
+    }
+
+    const deleteFileInFrontEnd = (id: string) => {
+        setFiles(prevFiles => prevFiles.filter(file => file._id !== id));
     }
 
     const handldeNewButton = async () =>{
@@ -80,7 +85,7 @@ export const  LeftMenu = () => {
 
             <div id='newFile' onClick={() => {handldeNewButton()}}>+ New File</div>
 
-            <div id='filerConainer'>
+            <div id='fileConainer'>
                 {
                     files.map((item, key) => {
                         return (

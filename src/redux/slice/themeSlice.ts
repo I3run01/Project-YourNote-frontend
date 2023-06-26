@@ -1,12 +1,11 @@
 import { createSlice } from '@reduxjs/toolkit'
-import type { PayloadAction } from '@reduxjs/toolkit'
 
 export interface ThemeState {
   isDark: boolean
 }
 
 const initialState: ThemeState = {
-  isDark: false,
+  isDark: true,
 }
 
 export const counterSlice = createSlice({

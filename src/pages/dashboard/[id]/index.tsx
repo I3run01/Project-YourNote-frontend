@@ -1,28 +1,23 @@
 import { useEffect, useState } from 'react'
-
 import { useSelector, useDispatch } from 'react-redux'
 import { RootState } from '@/redux/store'
 import { fetchUser } from '../../../redux/slice/userSlice'
-
 import { useRouter } from 'next/router';
-
-import { response } from '../../../Object/responseOBJ'
-
 import { Loading } from '../../../components/loading'
 import { DashboardFilesDiv } from '../../../styles/dashboardFiles'
 import { Title } from '../../../components/Title/title'
 import IDE from '../../../components/IDE'
 import Layout from '../../../Layout/layout'
 import MyEditor from '../../../components/Editor/myEditor'
-
 import { ImageInterface } from '../../../components/imageInterface'
 import { filesType } from '@/types/files'
+import { FilesRequest } from '../../../Request/filesRequests'
 
 
 const dashboard = () => {
     const [isAuth, setIsAuth] = useState<boolean>(false)
     const [fileState, setFileState] = useState<filesType>(
-        {id: '', title: '', usersAccessIDs: [], content: []}
+        {id: '', title: '', content: []}
     )
     const user = useSelector((state: RootState) => state.user.user)
     const isDark = useSelector((state: RootState) => state.theme.isDark)
@@ -40,7 +35,13 @@ const dashboard = () => {
 
     useEffect(() => {
         getFileData()
+
+        getFileData()
     }, [id])
+
+    useEffect(() => {
+        console.log(fileState)
+    }, [fileState])
 
     const middleware = async () => {
 
@@ -54,8 +55,10 @@ const dashboard = () => {
     }
 
     const getFileData = async () => {
-        if (id) console.log(id)
-        setFileState(response)
+        if (!id) return
+
+        let response = JSON.parse(await new FilesRequest().getSpecificFile(id as string))
+        setFileState(response.data)
     }
 
     const changeTitle = (newTitle: string) => {

@@ -56,6 +56,22 @@ export class FilesRequest {
         }
     }
 
+    async getSpecificFile(fileID: string): Promise<string> {
+        const apiRoute = `${fileID}`;
+
+        try {
+            const response = await this.api.get(apiRoute, {
+                withCredentials: true
+            });
+
+            return JSON.stringify(response);
+        } catch(error: any) {
+            if(await error.response) return JSON.stringify(await error.response);
+            return JSON.stringify(error);
+        }
+    }
+
+
     async retrieveFiles(): Promise<string> {
         const apiRoute = '';
 

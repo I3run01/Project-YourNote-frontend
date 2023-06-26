@@ -21,6 +21,10 @@ export const ShowTilte = ({title, fileID, deleteFile}: props) => {
         updateTitle();
     }, [tempTitle]);
 
+    useEffect(() => {
+        setTempTitle(title);
+    }, [title]);
+
     async function updateTitle() {
         let response = await new FilesRequest().updateTitle(fileID, tempTitle);
         let parsedResponse = JSON.parse(response);

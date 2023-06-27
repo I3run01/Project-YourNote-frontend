@@ -13,12 +13,10 @@ import { ImageInterface } from '../../../components/imageInterface'
 import { filesType } from '@/types/files'
 import { FilesRequest } from '../../../Request/filesRequests'
 
-
 const dashboard = () => {
+    const nullFileState =  {id: '', title: '', content: []}
     const [isAuth, setIsAuth] = useState<boolean>(false)
-    const [fileState, setFileState] = useState<filesType>(
-        {id: '', title: '', content: []}
-    )
+    const [fileState, setFileState] = useState<filesType>(nullFileState)
     const filesTitle = useSelector((state: RootState) => state.filesTitles.files)
     const user = useSelector((state: RootState) => state.user.user)
     const isDark = useSelector((state: RootState) => state.theme.isDark)
@@ -36,7 +34,7 @@ const dashboard = () => {
 
     useEffect(() => {
         getFileData()
-    }, [id, filesTitle])
+    }, [id])
 
     useEffect(() => {
         setTimeout(() => {
@@ -63,7 +61,12 @@ const dashboard = () => {
         if (!id) return
 
         let response = JSON.parse(await new FilesRequest().getSpecificFile(id as string))
-        setFileState(response.data)
+
+        if(response.status === 200) {
+            return setFileState(response.data)
+        }
+
+        alert(response.statusText)
     }
 
     const changeTitle = (newTitle: string) => {
@@ -145,7 +148,7 @@ const dashboard = () => {
                                     onDataReceived={changeTitle}
                                 />
 
-                                {fileState?.content.map((item, index) => {
+                                {fileState?.content && fileState.content.map((item, index) => {
 
                                     if (item.type === 'paragraph') {
                                         return (

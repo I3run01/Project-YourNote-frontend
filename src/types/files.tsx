@@ -14,7 +14,7 @@ export type IDEContent = {
     code: string
   }
   
-export type ContentType = ParagraphContent | ImageContent | IDEContent
+export type ContentType = ParagraphContent | ImageContent | IDEContent 
   
 export type filesType = {
   id: string

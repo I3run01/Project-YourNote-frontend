@@ -1,4 +1,5 @@
 import axios from "axios";
+import { stringify } from "querystring";
 
 export class FilesRequest {
     private api: any;
@@ -30,6 +31,25 @@ export class FilesRequest {
         try {
             const response = await this.api.put(apiRoute, new URLSearchParams({
                 "title": title
+            }), {
+                withCredentials: true
+            });
+
+            return JSON.stringify(response);
+        } catch(error: any) {
+            if(await error.response) return JSON.stringify(await error.response);
+            return JSON.stringify(error);
+        }
+    }
+
+    async updateContent(fileID: string, content: object[]): Promise<string> {
+        const apiRoute = `${fileID}/content`;
+
+        let contentStringied = JSON.stringify(content)
+
+        try {
+            const response = await this.api.put(apiRoute, new URLSearchParams({
+                "content": contentStringied
             }), {
                 withCredentials: true
             });

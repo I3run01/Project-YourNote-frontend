@@ -47,8 +47,21 @@ const dashboard = () => {
     }, [filesTitle])
 
     useEffect(() => {
-        console.log(fileState)
+        sendFileState()
     }, [fileState])
+
+    let sendFileState = async () => {
+        if(!id) return
+
+        let response = await new FilesRequest().updateContent(
+            id as string,
+            fileState.content
+        )
+
+        let json = JSON.parse(response)
+
+        if(json.status !== 200) console.log(json.data)
+    }
 
     const middleware = async () => {
 

@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import { useEffect, useState, Fragment } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import { RootState } from '@/redux/store'
 import { fetchUser } from '../../../redux/slice/userSlice'
@@ -12,6 +12,8 @@ import MyEditor from '../../../components/Editor/myEditor'
 import { ImageInterface } from '../../../components/imageInterface'
 import { filesType } from '@/types/files'
 import { FilesRequest } from '../../../Request/filesRequests'
+import { NewItem } from '../../../components/NewItem/newItem'
+import { ParagraphContent, IDEContent, ImageContent } from '@/types/files'
 
 const dashboard = () => {
     const nullFileState =  {_id: '', title: '', content: []}
@@ -40,7 +42,9 @@ const dashboard = () => {
         setTimeout(() => {
             getFileData()
         }, 50)
-    }, filesTitle)
+
+        console.log(fileState)
+    }, [filesTitle])
 
     useEffect(() => {
         console.log(fileState)
@@ -123,6 +127,68 @@ const dashboard = () => {
         });
     };
 
+    const addNewParagraph = (index: number) => {
+        let newParagraph: ParagraphContent = {
+            type: 'paragraph',
+            text: 'Write here a new paragraph'
+        }
+    
+        setFileState(prevState => {
+            const newState = {...prevState};
+    
+         if(index !== -1) {
+                newState.content.splice(index, 0, newParagraph);
+            }
+            else {
+                newState.content.push(newParagraph);
+            }
+    
+            return newState;
+        });
+    }
+
+    const addNewIDE = (index: number) => {
+        let newParagraph: IDEContent = {
+            type: 'IDE',
+            language: 'python',
+            code: 'hello world',
+        }
+    
+        setFileState(prevState => {
+            const newState = {...prevState};
+    
+         if(index !== -1) {
+                newState.content.splice(index, 0, newParagraph);
+            }
+            else {
+                newState.content.push(newParagraph);
+            }
+    
+            return newState;
+        });
+    }
+
+    const addNewImage = (index: number) => {
+        let newParagraph: ImageContent = {
+            type: 'image',
+            codeBase64: '',
+        }
+    
+        setFileState(prevState => {
+            const newState = {...prevState};
+    
+         if(index !== -1) {
+                newState.content.splice(index, 0, newParagraph);
+            }
+            else {
+                newState.content.push(newParagraph);
+            }
+    
+            return newState;
+        });
+    }
+    
+
     return (
         <>
             {!isAuth === true && <Loading/>}
@@ -133,51 +199,63 @@ const dashboard = () => {
                         <>
                             <DashboardFilesDiv isDark={isDark}>
                                 
-                                <Title
-                                    title={fileState.title}
-                                    fileID={fileState._id}
-                                />
+                                {fileState?.title && fileState?._id &&
+                                    <Title
+                                        title={fileState.title}
+                                        fileID={fileState._id}
+                                    />
+                                } 
 
                                 {fileState?.content && fileState.content.map((item, index) => {
+                                    return (
+                                        <Fragment key={index}>
+                                            <NewItem
+                                                index={index}
+                                                newParagraph={addNewParagraph}
+                                                newIDE={addNewIDE}
+                                                newImage={addNewImage}
+                                            />
 
-                                    if (item.type === 'paragraph') {
-                                        return (
-                                            <div key={index}>
-                                                <MyEditor
-                                                    initialTXT={item.text}
-                                                    index={index}
-                                                    onDataReceived={changeFileParagraph}
-                                                />
-                                            </div>
-                                        )
-                                    }
+                                            {item.type === 'paragraph' && 
+                                                <div>
+                                                    <MyEditor
+                                                        initialTXT={item.text}
+                                                        index={index}
+                                                        onDataReceived={changeFileParagraph}
+                                                    />
+                                                </div>
+                                            }
 
-                                    else if (item.type === 'image') {
-                                        return (
-                                            <div className='image' key={index}>
-                                                <ImageInterface
-                                                    src={item.codeBase64}
-                                                    index={index}
-                                                    onDataReceived={changeImage}
-                                                    alt=""
-                                                />
-                                            </div>
-                                        )
-                                    }
+                                            {item.type === 'image' && 
+                                                <div className='image'>
+                                                    <ImageInterface
+                                                        src={item.codeBase64}
+                                                        index={index}
+                                                        onDataReceived={changeImage}
+                                                        alt=""
+                                                    />
+                                                </div>
+                                            }
 
-                                    else if (item.type === 'IDE') {
-                                        return (
-                                            <div className='IDE' key={index}>
-                                                <IDE 
-                                                    defaultValue={item.code} 
-                                                    index={index}
-                                                    onDataReceived={changeFileCode}
-                                                />
-                                            </div>
-                                        )
-                                    }
-
+                                            {item.type === 'IDE' && 
+                                                <div className='IDE'>
+                                                    <IDE 
+                                                        defaultValue={item.code} 
+                                                        index={index}
+                                                        onDataReceived={changeFileCode}
+                                                    />
+                                                </div>
+                                            }
+                                        </Fragment>
+                                    )
                                 })}
+
+                                <NewItem
+                                    index={-1}
+                                    newParagraph={addNewParagraph}
+                                    newIDE={addNewIDE}
+                                    newImage={addNewImage}
+                                />
                             </DashboardFilesDiv>
                         </>
                     }

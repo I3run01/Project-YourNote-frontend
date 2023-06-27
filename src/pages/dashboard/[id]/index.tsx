@@ -14,7 +14,7 @@ import { filesType } from '@/types/files'
 import { FilesRequest } from '../../../Request/filesRequests'
 
 const dashboard = () => {
-    const nullFileState =  {id: '', title: '', content: []}
+    const nullFileState =  {_id: '', title: '', content: []}
     const [isAuth, setIsAuth] = useState<boolean>(false)
     const [fileState, setFileState] = useState<filesType>(nullFileState)
     const filesTitle = useSelector((state: RootState) => state.filesTitles.files)
@@ -67,16 +67,6 @@ const dashboard = () => {
         }
 
         alert(response.statusText)
-    }
-
-    const changeTitle = (newTitle: string) => {
-        setFileState(prevState => {
-            const newState = {...prevState}
-
-            newState.title = newTitle
-
-            return newState
-        })
     }
 
     const changeFileParagraph = (paragraphIndex: number, newText: string) => {
@@ -144,8 +134,8 @@ const dashboard = () => {
                             <DashboardFilesDiv isDark={isDark}>
                                 
                                 <Title
-                                    title={fileState?.title}
-                                    onDataReceived={changeTitle}
+                                    title={fileState.title}
+                                    fileID={fileState._id}
                                 />
 
                                 {fileState?.content && fileState.content.map((item, index) => {

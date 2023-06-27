@@ -9,9 +9,8 @@ function* updateTitleSaga(action: PayloadAction<ChangeTitlePayload>): Generator<
     try {
         const payload = action.payload;
         const response = yield call([myApiService, myApiService.updateTitle], payload._id, payload.newTitle);
-        console.log(response);
     } catch (error) {
-        console.error(error);
+        // console.error(error);
     }
 }
 

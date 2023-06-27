@@ -17,7 +17,7 @@ export type IDEContent = {
 export type ContentType = ParagraphContent | ImageContent | IDEContent 
   
 export type filesType = {
-  id: string
+  _id: string
   title: string
   content: ContentType[]
 }

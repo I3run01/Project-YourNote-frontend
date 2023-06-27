@@ -51,7 +51,7 @@ const dashboard = () => {
     }, [fileState])
 
     let sendFileState = async () => {
-        if(!id) return
+        if(!id || !fileState?.content) return
 
         let response = await new FilesRequest().updateContent(
             id as string,

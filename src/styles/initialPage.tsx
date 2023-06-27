@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
-type props = {
-    theme: 'dark' | 'light'
+type Props = {
+    isDark: boolean
 }
 
 //light
@@ -14,17 +14,17 @@ const bgDarktheme01 = '#121212'
 const textDarkFont = '#FFFFFF'
 const darkGreenTheme = '#01EF80'
 
-export const InitialPage = styled.div<props>`
+export const InitialPage = styled.div<Props>`
     @import url('https://fonts.googleapis.com/css2?family=Merriweather:wght@300&display=swap');
     @import url('https://fonts.googleapis.com/css2?family=Dosis:wght@700&display=swap');
 
     padding-left: 15px;
     padding-right: 15px;
 
-    background-color: ${props => props.theme === 'dark' ?  bgDarktheme01: bgLightTheme01};;
+    background-color: ${props => props.isDark ? bgDarktheme01 : bgLightTheme01};
 
     * {
-        color: ${ props => props.theme === 'dark' ? textDarkFont : textLightFont};
+        color: ${props => props.isDark ? textDarkFont : textLightFont};
     }
 
     h1 {
@@ -32,7 +32,7 @@ export const InitialPage = styled.div<props>`
         font-family: 'Dosis';
         font-size: 36px;
         font-weight: 400;
-        color: ${props => props.theme === 'dark' ?  darkGreenTheme: lightGreenTheme};
+        color: ${props => props.isDark ? darkGreenTheme : lightGreenTheme};
         margin-bottom: 0px;
 
         text-align: center;
@@ -57,9 +57,8 @@ export const InitialPage = styled.div<props>`
             height:auto;
             border: 2px solid black;
             border-radius: 10px;
-    
         }
-    
+
         #text {
             margin-bottom: 0;
             padding-bottom: 40px;
@@ -70,7 +69,6 @@ export const InitialPage = styled.div<props>`
             line-height: 1.8em;
         }
     }
-    
 
     @media screen and (min-width: 800px) {
         padding-left: 15%;
@@ -91,7 +89,4 @@ export const InitialPage = styled.div<props>`
             }
         }
     }
-    
-    
-    
 `

@@ -9,7 +9,7 @@ import Image from 'next/image'
 import InitialImage from '../../public/images/bgImages/InitialIMG.png'
 
 export default function Home() {
-  const theme = useSelector((state: RootState) => state.theme.isDark)
+  const isDark = useSelector((state: RootState) => state.theme.isDark)
   const user = useSelector((state: RootState) => state.user.user)
   const dispatch = useDispatch();
 
@@ -30,7 +30,7 @@ export default function Home() {
 
   return (
     <>
-      <InitialPage theme={theme}>
+      <InitialPage isDark={isDark}>
         <InitionalMenu/>
 
         <h1>YourNote</h1>

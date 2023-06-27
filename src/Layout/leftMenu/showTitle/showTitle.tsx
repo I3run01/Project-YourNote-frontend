@@ -1,8 +1,7 @@
-import { useEffect, useState } from 'react'
+import { useState } from 'react'
 import { MainTitle } from './mainTitleStyle'
 import { useDispatch, useSelector } from 'react-redux'
 import { RootState } from '@/redux/store'
-import { FilesRequest } from '../../../Request/filesRequests'
 import { useRouter } from 'next/router';
 import { changeFileTitle } from '@/redux/slice/filesTitles'
 

@@ -49,10 +49,6 @@ export const NewItem = ({newParagraph, newIDE, newImage, index}:props) => {
                     <div onClick={newIDEChild}>Add a new IDE</div>
                     <div onClick={newImageChild}>Add new a Image</div>
                 </div>
-                
-
-                
-
             </div>
         </NewItemDiv>
     )

@@ -69,8 +69,6 @@ const dashboard = () => {
         if(response.status === 200) {
             return setFileState(response.data)
         }
-
-        alert(response.statusText)
     }
 
     const changeFileParagraph = (paragraphIndex: number, newText: string) => {
@@ -169,6 +167,7 @@ const dashboard = () => {
     }
 
     const addNewImage = (index: number) => {
+        console.log('nem image')
         let newParagraph: ImageContent = {
             type: 'image',
             codeBase64: '',
@@ -191,76 +190,72 @@ const dashboard = () => {
 
     return (
         <>
-            {!isAuth === true && <Loading/>}
-
-            {isAuth &&
-                <Layout
-                    children={
-                        <>
-                            <DashboardFilesDiv isDark={isDark}>
-                                
-                                {fileState?.title && fileState?._id &&
-                                    <Title
-                                        title={fileState.title}
-                                        fileID={fileState._id}
-                                    />
-                                } 
-
-                                {fileState?.content && fileState.content.map((item, index) => {
-                                    return (
-                                        <Fragment key={index}>
-                                            <NewItem
-                                                index={index}
-                                                newParagraph={addNewParagraph}
-                                                newIDE={addNewIDE}
-                                                newImage={addNewImage}
-                                            />
-
-                                            {item.type === 'paragraph' && 
-                                                <div>
-                                                    <MyEditor
-                                                        initialTXT={item.text}
-                                                        index={index}
-                                                        onDataReceived={changeFileParagraph}
-                                                    />
-                                                </div>
-                                            }
-
-                                            {item.type === 'image' && 
-                                                <div className='image'>
-                                                    <ImageInterface
-                                                        src={item.codeBase64}
-                                                        index={index}
-                                                        onDataReceived={changeImage}
-                                                        alt=""
-                                                    />
-                                                </div>
-                                            }
-
-                                            {item.type === 'IDE' && 
-                                                <div className='IDE'>
-                                                    <IDE 
-                                                        defaultValue={item.code} 
-                                                        index={index}
-                                                        onDataReceived={changeFileCode}
-                                                    />
-                                                </div>
-                                            }
-                                        </Fragment>
-                                    )
-                                })}
-
-                                <NewItem
-                                    index={-1}
-                                    newParagraph={addNewParagraph}
-                                    newIDE={addNewIDE}
-                                    newImage={addNewImage}
+            <Layout
+                children={
+                    <>
+                        <DashboardFilesDiv isDark={isDark}>
+                            
+                            {fileState?.title && fileState?._id &&
+                                <Title
+                                    title={fileState.title}
+                                    fileID={fileState._id}
                                 />
-                            </DashboardFilesDiv>
-                        </>
-                    }
-                />
-            }
+                            } 
+
+                            {fileState?.content && fileState.content.map((item, index) => {
+                                return (
+                                    <Fragment key={index}>
+                                        <NewItem
+                                            index={index}
+                                            newParagraph={addNewParagraph}
+                                            newIDE={addNewIDE}
+                                            newImage={addNewImage}
+                                        />
+
+                                        {item.type === 'paragraph' && 
+                                            <div>
+                                                <MyEditor
+                                                    initialTXT={item.text}
+                                                    index={index}
+                                                    onDataReceived={changeFileParagraph}
+                                                />
+                                            </div>
+                                        }
+
+                                        {item.type === 'image' && 
+                                            <div className='image'>
+                                                <ImageInterface
+                                                    src={item.codeBase64}
+                                                    index={index}
+                                                    onDataReceived={changeImage}
+                                                    alt=""
+                                                />
+                                            </div>
+                                        }
+
+                                        {item.type === 'IDE' && 
+                                            <div className='IDE'>
+                                                <IDE 
+                                                    defaultValue={item.code} 
+                                                    index={index}
+                                                    onDataReceived={changeFileCode}
+                                                />
+                                            </div>
+                                        }
+                                    </Fragment>
+                                )
+                            })}
+
+                            <NewItem
+                                index={-1}
+                                newParagraph={addNewParagraph}
+                                newIDE={addNewIDE}
+                                newImage={addNewImage}
+                            />
+                        </DashboardFilesDiv>
+                    </>
+                }
+            />
         </>      
     )
 }

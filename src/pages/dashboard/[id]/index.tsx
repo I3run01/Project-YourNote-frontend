@@ -19,6 +19,7 @@ const dashboard = () => {
     const [fileState, setFileState] = useState<filesType>(
         {id: '', title: '', content: []}
     )
+    const filesTitle = useSelector((state: RootState) => state.filesTitles.files)
     const user = useSelector((state: RootState) => state.user.user)
     const isDark = useSelector((state: RootState) => state.theme.isDark)
     const router = useRouter()
@@ -35,9 +36,13 @@ const dashboard = () => {
 
     useEffect(() => {
         getFileData()
+    }, [id, filesTitle])
 
-        getFileData()
-    }, [id])
+    useEffect(() => {
+        setTimeout(() => {
+            getFileData()
+        }, 50)
+    }, filesTitle)
 
     useEffect(() => {
         console.log(fileState)

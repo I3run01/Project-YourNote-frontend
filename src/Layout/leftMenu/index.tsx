@@ -10,13 +10,14 @@ import Image from 'next/image'
 import { useRouter } from 'next/router';
 import { FilesRequest } from '../../Request/filesRequests'
 import { ShowTilte } from './showTitle/showTitle'
+import {  } from '@/redux/slice/filesTitles'
 
 export const  LeftMenu = () => {
     const isDark = useSelector((state: RootState) => state.theme.isDark)
     const filesTitle = useSelector((state: RootState) => state.filesTitles.files)
     const dispatch = useDispatch();
     const router = useRouter()
-    const [isMenuOpend, setIsMenuOpened] = useState<boolean>(false)
+    const [isMenuOpend, setIsMenuOpened] = useState<boolean>(true)
 
     useEffect(() => {
         request()

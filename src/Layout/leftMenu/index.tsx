@@ -23,10 +23,6 @@ export const  LeftMenu = () => {
         request()
     }, [])
 
-    useEffect(() => {
-        console.log(filesTitle)
-    }, [filesTitle])
-
     const request = async () => {
         let response =  JSON.parse(await new FilesRequest().retrieveFiles())
         dispatch(changeFilesTitles(response.data))

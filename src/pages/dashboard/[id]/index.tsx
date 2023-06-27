@@ -38,13 +38,6 @@ const dashboard = () => {
         getFileData()
     }, [id])
 
-    useEffect(() => {
-        setTimeout(() => {
-            getFileData()
-        }, 50)
-
-        console.log(fileState)
-    }, [filesTitle])
 
     useEffect(() => {
         sendFileState()
@@ -200,7 +193,6 @@ const dashboard = () => {
         });
     }
     
-
     return (
         <>
             <Layout
@@ -210,7 +202,6 @@ const dashboard = () => {
                             
                             {fileState?.title && fileState?._id &&
                                 <Title
-                                    title={fileState.title}
                                     fileID={fileState._id}
                                 />
                             } 

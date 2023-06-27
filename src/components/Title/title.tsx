@@ -1,35 +1,30 @@
 import { useSelector } from 'react-redux'
 import { TitleDiv } from './styled'
 import { RootState } from '@/redux/store'
-import { useEffect, useState } from 'react'
-import { changeFileTitle } from '../../redux/slice/filesTitles'
+import { useEffect } from 'react'
+import { changeFileTitle ,changeSpecTitle } from '../../redux/slice/filesTitles'
 import { useDispatch } from 'react-redux'
 
 type props = {
-    title: string
     fileID: string
 }
 
-export const Title = ({title, fileID}:props) => {
+export const Title = ({fileID}:props) => {
     const isDark = useSelector((state: RootState) => state.theme.isDark)
-    const [newTitle, setNewTitle] = useState<string>(title)
-    const dispatch = useDispatch();
-
+    const title = useSelector((state: RootState) => state.filesTitles)
+    const dispatch = useDispatch() 
+    
     useEffect(() => {
-        setNewTitle(title);
-      }, [title]);
+        dispatch(changeSpecTitle({_id: fileID}))
+    }, [title.files] )
 
-    useEffect(()=>{
-        console.log(fileID)
-        dispatch(changeFileTitle({_id: fileID, newTitle}))
-    },[newTitle])
- 
     return (
         <TitleDiv isDark={isDark}>
             <input 
                 type='text'
-                value={newTitle} 
-                onChange={(event) => {setNewTitle(event.target.value)}}/>
+                value={title.specTitle}
+                onChange={(e) => dispatch(changeFileTitle({_id: fileID, newTitle: e.target.value}))}
+            />
         </TitleDiv>
     )
 }

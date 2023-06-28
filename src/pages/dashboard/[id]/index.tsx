@@ -1,6 +1,7 @@
 import { useEffect, useState, Fragment } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import { RootState } from '@/redux/store'
+import { fetchUser } from '../../../redux/slice/userSlice'
 import { useRouter } from 'next/router';
 import { DashboardFilesDiv } from '../../../styles/dashboardFiles'
 import { Title } from '../../../components/Title/title'
@@ -16,15 +17,20 @@ import { DeleteButton } from '../../../components/deleteButton/deleteButton'
 
 const dashboard = () => {
     const nullFileState =  {_id: '', title: '', content: []}
+    const [isAuth, setIsAuth] = useState<boolean>(false)
     const [fileState, setFileState] = useState<filesType>(nullFileState)
     const user = useSelector((state: RootState) => state.user.user)
     const isDark = useSelector((state: RootState) => state.theme.isDark)
     const router = useRouter()
+    const dispatch = useDispatch();
     const { id } = router.query; 
-    
+
     useEffect(() => {
-        if(user) return
-        router.push('../_middleware')
+        dispatch(fetchUser())
+    }, [])
+
+    useEffect(() => {
+        middleware()
     }, [user])
 
     useEffect(() => {
@@ -47,6 +53,17 @@ const dashboard = () => {
         let json = JSON.parse(response)
 
         if(json.status !== 200) console.log(json.data)
+    }
+
+    const middleware = async () => {
+
+        if(!user) return
+
+        if('data' in user && user.status === 200  && user.data.status === 'Active') {
+            return setIsAuth(true)
+        }
+
+        router.push('/signin')    
     }
 
     const getFileData = async () => {
@@ -89,6 +106,8 @@ const dashboard = () => {
             }
     
             content.code = newCode
+
+            console.log(fileState)
     
             return newState;
         });
@@ -181,77 +200,79 @@ const dashboard = () => {
     }
       
     return (
-        <Layout
-            children={
-                <>
-                    <DashboardFilesDiv isDark={isDark}>
-                        
-                        {fileState?.title && fileState?._id &&
-                            <Title
-                                fileID={fileState._id}
+        <>
+            <Layout
+                children={
+                    <>
+                        <DashboardFilesDiv isDark={isDark}>
+                            
+                            {fileState?.title && fileState?._id &&
+                                <Title
+                                    fileID={fileState._id}
+                                />
+                            } 
+
+                            {fileState?.content && fileState.content.map((item, index) => {
+                                return (
+                                    <Fragment key={index}>
+                                        <NewItem
+                                            index={index}
+                                            newParagraph={addNewParagraph}
+                                            newIDE={addNewIDE}
+                                            newImage={addNewImage}
+                                        />
+                                        <DeleteButton
+                                            index={index}
+                                            deleteFunction={deleteContent}
+
+                                        />
+
+                                        {item.type === 'paragraph' && 
+                                            <div>
+                                                <MyEditor
+                                                    initialTXT={item.text}
+                                                    index={index}
+                                                    onDataReceived={changeFileParagraph}
+                                                />
+                                            </div>
+                                        }
+
+                                        {item.type === 'image' && 
+                                            <div className='image'>
+                                                <ImageInterface
+                                                    src={item.codeBase64}
+                                                    index={index}
+                                                    onDataReceived={changeImage}
+                                                    alt=""
+                                                />
+                                            </div>
+                                        }
+
+                                        {item.type === 'IDE' && 
+                                            <div className='IDE'>
+                                                <IDE 
+                                                    defaultValue={item.code} 
+                                                    index={index}
+                                                    onDataReceived={changeFileCode}
+                                                />
+                                            </div>
+                                        }
+                                    </Fragment>
+                                )
+                            })}
+
+                            <NewItem
+                                index={-1}
+                                newParagraph={addNewParagraph}
+                                newIDE={addNewIDE}
+                                newImage={addNewImage}
+                                lastItem={true}
                             />
-                        } 
-
-                        {fileState?.content && fileState.content.map((item, index) => {
-                            return (
-                                <Fragment key={index}>
-                                    <NewItem
-                                        index={index}
-                                        newParagraph={addNewParagraph}
-                                        newIDE={addNewIDE}
-                                        newImage={addNewImage}
-                                    />
-                                    <DeleteButton
-                                        index={index}
-                                        deleteFunction={deleteContent}
-
-                                    />
-
-                                    {item.type === 'paragraph' && 
-                                        <div>
-                                            <MyEditor
-                                                initialTXT={item.text}
-                                                index={index}
-                                                onDataReceived={changeFileParagraph}
-                                            />
-                                        </div>
-                                    }
-
-                                    {item.type === 'image' && 
-                                        <div className='image'>
-                                            <ImageInterface
-                                                src={item.codeBase64}
-                                                index={index}
-                                                onDataReceived={changeImage}
-                                                alt=""
-                                            />
-                                        </div>
-                                    }
-
-                                    {item.type === 'IDE' && 
-                                        <div className='IDE'>
-                                            <IDE 
-                                                defaultValue={item.code} 
-                                                index={index}
-                                                onDataReceived={changeFileCode}
-                                            />
-                                        </div>
-                                    }
-                                </Fragment>
-                            )
-                        })}
-
-                        <NewItem
-                            index={-1}
-                            newParagraph={addNewParagraph}
-                            newIDE={addNewIDE}
-                            newImage={addNewImage}
-                            lastItem={true}
-                        />
-                    </DashboardFilesDiv>
-                </>
-            }
-        />     
+                        </DashboardFilesDiv>
+                    </>
+                }
+            />
+        </>      
     )
 }
 

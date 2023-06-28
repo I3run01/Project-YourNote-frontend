@@ -13,7 +13,6 @@ import { ShowTilte } from './showTitle/showTitle'
 
 export const  LeftMenu = () => {
     const isDark = useSelector((state: RootState) => state.theme.isDark)
-    const user = useSelector((state: RootState) => state.user.user)
     const filesTitle = useSelector((state: RootState) => state.filesTitles.files)
     const dispatch = useDispatch();
     const router = useRouter()
@@ -24,28 +23,21 @@ export const  LeftMenu = () => {
     }, [])
 
     const request = async () => {
-        if(!user) return
-
         let response =  JSON.parse(await new FilesRequest().retrieveFiles())
         dispatch(changeFilesTitles(response.data))
     }
 
     const deleteFile = async (fileID: string) => {
         const isUserConfirmed = window.confirm("Are you sure you want to delete this file?");
-
-        if(!isUserConfirmed) return
         
-        let response = JSON.parse(await new FilesRequest().deleteFile(fileID))
+        if(isUserConfirmed){
+            let response = JSON.parse(await new FilesRequest().deleteFile(fileID))
 
-        dispatch(deleteFileInTheList(fileID))
+            dispatch(deleteFileInTheList(fileID))
 
-        router.push('../dashboard')
-
-        if(response.status == 200) return
-
-        if(response.data.message) alert(response.data.message)
-
-        alert(response.message)
+            router.push('../dashboard')
+        }
+        return
     }
 
     const handldeNewButton = async () =>{

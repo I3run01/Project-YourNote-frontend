@@ -10,7 +10,6 @@ import Image from 'next/image'
 import { useRouter } from 'next/router';
 import { FilesRequest } from '../../Request/filesRequests'
 import { ShowTilte } from './showTitle/showTitle'
-import {  } from '@/redux/slice/filesTitles'
 
 export const  LeftMenu = () => {
     const isDark = useSelector((state: RootState) => state.theme.isDark)
@@ -35,6 +34,8 @@ export const  LeftMenu = () => {
             let response = JSON.parse(await new FilesRequest().deleteFile(fileID))
 
             dispatch(deleteFileInTheList(fileID))
+
+            router.push('../dashboard')
         }
         return
     }

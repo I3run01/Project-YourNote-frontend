@@ -15,8 +15,6 @@ export const ImageDiv = styled.div<props>`
 
     width: ${props => props.isZoom ? '100%' : '55vw'};
     transition: all 0.5s ease-in-out;
-
-    padding-bottom: 50px;
    
     .changeImage {
         width: fit-content;
@@ -24,8 +22,6 @@ export const ImageDiv = styled.div<props>`
         display: flex;
         justify-content: flex-start;
         align-items: center;
-
-        margin-bottom: 5px;
 
         height: 40px;
 
@@ -41,7 +37,6 @@ export const ImageDiv = styled.div<props>`
         }
 
         #icon {
-
             width: 40px;
             height: 30px;
 

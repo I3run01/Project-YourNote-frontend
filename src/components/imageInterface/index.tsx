@@ -20,10 +20,8 @@ export const ImageInterface = ({src, alt, index, onDataReceived}: Props) => {
     const handleChangeImage = (event: React.ChangeEvent<HTMLInputElement>) => {
         const file = event.target.files ? event.target.files[0] : null;
         if (file) {
-            // Check if file is an image
             const validImageTypes = ['image/gif', 'image/jpeg', 'image/png', 'image/svg'];
             if (!validImageTypes.includes(file.type)) {
-                // If the file is not an image, show an alert and do not continue
                 alert("Only image files are allowed");
                 return;
             }
@@ -58,7 +56,7 @@ export const ImageInterface = ({src, alt, index, onDataReceived}: Props) => {
                     </div>
                 </div>
             </div>
-            <img src={imageSrc} alt={alt} 
+            <img src={imageSrc ? imageSrc : "/images/nullImage.png" } alt={alt} 
                 className='mainImage' 
                 onClick={() => setIdZoom(!isZoom)}
             />

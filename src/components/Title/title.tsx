@@ -12,11 +12,11 @@ type props = {
 export const Title = ({fileID}:props) => {
     const isDark = useSelector((state: RootState) => state.theme.isDark)
     const title = useSelector((state: RootState) => state.filesTitles)
-    const dispatch = useDispatch() 
+    const dispatch = useDispatch()
     
     useEffect(() => {
         dispatch(changeSpecTitle({_id: fileID}))
-    }, [title.files] )
+    }, [title.files, fileID] )
 
     return (
         <TitleDiv isDark={isDark}>

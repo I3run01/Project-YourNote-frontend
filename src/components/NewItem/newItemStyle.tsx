@@ -3,6 +3,7 @@ import styled from "styled-components";
 type props = {
     isDark: boolean
     showItensButton: boolean
+    lastItem?: boolean
 }
 
 const fontColorDark = '#ececec'
@@ -16,15 +17,25 @@ export const NewItemDiv = styled.div<props>`
     justify-content: start;
     align-items: center;
 
-    height: ${props => props.showItensButton ? '120px' : '30px'};
+    height: ${props => props.showItensButton ? '150px' : '45px'};
 
     overflow: hidden;
     
     transition: height 0.5s ease-in-out;
+    background-color: ${props => props.lastItem ? "#2dce2d52" : "#2dce2d0"};
+
+    :hover {
+        background-color: #2dce2d52;
+        transition: all .3s ease-in-out;
+
+        .addNewItem {
+            opacity: 100%;
+        }
+    }
 
     * {
         color: ${props => props.isDark ? fontColorDark : fontColorLight};
-        font-size: 18px;
+        font-size: 16px;
         font-family: 'Dosis';
         transition: all 0.5s ease-in-out;
     }
@@ -35,16 +46,26 @@ export const NewItemDiv = styled.div<props>`
         justify-content: center;
         align-items: center;
 
+        opacity: ${props => props.lastItem ? "100%" : "0%"};
 
+        .addNewItemButton {
+            height: 40px;
+            width: 40px;
+            padding: 2px;
+            
+            display: flex;
+            justify-content: center;
+            align-items: center;
 
-        img {
             :hover {
-                cursor: pointer;
+                    cursor: pointer;
             }
-            padding: 5px;
-            height: 25px;
-            filter: ${props => props.isDark ? "invert(0)" : "invert(1)"};
-        }
+
+            img {
+                height: 20px;
+                filter: ${props => props.isDark ? "invert(0)" : "invert(1)"};
+            }
+        } 
     }
 
     .chooseItemContainer {

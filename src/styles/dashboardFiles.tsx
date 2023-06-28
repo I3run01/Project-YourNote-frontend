@@ -16,7 +16,6 @@ export const DashboardFilesDiv = styled.div<props>`
     
     text-align: center;
 
-
     h1 {
         text-align: center;
         font-size: 24px;

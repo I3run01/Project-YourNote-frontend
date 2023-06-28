@@ -3,7 +3,6 @@ import { useSelector, useDispatch } from 'react-redux'
 import { RootState } from '@/redux/store'
 import { fetchUser } from '../../../redux/slice/userSlice'
 import { useRouter } from 'next/router';
-import { Loading } from '../../../components/loading'
 import { DashboardFilesDiv } from '../../../styles/dashboardFiles'
 import { Title } from '../../../components/Title/title'
 import IDE from '../../../components/IDE'
@@ -14,12 +13,12 @@ import { filesType } from '@/types/files'
 import { FilesRequest } from '../../../Request/filesRequests'
 import { NewItem } from '../../../components/NewItem/newItem'
 import { ParagraphContent, IDEContent, ImageContent } from '@/types/files'
+import { DeleteButton } from '../../../components/deleteButton/deleteButton'
 
 const dashboard = () => {
     const nullFileState =  {_id: '', title: '', content: []}
     const [isAuth, setIsAuth] = useState<boolean>(false)
     const [fileState, setFileState] = useState<filesType>(nullFileState)
-    const filesTitle = useSelector((state: RootState) => state.filesTitles.files)
     const user = useSelector((state: RootState) => state.user.user)
     const isDark = useSelector((state: RootState) => state.theme.isDark)
     const router = useRouter()
@@ -192,6 +191,15 @@ const dashboard = () => {
             return newState;
         });
     }
+
+    const deleteContent = (index: number) => {
+        const newFileState = { ...fileState };
+    
+        newFileState.content.splice(index, 1);
+      
+        setFileState(newFileState);
+    }
+      
     
     return (
         <>
@@ -214,6 +222,11 @@ const dashboard = () => {
                                             newParagraph={addNewParagraph}
                                             newIDE={addNewIDE}
                                             newImage={addNewImage}
+                                        />
+                                        <DeleteButton
+                                            index={index}
+                                            deleteFunction={deleteContent}
+
                                         />
 
                                         {item.type === 'paragraph' && 
@@ -255,6 +268,7 @@ const dashboard = () => {
                                 newParagraph={addNewParagraph}
                                 newIDE={addNewIDE}
                                 newImage={addNewImage}
+                                lastItem={true}
                             />
                         </DashboardFilesDiv>
                     </>

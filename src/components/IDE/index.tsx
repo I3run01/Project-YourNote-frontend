@@ -1,11 +1,8 @@
-import React, { useRef, useState } from 'react';
-
+import React, { useEffect, useRef, useState } from 'react';
 import { IdeDiv } from './styled'
-
 import Editor from '@monaco-editor/react';
 import { editor as EditorType } from 'monaco-editor';
-
-import { useSelector, useDispatch } from 'react-redux';
+import { useSelector } from 'react-redux';
 import { RootState } from '@/redux/store';
 
 type props = {
@@ -16,29 +13,28 @@ type props = {
 
 const CodeInputComponent = ({defaultValue, index, onDataReceived}: props) => {
   const editorRef = useRef<EditorType.IStandaloneCodeEditor | null>(null);
-
-  const theme = useSelector((state: RootState) => state.theme)
-
+  const isDark = useSelector((state: RootState) => state.theme.isDark)
   const [lines, setLines] = useState<number>(1)
 
-  const handleEditorDidMount = (editor: EditorType.IStandaloneCodeEditor,) => {
+  const handleEditorDidMount = (editor: EditorType.IStandaloneCodeEditor) => {
     editorRef.current = editor;
-
-    editor.onDidChangeModelContent(() => {
-      const model = editor.getModel();
-      
+  
+    const processModel = (model: EditorType.ITextModel | null) => {
       if (model) {
-        let codeValue = model.getValue()
-        let numbersLine = model.getLineCount()
-
-        setLines(numbersLine)
-
-        onDataReceived(index, codeValue)
+        const codeValue = model.getValue();
+        const lineCount = model.getLineCount();
+        setLines(lineCount);
+        onDataReceived(index, codeValue);
       }
-    });
+    };
 
-    
+    processModel(editor.getModel());
+  
+    editor.onDidChangeModelContent(() => {
+      processModel(editor.getModel());
+    });
   };
+  
 
   return (
     <IdeDiv>
@@ -46,11 +42,11 @@ const CodeInputComponent = ({defaultValue, index, onDataReceived}: props) => {
         className="customEditor"
         height={`${lines*23 + 25}px`}
         width='55vw'
-        defaultLanguage="javascript"
+        defaultLanguage="python"
         defaultValue={defaultValue}
         onMount={handleEditorDidMount}
         options={{
-          theme: theme.isDark ? 'vs-dark' : 'vs',
+          theme: isDark ? 'vs-dark' : 'vs',
           scrollBeyondLastLine: false,
           padding: { top: 10 },
           fontSize: 16,

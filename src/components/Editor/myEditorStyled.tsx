@@ -31,7 +31,7 @@ export const MyEditorContainer = styled.div<props>`
     }
 
     .public-DraftEditor-content {       
-        min-height: 200px;
+        min-height: 30px;
 
         border: 1px solid #0000;
 

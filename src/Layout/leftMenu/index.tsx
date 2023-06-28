@@ -32,15 +32,20 @@ export const  LeftMenu = () => {
 
     const deleteFile = async (fileID: string) => {
         const isUserConfirmed = window.confirm("Are you sure you want to delete this file?");
+
+        if(!isUserConfirmed) return
         
-        if(isUserConfirmed){
-            let response = JSON.parse(await new FilesRequest().deleteFile(fileID))
+        let response = JSON.parse(await new FilesRequest().deleteFile(fileID))
 
-            dispatch(deleteFileInTheList(fileID))
+        dispatch(deleteFileInTheList(fileID))
 
-            router.push('../dashboard')
-        }
-        return
+        router.push('../dashboard')
+
+        if(response.status == 200) return
+
+        if(response.data.message) alert(response.data.message)
+
+        alert(response.message)
     }
 
     const handldeNewButton = async () =>{

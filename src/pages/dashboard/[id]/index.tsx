@@ -89,8 +89,6 @@ const dashboard = () => {
             }
     
             content.code = newCode
-
-            console.log(fileState)
     
             return newState;
         });

@@ -1,4 +1,4 @@
-import { SignInStyled } from '../../styles/signIn'
+import { SigninDiv } from '../../styles/Signin.module'
 import { useState } from 'react'
 import { Auth } from '../../Auth/request'
 import { useRouter } from 'next/router';
@@ -42,7 +42,7 @@ const SignIn = () => {
         <>
             {isLoading === true && <Loading/>}
         
-            <SignInStyled>
+            <SigninDiv>
                 <form id='container'>
                     <Link href={'/'} className='backButton'>
                         <Image
@@ -63,7 +63,7 @@ const SignIn = () => {
                     
                     <GoogleButton/>
                 </form>
-            </SignInStyled>
+            </SigninDiv>
         </>
     )
 }

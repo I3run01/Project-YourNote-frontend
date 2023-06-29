@@ -1,4 +1,4 @@
-import { ResetPasswordDiv } from '../../../styles/reset-password'
+import { ResetPasswordDiv } from '../../../styles/Reset-password.module'
 import { useEffect, useState } from 'react'
 import { Auth } from '../../../Auth/request'
 import { Loading } from '../../../components/loading'

@@ -1,4 +1,4 @@
-import { SignUpStyled } from '../../styles/signUp'
+import { SignupDiv } from '../../styles/Signup.module'
 import { Auth } from '../../Auth/request'
 import { useEffect, useState } from 'react'
 import { GoogleButton } from '../../components/googlesButton'
@@ -56,7 +56,7 @@ const SignUp = () => {
         <>
             {isLoading && <Loading/>}
 
-            <SignUpStyled
+            <SignupDiv
                 correctEmail={corretEmail}
                 mathPassword={mathPassword}
             >
@@ -85,7 +85,7 @@ const SignUp = () => {
                     <GoogleButton/>
 
                 </form>
-            </SignUpStyled>
+            </SignupDiv>
         </>
     )
 }

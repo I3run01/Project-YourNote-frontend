@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react'
-import { EmailConfirmationToken } from '../../../styles/emailConfirmationToken'
+import { EmailConfirmationTokenDiv } from '../../../styles/EmailConfirmationToken.module'
 import { Auth } from '../../../Auth/request'
 import { useRouter } from 'next/router'
 import { useDispatch } from 'react-redux'
@@ -50,7 +50,7 @@ const EmailConfirmation = () => {
         <>
             {isLoading && <Loading/>}
 
-            <EmailConfirmationToken>
+            <EmailConfirmationTokenDiv>
                 <div id='container'>
                     <p>
                         Just relax 😎<br />
@@ -58,7 +58,7 @@ const EmailConfirmation = () => {
                     </p>
 
                 </div>
-            </EmailConfirmationToken>
+            </EmailConfirmationTokenDiv>
         </>
     )
 }

@@ -1,7 +1,7 @@
 import { useEffect } from 'react'
 import { useSelector } from 'react-redux'
 import { RootState } from '@/redux/store'
-import { DashboardDiv } from '../../styles/dashboardDiv'
+import { DashboardDiv } from '../../styles/Dashboard.module'
 import { useRouter } from 'next/router';
 import Layout from '../../Layout/layout'
 

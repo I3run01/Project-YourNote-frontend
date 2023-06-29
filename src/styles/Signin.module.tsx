@@ -1,11 +1,6 @@
 import styled from "styled-components";
 
-type props = {
-    correctEmail: boolean
-    mathPassword: boolean
-}
-
-export const SignUpStyled = styled.div<props>`
+export const SigninDiv = styled.div`
     @import url('https://fonts.googleapis.com/css2?family=Dosis:wght@700&display=swap');
 
     * {
@@ -27,6 +22,7 @@ export const SignUpStyled = styled.div<props>`
     #container {
         display: flex;
         flex-direction: column;
+        background-color: blue;
 
         padding: 40px;
         border-radius: 10px;
@@ -53,25 +49,18 @@ export const SignUpStyled = styled.div<props>`
         input {
             border: none;
             border-bottom: 1px solid black;
-            margin-bottom: 0px;
+            margin-bottom: 20px;
 
             padding: 5px;
 
             background: none;
         }
 
-        .corretEmail, .mathPassword {
-            margin-top: 0;
-            margin-bottom: 20px;
-            font-size: 12px;
-        }
-
-        .corretEmail {
-            color: ${props => props.correctEmail? 'green' : 'red'};
-        }
-
-        .mathPassword {
-            color: ${props => props.mathPassword ? 'green' : 'red'};
+        #forgetPassword {
+            :hover {
+                cursor: pointer;
+                color: blue;
+            }
         }
 
         #GooglesLogin {
@@ -93,6 +82,8 @@ export const SignUpStyled = styled.div<props>`
                 cursor: pointer;
                 background-color: #f3f3f3;
             }
+
+
         }
 
         #submit {

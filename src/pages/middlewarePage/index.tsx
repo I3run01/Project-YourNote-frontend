@@ -3,7 +3,7 @@ import { useSelector, useDispatch } from 'react-redux'
 import { useEffect } from 'react'
 import { useRouter } from 'next/router';
 import { RootState } from '@/redux/store'
-import { MiddlewareStyled } from '../../styles/middlewarePage.module'
+import { MiddlewareStyled } from '../../styles/MiddlewarePage.module'
 import { Loading } from '../../components/loading'
 
 const middlewarePage = () => {

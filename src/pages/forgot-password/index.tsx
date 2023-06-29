@@ -1,4 +1,4 @@
-import { SignInStyled } from '../../styles/signIn'
+import { SignInStyled } from '../../styles/Signin.module'
 import { useState } from 'react'
 import { Auth } from '../../Auth/request'
 import { Loading } from '../../components/loading'

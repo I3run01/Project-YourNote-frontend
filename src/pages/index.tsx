@@ -1,4 +1,4 @@
-import { InitialPage } from '../styles/initialPage'
+import { IndexDiv } from '../styles/Index.module'
 import { InitionalMenu } from '../components/initialMenu'
 import { RootState } from '@/redux/store'
 import { Auth } from '../Auth/request'
@@ -30,7 +30,7 @@ export default function Home() {
 
   return (
     <>
-      <InitialPage isDark={isDark}>
+      <IndexDiv isDark={isDark}>
         <InitionalMenu/>
 
         <h1>YourNote</h1>
@@ -56,7 +56,7 @@ export default function Home() {
         </div>
 
 
-      </InitialPage>
+      </IndexDiv>
     </>
   )
 }

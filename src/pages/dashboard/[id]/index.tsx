@@ -2,7 +2,7 @@ import { useEffect, useState, Fragment } from 'react'
 import { useSelector } from 'react-redux'
 import { RootState } from '@/redux/store'
 import { useRouter } from 'next/router';
-import { DashboardFilesDiv } from '../../../styles/dashboardFiles'
+import { DashboardIdDiv } from '../../../styles/DashboardId.module'
 import { Title } from '../../../components/Title/title'
 import IDE from '../../../components/IDE'
 import Layout from '../../../Layout/layout'
@@ -185,7 +185,7 @@ const dashboard = () => {
         <Layout
             children={
                 <>
-                    <DashboardFilesDiv isDark={isDark}>
+                    <DashboardIdDiv isDark={isDark}>
                         
                         {fileState?.title && fileState?._id &&
                             <Title
@@ -249,7 +249,7 @@ const dashboard = () => {
                             newImage={addNewImage}
                             lastItem={true}
                         />
-                    </DashboardFilesDiv>
+                    </DashboardIdDiv>
                 </>
             }
         />      

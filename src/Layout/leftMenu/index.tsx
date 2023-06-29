@@ -14,6 +14,7 @@ import { ShowTilte } from './showTitle/showTitle'
 export const  LeftMenu = () => {
     const isDark = useSelector((state: RootState) => state.theme.isDark)
     const filesTitle = useSelector((state: RootState) => state.filesTitles.files)
+    const user = useSelector((state: RootState) => state.user.user)
     const dispatch = useDispatch();
     const router = useRouter()
     const [isMenuOpend, setIsMenuOpened] = useState<boolean>(true)
@@ -23,6 +24,8 @@ export const  LeftMenu = () => {
     }, [])
 
     const request = async () => {
+        if(!user) return
+
         let response =  JSON.parse(await new FilesRequest().retrieveFiles())
         dispatch(changeFilesTitles(response.data))
     }

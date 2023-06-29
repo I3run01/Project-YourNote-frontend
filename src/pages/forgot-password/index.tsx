@@ -1,4 +1,4 @@
-import { SignInStyled } from '../../styles/Signin.module'
+import { ForgotPasswordDiv } from '../../styles//Forgot-password.module'
 import { useState } from 'react'
 import { Auth } from '../../Auth/request'
 import { Loading } from '../../components/loading'
@@ -29,7 +29,7 @@ const SignIn = () => {
         <>
             {isLoading === true && <Loading/>}
         
-            <SignInStyled>
+            <ForgotPasswordDiv>
                 <form id='container'>
                     <Link href={'/signin'} className='backButton'>
                         <Image
@@ -43,7 +43,7 @@ const SignIn = () => {
 
                     <div id='submit' onClick={signinRequest}>Submit</div>
                 </form>
-            </SignInStyled>
+            </ForgotPasswordDiv>
         </>
     )
 }

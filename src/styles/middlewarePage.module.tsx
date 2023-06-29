@@ -7,7 +7,7 @@ type props = {
     isDark: boolean
 }
 
-export const MiddlewareStyled = styled.div<props>`
+export const MiddlewarePageDiv = styled.div<props>`
     position: absolute;
     
     top: 0;

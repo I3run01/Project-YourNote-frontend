@@ -4,6 +4,7 @@ import { RightMenu } from './rightMenu'
 import { useSelector } from 'react-redux'
 import { RootState } from '@/redux/store'
 import { LayoutStyled, MainStyled } from './layoutStyled'
+import { BackgroundNull } from '../components/backgroundNull/backgroundNull'
 
 type props = {
     children: ReactElement
@@ -11,19 +12,18 @@ type props = {
 
 const Layout = ({children}: props) => {
     const isDark = useSelector((state: RootState) => state.theme.isDark)
+    const user = useSelector((state: RootState) => state.user.user)
 
     return (
-        <>
-            <LayoutStyled>
-                <LeftMenu/>
-                
-                <MainStyled id="main" isDark={isDark}>
-                    {children}
-                </MainStyled>
+        <LayoutStyled>
+            <LeftMenu/>
+            
+            <MainStyled id="main" isDark={isDark}>
+                {children}
+            </MainStyled>
 
-                <RightMenu/>
-            </LayoutStyled>
-        </>
+            <RightMenu/>
+        </LayoutStyled>
     )
 }
 

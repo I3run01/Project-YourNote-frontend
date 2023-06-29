@@ -23,7 +23,7 @@ const dashboard = () => {
     const { id } = router.query;
 
     useEffect(() => {
-        if(!user) router.push('./middlewarePage')
+        if(!user) router.push('../middlewarePage')
     }, [])
 
     useEffect(() => {

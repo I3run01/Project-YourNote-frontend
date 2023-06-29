@@ -1,4 +1,4 @@
-const _middleware = () => {
+const middlewarePage = () => {
 
     return (
         <div>
@@ -7,4 +7,4 @@ const _middleware = () => {
     )
 }
 
-export default _middleware
+export default middlewarePage

@@ -3,7 +3,7 @@ import { useSelector, useDispatch } from 'react-redux'
 import { useEffect } from 'react'
 import { useRouter } from 'next/router';
 import { RootState } from '@/redux/store'
-import { MiddlewarePageDiv } from '../../styles/MiddlewarePage.module'
+// import { MiddlewarePageDiv } from '../../styles/MiddlewarePage.module'
 import { Loading } from '../../components/loading'
 
 const middlewarePage = () => {
@@ -32,11 +32,11 @@ const middlewarePage = () => {
     }, [user])
 
     return (
-            <MiddlewarePageDiv
-                isDark={isDark}
+            <div
+                // isDark={isDark}
             >
                 <Loading/>
-            </MiddlewarePageDiv>
+            </div>
     )
 }
 

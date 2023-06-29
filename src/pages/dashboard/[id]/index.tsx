@@ -15,8 +15,7 @@ import { ParagraphContent, IDEContent, ImageContent } from '@/types/files'
 import { DeleteButton } from '../../../components/deleteButton/deleteButton'
 
 const dashboard = () => {
-    const nullFileState =  {_id: '', title: '', content: []}
-    const [fileState, setFileState] = useState<filesType>(nullFileState)
+    const [fileState, setFileState] = useState<filesType | null>(null)
     const user = useSelector((state: RootState) => state.user.user)
     const isDark = useSelector((state: RootState) => state.theme.isDark)
     const router = useRouter()
@@ -32,6 +31,7 @@ const dashboard = () => {
 
 
     useEffect(() => {
+        if(fileState === null) return
         sendFileState()
     }, [fileState])
 
@@ -61,6 +61,8 @@ const dashboard = () => {
     const changeFileParagraph = (paragraphIndex: number, newText: string) => {
       
         setFileState(prevState => {
+            if (prevState === null) return null;
+
             const newState = {...prevState};
     
             const content = newState?.content[paragraphIndex];
@@ -79,8 +81,10 @@ const dashboard = () => {
     const changeFileCode = (Index: number, newCode: string) => {
       
         setFileState(prevState => {
+            if (prevState === null) return null;
+
             const newState = {...prevState};
-    
+            
             const content = newState?.content[Index];
             if (!content || content.type !== 'IDE') {
                 console.error(`Content at index ${Index} is not a programming code`);
@@ -98,6 +102,8 @@ const dashboard = () => {
 
     const changeImage = (Index: number, imageCode64: string) => {
         setFileState(prevState => {
+            if (prevState === null) return null;
+
             const newState = {...prevState};
     
             const content = newState?.content[Index];
@@ -119,6 +125,8 @@ const dashboard = () => {
         }
     
         setFileState(prevState => {
+            if (prevState === null) return null;
+
             const newState = {...prevState};
     
         if(index !== -1) {
@@ -140,6 +148,8 @@ const dashboard = () => {
         }
     
         setFileState(prevState => {
+            if (prevState === null) return null;
+
             const newState = {...prevState};
     
          if(index !== -1) {
@@ -160,6 +170,8 @@ const dashboard = () => {
         }
     
         setFileState(prevState => {
+            if (prevState === null) return null;
+            
             const newState = {...prevState};
     
             if(index !== -1) {
@@ -174,14 +186,18 @@ const dashboard = () => {
     }
 
     const deleteContent = (index: number) => {
+        if (!fileState || !fileState.content || !fileState._id) {
+            return;
+        }
+    
         const newFileState = { ...fileState };
     
         newFileState.content.splice(index, 1);
-      
+    
         setFileState(newFileState);
-    }
+    };
       
-    return (  
+    return (
         <Layout
             children={
                 <>
@@ -252,7 +268,7 @@ const dashboard = () => {
                     </DashboardIdDiv>
                 </>
             }
-        />      
+        />  
     )
 }
 

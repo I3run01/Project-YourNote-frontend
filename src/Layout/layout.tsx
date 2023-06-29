@@ -4,7 +4,6 @@ import { RightMenu } from './rightMenu'
 import { useSelector } from 'react-redux'
 import { RootState } from '@/redux/store'
 import { LayoutStyled, MainStyled } from './layoutStyled'
-import { BackgroundNull } from '../components/backgroundNull/backgroundNull'
 
 type props = {
     children: ReactElement

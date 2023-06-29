@@ -14,5 +14,8 @@ export const LayoutStyled = styled.div`
 
 export const MainStyled = styled.main<props>`
     width: 100%;
+
+    min-height: 100vh;
+    overflow-y: auto;
     background-color: ${props => props.isDark ? '#0f0f0f' : '#cfcfcf'};
 `

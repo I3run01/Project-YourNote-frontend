@@ -11,9 +11,6 @@ export const DashboardIdDiv = styled.div<props>`
     @import url('https://fonts.googleapis.com/css2?family=Dosis:wght@700&display=swap');
     @import url('https://fonts.googleapis.com/css2?family=Merriweather:wght@300&display=swap');
     
-    height: 100vh;
-    overflow-y: auto;
-    
     text-align: center;
 
     h1 {

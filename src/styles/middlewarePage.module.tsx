@@ -7,7 +7,8 @@ type props = {
     isDark: boolean
 }
 
-export const MiddlewarePageDiv = styled.div<props>`
+export const MidDiv = styled.div<props>`
+    
     position: absolute;
     
     top: 0;
@@ -16,4 +17,5 @@ export const MiddlewarePageDiv = styled.div<props>`
     left: 0;
 
     background-color: ${props => props.isDark ? darkBackGroundColor : lightBackGroundColor};
+
 `

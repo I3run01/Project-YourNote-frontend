@@ -3,8 +3,7 @@ import { useSelector, useDispatch } from 'react-redux'
 import { useEffect } from 'react'
 import { useRouter } from 'next/router';
 import { RootState } from '@/redux/store'
-// import { MiddlewarePageDiv } from '../../styles/MiddlewarePage.module'
-import { MidDiv } from '../../styles/Mid.module'
+import { MidDiv } from '../../styles/MiddlewarePage.module'
 import { Loading } from '../../components/loading'
 
 const middlewarePage = () => {

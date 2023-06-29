@@ -15,9 +15,6 @@ const textDarkFont = '#FFFFFF'
 const darkGreenTheme = '#01EF80'
 
 export const IndexDiv = styled.div<Props>`
-    @import url('https://fonts.googleapis.com/css2?family=Merriweather:wght@300&display=swap');
-    @import url('https://fonts.googleapis.com/css2?family=Dosis:wght@700&display=swap');
-
     padding-left: 15px;
     padding-right: 15px;
 
@@ -29,7 +26,7 @@ export const IndexDiv = styled.div<Props>`
 
     h1 {
         padding-top: 80px;
-        font-family: 'Dosis';
+        font-family: 'Dosis', sans-serif;
         font-size: 36px;
         font-weight: 400;
         color: ${props => props.isDark ? darkGreenTheme : lightGreenTheme};

@@ -19,6 +19,9 @@ export const DashboardDiv = styled.div<props>`
 
     height: 100vh;
 
+    width: 100%;
+
+
     h1 {
         text-align: center;
         color: ${props => props.isDark ? fontColorDark : fontColorLight};

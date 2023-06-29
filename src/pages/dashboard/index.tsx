@@ -17,11 +17,9 @@ const dashboard = () => {
     return (
         <Layout
             children={
-                <>
-                    <DashboardDiv isDark={isDark}>
-                        <h1> Create or select some file</h1>    
-                    </DashboardDiv>
-                </>
+                <DashboardDiv isDark={isDark}>
+                    <h1> Create or select some file</h1>    
+                </DashboardDiv>
             }
         />   
     )

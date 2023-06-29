@@ -24,6 +24,8 @@ export const NewItemDiv = styled.div<props>`
     transition: height 0.5s ease-in-out;
     background-color: ${props => props.lastItem ? "#2dce2d52" : "#2dce2d0"};
 
+    margin-bottom: ${props => props.lastItem ? '20px' : '0px'};
+
     :hover {
         background-color: #2dce2d52;
         transition: all .3s ease-in-out;

@@ -22,6 +22,7 @@ export const Title = ({fileID}:props) => {
         <TitleDiv isDark={isDark}>
             <input 
                 type='text'
+                id='input_Title'
                 value={title.specTitle}
                 onChange={(e) => dispatch(changeFileTitle({_id: fileID, newTitle: e.target.value}))}
             />

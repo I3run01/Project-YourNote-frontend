@@ -36,11 +36,10 @@ const SignUp = () => {
 
         try {
             let response = JSON.parse(await new Auth().signUp(email, password))
-            if (response.status == 200) {
-                alert('A link was sent in your email to verify your account')
-            }
-
-            return setIsLoanding(false)
+            
+            setIsLoanding(false)
+            
+            return alert('A link was sent in your email to verify your account')
         } catch (err: any) {
             setIsLoanding(false)
 

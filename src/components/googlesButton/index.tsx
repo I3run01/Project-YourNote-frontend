@@ -27,29 +27,24 @@ export const GoogleButton = () => {
 
     const userRequest = async () => {
         if(!user) return
-
+        
         setIsLoanding(true)
+        try {
+            let response = JSON.parse(await new Auth().googleSignIn(user.access_token))
+            
+            setIsLoanding(false)
 
-        let response = JSON.parse(await new Auth().googleSignIn(user.access_token))
-
-        setIsLoanding(false)
-        
-        if(response.status == 200) {
-            dispatch(changeUser(response))
             return router.push('/')
-        }
+        } catch (err: any) {
+            if (err.data?.message) return alert(err.data?.message)
 
-        else if (response.message) return alert(response.message)
+            else if (err.message) return alert(err.message)
 
-        else if (response.data && response.data.message) {
-            return alert(response.data.message)
-        }
-        
-        alert('something wrong happened')
+            alert('something wrong happened')
+
+        }     
     }
 
-    
- 
     return (
         <>
             {isLoading && <Loading/>}

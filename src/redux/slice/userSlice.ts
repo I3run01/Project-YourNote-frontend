@@ -4,10 +4,12 @@ import { userType } from '../../types/user'
 
 export interface userState {
   user: userType | null
+  requestState: number
 }
 
 const initialState: userState = {
     user: null,
+    requestState: 0
 }
 
 export const userSlice = createSlice({
@@ -15,12 +17,15 @@ export const userSlice = createSlice({
   initialState,
   reducers: {
     fetchUser: state => { console.log('fetchUser') },
-    changeUser: (state, action: PayloadAction<userType>) => {
+    changeUser: (state, action: PayloadAction<userType | null>) => {
       state.user = action.payload
+    },
+    incrementRequestState: (state) => {
+      state.requestState += 1;
     },
   },
 })
 
-export const { changeUser, fetchUser } = userSlice.actions
+export const { changeUser, fetchUser, incrementRequestState } = userSlice.actions
 
 export default userSlice.reducer

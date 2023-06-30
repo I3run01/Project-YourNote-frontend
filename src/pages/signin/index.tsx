@@ -3,8 +3,6 @@ import { useState } from 'react'
 import { Auth } from '../../Auth/request'
 import { useRouter } from 'next/router';
 import { GoogleButton } from '../../components/googlesButton'
-import { useDispatch } from 'react-redux'
-import { changeUser } from '../../redux/slice/userSlice';
 import { Loading } from '../../components/loading'
 import Link from 'next/link'
 import Image from 'next/image'
@@ -15,27 +13,24 @@ const SignIn = () => {
     const [password, setPassword] = useState<string>('')
     const [isLoading, setIsLoanding] = useState<boolean>(false)
     const router = useRouter()
-    const dispatch = useDispatch();
 
     const signinRequest = async () => {
-        setIsLoanding(true)
 
-        let response = JSON.parse(await new Auth().signIn(email, password))
+        try {
+            let response = JSON.parse(await new Auth().signIn(email, password))
+            
+            if (response.status == 200) {
+                return router.push('/dashboard')
+            } 
+        } catch (err: any) {
+            setIsLoanding(false)
 
-        setIsLoanding(false)
+            if(err.data?.message) return alert(err.data.message)
 
-        if (response.status == 200 && response.data.status === 'Active'){
-            dispatch(changeUser(response))
-            return router.push('/dashboard')
+            else if(err.message) return alert(err.message)
+
+            else return alert('Something wrong happened')
         }
-
-        else if (response.message) return alert(response.message)
-
-        else if (response.data && response.data.message) {
-            return alert(response.data.message)
-        }
-        
-        alert('something wrong happened')
     }
 
     return (

@@ -28,9 +28,7 @@ const middlewarePage = () => {
     useEffect(() => {
         const middleware = async () => {
             if(!user) return;
-
-            console.log(user)
-
+            
             if('data' in user && user.status === 200  && user.data.status === 'Active') {
                 return router.back();
             }

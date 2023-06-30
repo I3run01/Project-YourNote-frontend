@@ -39,9 +39,9 @@ export class Auth {
             return JSON.stringify(response)
         } catch(error: any) {
 
-            if(await error.response) return JSON.stringify(await error.response)
+            if(await error.response) throw error.response
 
-            return JSON.stringify(error)
+            throw error
         }
     }
 

@@ -26,6 +26,25 @@ const dashboard = () => {
     }, [])
 
     useEffect(() => {
+        const getFileData = async () => {
+            if (!id) return
+            
+            try {
+                let response = JSON.parse(await new FilesRequest().getSpecificFile(id as string))
+        
+                if(response.status === 200) {
+                    return setFileState(response.data)
+                }
+
+            } catch (err: any ) {
+                if(err.data?.message) return alert(err.data.message)
+
+                else if(err.message) return alert(err.message)
+
+                else return alert('Something wrong happened')
+            }
+        }
+
         getFileData()
     }, [id])
 
@@ -46,17 +65,7 @@ const dashboard = () => {
         let json = JSON.parse(response)
 
         if(json.status !== 200) console.log(json.data)
-    }
-
-    const getFileData = async () => {
-        if (!id) return
-
-        let response = JSON.parse(await new FilesRequest().getSpecificFile(id as string))
-
-        if(response.status === 200) {
-            return setFileState(response.data)
-        }
-    }
+    }  
 
     const changeFileParagraph = (paragraphIndex: number, newText: string) => {
       

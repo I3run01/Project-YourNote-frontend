@@ -9,6 +9,8 @@ export const DeleteButtonStyled = styled.div`
     padding-top: 8px;
     padding-bottom: 8px;
 
+    width: 100%;
+
     :hover {
         background-color: #ff000045;
 

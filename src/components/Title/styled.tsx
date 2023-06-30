@@ -8,10 +8,13 @@ const fontColorDark = '#ececec'
 const fontColorLight = 'black'
 
 export const TitleDiv = styled.div<props>`
-    @import url('https://fonts.googleapis.com/css2?family=Dosis:wght@700&display=swap');
+    margin-top: 5px;
+    margin-bottom: 5px;
 
-    margin-top: 20px;
-    margin-bottom: 20px;
+    width: 100%;
+
+    display: flex;
+    justify-content: center;
 
     input {
         font-size: 24px;
@@ -24,6 +27,8 @@ export const TitleDiv = styled.div<props>`
         border: 1px solid #0000;
 
         transition: all 0.5s ease-in-out;
+
+        width: 200px;
 
         :hover {
             border-color: ${ props => props.isDark ? fontColorDark : fontColorLight};

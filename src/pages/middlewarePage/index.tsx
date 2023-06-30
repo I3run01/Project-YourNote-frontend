@@ -11,6 +11,7 @@ const StyledDiv = styled.div<{ isDark: boolean }>`
     top: 0;
     bottom: 0;
     left: 0;
+    right: 0;
     background: ${({ isDark }) => (isDark ? '#0f0f0f' : '#cfcfcf')};
 `;
 
@@ -27,6 +28,8 @@ const middlewarePage = () => {
     useEffect(() => {
         const middleware = async () => {
             if(!user) return;
+
+            console.log(user)
 
             if('data' in user && user.status === 200  && user.data.status === 'Active') {
                 return router.back();

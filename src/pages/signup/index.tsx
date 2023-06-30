@@ -33,22 +33,23 @@ const SignUp = () => {
 
     const signupRequest = async () => {
         setIsLoanding(true)
-        
-        let response = JSON.parse(await new Auth().signUp(email, password))
 
-        setIsLoanding(false)
+        try {
+            let response = JSON.parse(await new Auth().signUp(email, password))
+            if (response.status == 200) {
+                return alert('A link was sent in your email to verify your account')
+            }
 
-        if (response.status == 200) {
-            return alert('A link was sent in your email to verify your account')
+            setIsLoanding(false)
+        } catch (err: any) {
+            setIsLoanding(false)
+
+            if(err.data?.message) return alert(err.data.message)
+
+            else if(err.message) return alert(err.message)
+
+            else return alert('Something wrong happened')
         }
-
-        else if (response.message) return alert(response.message)
-
-        else if (response.data && response.data.message) {
-            return alert(response.data.message)
-        }
-        
-        alert('something wrong happened')
         
     }
 

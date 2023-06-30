@@ -10,8 +10,15 @@ function* fetchUserSaga(action: PayloadAction<void>): Generator<any, void, any> 
     console.log(response)
 
     yield put(changeUser(JSON.parse(response)));
-  } catch (error) {
-    console.error(error);
+  } catch (err: any) {
+    yield put(changeUser(err));
+    
+    if(err.data?.message) return alert(err.data.message)
+
+    else if(err.message) return alert(err.message)
+
+    else return alert('Something wrong happened')
+
   }
 }
 

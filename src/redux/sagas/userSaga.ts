@@ -1,6 +1,6 @@
 import { takeLatest, put, call } from 'redux-saga/effects';
 import type { PayloadAction } from '@reduxjs/toolkit';
-import { fetchUser, changeUser, incrementRequestState } from '../slice/userSlice';
+import { fetchUser, changeUser } from '../slice/userSlice';
 import { Auth } from '@/Auth/request';
 
 function* fetchUserSaga(action: PayloadAction<void>): Generator<any, void, any> {

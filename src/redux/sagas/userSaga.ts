@@ -11,7 +11,6 @@ function* fetchUserSaga(action: PayloadAction<void>): Generator<any, void, any> 
     yield put(changeUser(JSON.parse(response)));
   } catch (err: any) {
     yield put(changeUser(null));
-    yield put(incrementRequestState())
     
     if(err.data?.message) return console.log(err.data.message)
 

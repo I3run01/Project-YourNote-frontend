@@ -19,10 +19,10 @@ export const userSlice = createSlice({
     fetchUser: state => { console.log('fetchUser') },
     changeUser: (state, action: PayloadAction<userType | null>) => {
       state.user = action.payload
+      incrementRequestState()
     },
     incrementRequestState: (state) => {
       state.requestState += 1;
-      console.log(state.requestState)
     },
   },
 })

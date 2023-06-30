@@ -29,6 +29,8 @@ const middlewarePage = () => {
     useEffect(() => {
         const middleware = async () => {
             if(user) return router.back();
+            console.log(user)
+            console.log(userRequest)
             router.push('./signin');
         }
         middleware();

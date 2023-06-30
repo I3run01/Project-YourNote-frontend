@@ -1,5 +1,4 @@
 import axios from "axios";
-import { stringify } from "querystring";
 
 export class FilesRequest {
     private api: any;

@@ -16,7 +16,7 @@ export const TitleDiv = styled.div<props>`
     display: flex;
     justify-content: center;
 
-    #input_Title {
+    input {
         font-size: 24px;
         font-weight: bolder;
         font-family: 'Dosis';

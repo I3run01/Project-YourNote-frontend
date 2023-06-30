@@ -18,6 +18,7 @@ const StyledDiv = styled.div<{ isDark: boolean }>`
 const middlewarePage = () => {
     const dispatch = useDispatch();
     const user = useSelector((state: RootState) => state.user.user);
+    const userRequest = useSelector((state: RootState) => state.user.requestState);
     const isDark = useSelector((state: RootState) => state.theme.isDark);
     const router = useRouter();
 
@@ -27,17 +28,11 @@ const middlewarePage = () => {
 
     useEffect(() => {
         const middleware = async () => {
-            if(!user) return;
-            
-            if('data' in user && user.status === 200  && user.data.status === 'Active') {
-                return router.back();
-            }
-
+            if(user) return router.back();
             router.push('./signin');
         }
-
         middleware();
-    }, [user]);
+    }, [userRequest]);
 
     return (
         <StyledDiv isDark={isDark}>

@@ -13,11 +13,11 @@ function* fetchUserSaga(action: PayloadAction<void>): Generator<any, void, any> 
     yield put(changeUser(null));
     yield put(incrementRequestState())
     
-    if(err.data?.message) return alert(err.data.message)
+    if(err.data?.message) return console.log(err.data.message)
 
-    else if(err.message) return alert(err.message)
+    else if(err.message) return console.log(err.message)
 
-    else return alert('Something wrong happened')
+    else return console.log('Something wrong happened')
 
   }
 }

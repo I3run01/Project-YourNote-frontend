@@ -20,11 +20,12 @@ export const Title = ({fileID}:props) => {
 
     return (
         <TitleDiv isDark={isDark}>
-            <input 
+            {/* <input 
                 type='text'
                 value={title.specTitle}
                 onChange={(e) => dispatch(changeFileTitle({_id: fileID, newTitle: e.target.value}))}
-            />
+            /> */}
+            <h1>Title</h1>
         </TitleDiv>
     )
 }

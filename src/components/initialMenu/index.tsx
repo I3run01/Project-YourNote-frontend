@@ -7,6 +7,8 @@ export const InitionalMenu = () => {
     const isDark = useSelector((state: RootState) => state.theme.isDark)
     const user = useSelector((state: RootState) => state.user.user)
 
+    console.log(user)
+
     return (
         <InitialMenuStyled
         isDark={isDark}>

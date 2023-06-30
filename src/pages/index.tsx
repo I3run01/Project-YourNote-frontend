@@ -1,32 +1,18 @@
 import { IndexDiv } from '../styles/Index.module'
 import { InitionalMenu } from '../components/initialMenu'
 import { RootState } from '@/redux/store'
-import { Auth } from '../Auth/request'
 import { useSelector, useDispatch } from 'react-redux'
-import { changeUser } from '../redux/slice/userSlice'
 import { useEffect } from 'react'
-import Image from 'next/image'
-import InitialImage from '../../public/images/bgImages/InitialIMG.png'
+import { fetchUser } from '../redux/slice/userSlice';
+
 
 export default function Home() {
   const isDark = useSelector((state: RootState) => state.theme.isDark)
-  const user = useSelector((state: RootState) => state.user.user)
   const dispatch = useDispatch();
 
   useEffect(() => {
-    middleware()
+    dispatch(fetchUser());
   }, [])
-
-  const middleware = async () => {
-
-      if(user) return
-
-      let response = JSON.parse(await new Auth().user())
-
-      if(response.status === 200  && response.data.status === 'Active') {
-        dispatch(changeUser(response))
-      }
-  }
 
   return (
     <>

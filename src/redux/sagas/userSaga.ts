@@ -7,6 +7,7 @@ function* fetchUserSaga(action: PayloadAction<void>): Generator<any, void, any> 
   try {
     const auth = new Auth();
     const response: string = yield call([auth, auth.user]);
+    console.log(response)
 
     yield put(changeUser(JSON.parse(response)));
   } catch (error) {

@@ -27,7 +27,8 @@ export const  LeftMenu = () => {
         if(!user) return
 
         let response =  JSON.parse(await new FilesRequest().retrieveFiles())
-        dispatch(changeFilesTitles(response.data))
+
+        if(response.status === 200) dispatch(changeFilesTitles(response.data))       
     }
 
     const deleteFile = async (fileID: string) => {

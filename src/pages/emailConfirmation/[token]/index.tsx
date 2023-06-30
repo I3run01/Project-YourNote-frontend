@@ -20,33 +20,31 @@ const EmailConfirmation = () => {
 
     const request = async () => {
         setIsLoanding(true)
-
-        console.log(token)
         
-        if(!token) {
-            return
-        }
+        if(!token) return
         
-        let response = JSON.parse(await new Auth().confirmationEmail(String(token)))
+        try {
+            let response = JSON.parse(await new Auth().confirmationEmail(String(token)))
+            setIsLoanding(false)
 
-        if(response.status == 200) {
             return router.push('/dashboard')
-        }
 
-        else if (response.message) return alert(response.message)
+        } catch (err: any) {
+            setIsLoanding(false)
+            
+            if (err?.data && err.data?.message) {
+                alert(err.data.message)
+            }
+            
+            else if (err.message) alert(err.message)
 
-        else if (response.data && response.data.message) {
-            return alert(response.data.message)
-        }
-        
-        alert('something wrong happened')
-
-        return router.push('/signup')
-    }
-
+            else alert('something wrong happened')
     
+            return router.push('/signup')
+        }
 
-    return (
+    }
+   return (
         <>
             {isLoading && <Loading/>}
 

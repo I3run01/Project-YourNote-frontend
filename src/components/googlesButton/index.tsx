@@ -36,6 +36,8 @@ export const GoogleButton = () => {
 
             return router.push('/')
         } catch (err: any) {
+            setIsLoanding(false)
+            
             if (err.data?.message) return alert(err.data?.message)
 
             else if (err.message) return alert(err.message)

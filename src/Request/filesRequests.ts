@@ -20,8 +20,8 @@ export class FilesRequest {
 
             return JSON.stringify(response);
         } catch(error: any) {
-            if(await error.response) return JSON.stringify(await error.response);
-            return JSON.stringify(error);
+            if(error.response) throw error.response;
+            throw error;
         }
     }
 
@@ -37,8 +37,8 @@ export class FilesRequest {
 
             return JSON.stringify(response);
         } catch(error: any) {
-            if(await error.response) return JSON.stringify(await error.response);
-            return JSON.stringify(error);
+            if(error.response) throw error.response;
+            throw error;
         }
     }
 
@@ -56,8 +56,8 @@ export class FilesRequest {
 
             return JSON.stringify(response);
         } catch(error: any) {
-            if(await error.response) return JSON.stringify(await error.response);
-            return JSON.stringify(error);
+            if(error.response) throw error.response;
+            throw error;
         }
     }
 
@@ -71,8 +71,8 @@ export class FilesRequest {
 
             return JSON.stringify(response);
         } catch(error: any) {
-            if(await error.response) return JSON.stringify(await error.response);
-            return JSON.stringify(error);
+            if(error.response) throw error.response;
+            throw error;
         }
     }
 
@@ -86,11 +86,10 @@ export class FilesRequest {
 
             return JSON.stringify(response);
         } catch(error: any) {
-            if(await error.response) return JSON.stringify(await error.response);
-            return JSON.stringify(error);
+            if(error.response) throw error.response;
+            throw error;
         }
     }
-
 
     async retrieveFiles(): Promise<string> {
         const apiRoute = '';
@@ -102,8 +101,8 @@ export class FilesRequest {
 
             return JSON.stringify(response);
         } catch(error: any) {
-            if(await error.response) return JSON.stringify(await error.response);
-            return JSON.stringify(error);
+            if(error.response) throw error.response;
+            throw error;
         }
     }
 }

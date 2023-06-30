@@ -13,16 +13,21 @@ const SignIn = () => {
     const signinRequest = async () => {
         setIsLoanding(true)
 
-        let response = await new Auth().forgotPassword(email)
-        let json = JSON.parse(response)
+        try {
+            let response = await new Auth().forgotPassword(email)
 
-        setIsLoanding(false)
+            let json = JSON.parse(response)
+    
+            setIsLoanding(false)
+    
+            if (json.status == 200) alert('A link was sent in your email')
+        }  catch (err: any) {
 
-        if (json.status == 200){
-            alert('A link was sent in your email')
+            alert(err.data.message)   
+
         }
 
-        alert(json.data.message)   
+
     }
 
     return (

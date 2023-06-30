@@ -45,14 +45,24 @@ export const  LeftMenu = () => {
     }
 
     const handldeNewButton = async () =>{
-        let response = JSON.parse(await new FilesRequest().createFile())
+        try {
+            let response = JSON.parse(await new FilesRequest().createFile())
+    
+            let fileID = response.data._id
+    
+            await request()
+    
+            if(response.status == 200) {
+                router.push(`../dashboard/${fileID}`)
+            }
+        } catch (err: any) {
+            if (err?.data && err.data?.message) {
+                alert(err.data.message)
+            }
+            
+            else if (err.message) alert(err.message)
 
-        let fileID = response.data._id
-
-        await request()
-
-        if(response.status == 200) {
-            router.push(`../dashboard/${fileID}`)
+            else alert('something wrong happened')
         }
     }
 

@@ -9,8 +9,14 @@ function* updateTitleSaga(action: PayloadAction<ChangeTitlePayload>): Generator<
     try {
         const payload = action.payload;
         const response = yield call([myApiService, myApiService.updateTitle], payload._id, payload.newTitle);
-    } catch (error) {
-        console.error(error);
+    } catch (error: any) {
+        alert('not saving')
+        
+        if (error.data?.message) return alert(error.data?.message)
+
+        else if (error.message) return alert(error.message)
+
+        alert('something wrong happened')
     }
 }
 

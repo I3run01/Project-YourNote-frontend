@@ -23,7 +23,7 @@ export const userSlice = createSlice({
     },
     incrementRequestState: (state) => {
       state.requestState += 1;
-      console.log(state.requestState)
+      console.log('new request is' + state.requestState)
     },
   },
 })

@@ -19,15 +19,11 @@ export const userSlice = createSlice({
     fetchUser: state => { console.log('fetchUser') },
     changeUser: (state, action: PayloadAction<userType | null>) => {
       state.user = action.payload
-      incrementRequestState()
-    },
-    incrementRequestState: (state) => {
       state.requestState += 1;
-      console.log('new request is' + state.requestState)
     },
   },
 })
 
-export const { changeUser, fetchUser, incrementRequestState } = userSlice.actions
+export const { changeUser, fetchUser } = userSlice.actions
 
 export default userSlice.reducer

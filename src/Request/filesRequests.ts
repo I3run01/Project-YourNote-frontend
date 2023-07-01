@@ -5,8 +5,8 @@ export class FilesRequest {
     
     constructor() {
         this.api = axios.create({
-            baseURL: 'http://localhost:4000/api/files',
-            // baseURL: 'https://yournoteapi.shop/api/files'
+            // baseURL: 'http://localhost:4000/api/files',
+            baseURL: 'https://yournoteapi.shop/api/files'
         });
     }
 

@@ -101,12 +101,12 @@ export const  LeftMenu = () => {
                 }
             </div>
             
-            <div id='settings' onClick={() => {dispatch(changeTheme())}}>
+            <div id='settings' onClick={() => router.push('../settings')}>
                 <Image
                     src={settingsIcon}
                     alt=''
                 />
-                <p>Change theme</p>
+                <p>Settings </p>
             </div>
 
         </LeftMenuDiv>

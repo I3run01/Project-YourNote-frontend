@@ -45,6 +45,22 @@ export class Auth {
         }
     }
 
+    async signOut(): Promise<string> {
+        let apiRoute = '/signout'
+
+        try {
+            let response = await axios.get(this.apiLink + apiRoute, {
+                withCredentials: true
+            })
+            
+            return JSON.stringify(response)
+        } catch(error: any) {
+            if(await error.response) throw error.response
+
+            throw error
+        }
+    }
+
     async user(): Promise<string> {
         try {
             let response = await axios.get(this.apiLink, {
@@ -58,6 +74,7 @@ export class Auth {
             throw error
         }
     }
+
 
     async googleSignIn(email: string): Promise<string> {
         let apiRoute = '/google-signin'
@@ -126,6 +143,20 @@ export class Auth {
         } catch(error: any) {
 
             if(error.response) throw error.response
+
+            throw error
+        }
+    }
+
+    async deleteAccount(): Promise<string> {
+        try {
+            let response = await axios.delete(this.apiLink, {
+                withCredentials: true
+            })
+            
+            return JSON.stringify(response)
+        } catch(error: any) {
+            if(await error.response) throw error.response
 
             throw error
         }

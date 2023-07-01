@@ -13,6 +13,7 @@ import { FilesRequest } from '../../../Request/filesRequests'
 import { NewItem } from '../../../components/NewItem/newItem'
 import { ParagraphContent, IDEContent, ImageContent } from '@/types/files'
 import { DeleteButton } from '../../../components/deleteButton/deleteButton'
+import { useQuery } from 'react-query';
 
 const dashboard = () => {
     const [fileState, setFileState] = useState<filesType | null>(null)
@@ -21,33 +22,37 @@ const dashboard = () => {
     const router = useRouter()
     const { id } = router.query;
 
+    const { data, error, isLoading, isError, refetch } = useQuery(['file', id], async () => {
+
+        let response = JSON.parse(await new FilesRequest().getSpecificFile(id as string))
+        console.log('id: ' + id)
+
+        return response.data
+        },
+        {
+            enabled: !!id,
+        }
+    );
+
+    useEffect(() => {
+        setFileState(data)
+    }, [data])
+
+    useEffect(() => {
+        const err = error as any;
+
+        if(!err) return
+
+        if (err?.data?.message)  return alert(err.data.message);
+           
+        else if (err?.message) alert(err.message)
+
+        else alert('Something wrong happened');
+    }, [error])
+
     useEffect(() => {
         if(!user) router.push('../middlewarePage')
     }, [])
-
-    useEffect(() => {
-        const getFileData = async () => {
-            if (!id) return
-            
-            try {
-                let response = JSON.parse(await new FilesRequest().getSpecificFile(id as string))
-        
-                if(response.status === 200) {
-                    return setFileState(response.data)
-                }
-
-            } catch (err: any ) {
-                if(err.data?.message) return alert(err.data.message)
-
-                else if(err.message) return alert(err.message)
-
-                else return alert('Something wrong happened')
-            }
-        }
-
-        getFileData()
-    }, [id])
-
 
     useEffect(() => {
         if(fileState === null) return

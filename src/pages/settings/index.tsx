@@ -10,6 +10,7 @@ import { useEffect } from 'react';
 
 const Settings = () => {
     const isDark = useSelector((state: RootState) => state.theme.isDark);
+    const user = useSelector((state: RootState) => state.user.user)
     const router = useRouter();
     const dispatch = useDispatch();
 
@@ -32,7 +33,7 @@ const Settings = () => {
             },
             enabled: false
           },
-      ]);
+    ]);
 
     useEffect(() => {
         const err = logout.error as any;
@@ -57,6 +58,10 @@ const Settings = () => {
 
         else alert('Something wrong happened');
     }, [deleteUser.error])
+
+    useEffect(() => {
+        if(!user) router.push('./middlewarePage')
+    }, [])
 
     const deleteAccount = async () => {
         const isUserConfirmed = window.confirm("Are you sure you want to delete this account?");

@@ -21,6 +21,10 @@ export const  LeftMenu = () => {
 
     useEffect(() => {
         request()
+    }, [user])
+
+    useEffect(() => {
+        request()
     }, [])
 
     const request = async () => {

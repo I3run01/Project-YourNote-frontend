@@ -73,6 +73,7 @@ const read = () => {
                                     src={item.codeBase64}
                                     index={index}
                                     alt=""
+                                    readOnly={true}
                                 />
                             </div>
                         }

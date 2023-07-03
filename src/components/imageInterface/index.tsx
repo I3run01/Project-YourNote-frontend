@@ -8,9 +8,10 @@ type Props = {
     alt: string
     index: number
     onDataReceived?: (index:number, data:string) => void
+    readOnly?: boolean
 }
 
-export const ImageInterface = ({src, alt, index, onDataReceived}: Props) => {
+export const ImageInterface = ({src, alt, index, onDataReceived, readOnly}: Props) => {
     const [isZoom, setIdZoom] = useState<boolean>(false)
     const [imageSrc, setImageSrc] = useState<string>(src)
     const fileInputRef = useRef<HTMLInputElement>(null);
@@ -47,17 +48,20 @@ export const ImageInterface = ({src, alt, index, onDataReceived}: Props) => {
 
     return (
         <ImageDiv isZoom={isZoom} isDark={isDark}>
-            <div className='changeImage' onClick={handleFileInput}>
-                <div id='icon'>
-                    <img src='/images/icons/change.svg' alt=''/>
-                </div>
-                <div id='text'>
-                    <div>
-                        <p>Change image</p>
-                        <input ref={fileInputRef} type='file' style={{display: 'none'}} onChange={handleChangeImage} />
+            { !readOnly &&
+                <div className='changeImage' onClick={handleFileInput}>
+                    <div id='icon'>
+                        <img src='/images/icons/change.svg' alt=''/>
+                    </div>
+                    <div id='text'>
+                        <div>
+                            <p>Change image</p>
+                            <input ref={fileInputRef} type='file' style={{display: 'none'}} onChange={handleChangeImage} />
+                        </div>
                     </div>
                 </div>
-            </div>
+
+            }
             <img src={imageSrc ? imageSrc : "/images/nullImage.png" } alt={alt} 
                 className='mainImage' 
                 onClick={() => setIdZoom(!isZoom)}

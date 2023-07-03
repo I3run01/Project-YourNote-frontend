@@ -30,8 +30,7 @@ const handleChange = (state: EditorState) => {
     const text: string = contentState.getPlainText();
     
     onDataReceived(index, text)
-  }
-  
+  }  
 
   if (!editorState) {
     return <div>Loading...</div>;
@@ -39,7 +38,12 @@ const handleChange = (state: EditorState) => {
 
   return (
     <MyEditorContainer isDark={isDark}>
-      <Editor editorState={editorState} onChange={handleChange} />
+      {!readOnly &&
+        <Editor editorState={editorState} onChange={handleChange} />
+      }
+      { readOnly &&
+        <p>{initialTXT}</p>        
+      }
     </MyEditorContainer>
   );
 };

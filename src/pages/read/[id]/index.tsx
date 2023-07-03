@@ -63,6 +63,7 @@ const read = () => {
                                 <MyEditor
                                     initialTXT={item.text}
                                     index={index}
+                                    readOnly={true}
                                 />
                             </div>
                         }

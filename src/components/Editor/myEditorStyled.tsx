@@ -30,6 +30,10 @@ export const MyEditorContainer = styled.div<props>`
         color: ${ props => props.isDark ? fontColorDark : fontColorLight};
     }
 
+    p {
+        border: none;
+    }
+
     .public-DraftEditor-content {       
         min-height: 30px;
 

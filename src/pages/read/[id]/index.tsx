@@ -83,6 +83,7 @@ const read = () => {
                                 <IDE 
                                     defaultValue={item.code} 
                                     index={index}
+                                    readOnly
                                 />
                             </div>
                         }

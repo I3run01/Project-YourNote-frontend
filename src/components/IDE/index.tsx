@@ -9,12 +9,13 @@ type props = {
   defaultValue: string
   index: number
   onDataReceived?: (index:number, data:string) => void
+  readOnly?: boolean
 }
 
-const CodeInputComponent = ({defaultValue, index, onDataReceived}: props) => {
+const CodeInputComponent = ({defaultValue, index, onDataReceived, readOnly}: props) => {
   const editorRef = useRef<EditorType.IStandaloneCodeEditor | null>(null);
   const isDark = useSelector((state: RootState) => state.theme.isDark)
-  const [lines, setLines] = useState<number>(1)
+  const [lines, setLines] = useState<number>(0)
 
   const handleEditorDidMount = (editor: EditorType.IStandaloneCodeEditor) => {
     editorRef.current = editor;
@@ -53,6 +54,7 @@ const CodeInputComponent = ({defaultValue, index, onDataReceived}: props) => {
           padding: { top: 10 },
           fontSize: 16,
           minimap: { enabled: false },
+          readOnly,
           scrollbar: {
             vertical: 'hidden',
             verticalScrollbarSize: 0,

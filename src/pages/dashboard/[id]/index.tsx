@@ -160,7 +160,7 @@ const dashboard = () => {
         let newParagraph: IDEContent = {
             type: 'IDE',
             language: 'python',
-            code: 'hello world',
+            code: 'print("hello, world")',
         }
     
         setFileState(prevState => {

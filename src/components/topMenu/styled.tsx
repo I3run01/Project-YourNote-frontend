@@ -16,7 +16,7 @@ const bgDarktheme02 = '#1F1F1F'
 const textDarkFont = '#FFFFFF'
 const darkGreenTheme = '#01EF80'
 
-export const InitialMenuStyled = styled.div<props>`
+export const TopMenuDiv = styled.div<props>`
     @import url('https://fonts.googleapis.com/css2?family=Dosis:wght@700&display=swap');
         
     height: ${menuHeight};
@@ -28,7 +28,7 @@ export const InitialMenuStyled = styled.div<props>`
         text-decoration: none;
     }
 
-    #container {
+    #topMenuContainer {
         position: fixed;
         top: 0;
         left: 0;
@@ -37,6 +37,7 @@ export const InitialMenuStyled = styled.div<props>`
         display: flex;
         flex-direction: row;
         justify-content: flex-end;
+        align-items: center;
 
         background-color: ${props => props.isDark ?  bgDarktheme02: bgLightYheme02};
         border-bottom: 1px solid black;

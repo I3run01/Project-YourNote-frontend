@@ -1,5 +1,5 @@
 import { useEffect, useState, Fragment } from 'react'
-import { useSelector } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import { RootState } from '@/redux/store'
 import { useRouter } from 'next/router';
 import { DashboardIdDiv } from '../../../styles/DashboardId.module'
@@ -14,18 +14,20 @@ import { NewItem } from '../../../components/NewItem/newItem'
 import { ParagraphContent, IDEContent, ImageContent } from '@/types/files'
 import { DeleteButton } from '../../../components/deleteButton/deleteButton'
 import { useQuery } from 'react-query';
+import { changeSpecificId } from '@/redux/slice/filesTitles';
 
 const dashboard = () => {
     const [fileState, setFileState] = useState<filesType | null>(null)
     const user = useSelector((state: RootState) => state.user.user)
     const isDark = useSelector((state: RootState) => state.theme.isDark)
     const router = useRouter()
+    const dispatch = useDispatch()
     const { id } = router.query;
 
-    const { data, error, isLoading, isError, refetch } = useQuery(['file', id], async () => {
+    const { data, error } = useQuery(['file', id], async () => {
 
         let response = JSON.parse(await new FilesRequest().getSpecificFile(id as string))
-        console.log('id: ' + id)
+        dispatch(changeSpecificId(id as string))
 
         return response.data
         },

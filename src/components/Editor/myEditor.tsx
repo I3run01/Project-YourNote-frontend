@@ -7,10 +7,11 @@ import { useSelector } from 'react-redux';
 type props = {
   initialTXT: string
   index: number
-  onDataReceived: (index:number, data:string) => void
+  onDataReceived?: (index:number, data:string) => void
+  readOnly?: boolean
 }
 
-const MyEditor = ({initialTXT, index, onDataReceived}: props) => {
+const MyEditor = ({initialTXT, index, onDataReceived, readOnly}: props) => {
   const [editorState, setEditorState] = useState<EditorState | null>(null);
   const isDark = useSelector((state: RootState) => state.theme.isDark)
 
@@ -21,6 +22,8 @@ const MyEditor = ({initialTXT, index, onDataReceived}: props) => {
   }, []);
   
 const handleChange = (state: EditorState) => {
+    if(!onDataReceived) return 
+
     setEditorState(state);
 
     const contentState: ContentState = state.getCurrentContent();

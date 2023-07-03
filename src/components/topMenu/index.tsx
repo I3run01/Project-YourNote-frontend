@@ -1,18 +1,18 @@
 import { useSelector } from 'react-redux'
-import { InitialMenuStyled } from './styled'
+import { TopMenuDiv } from './styled'
 import { RootState } from '@/redux/store'
 import Link from 'next/link'
 
-export const InitionalMenu = () => {
+export const TopMenu = () => {
     const isDark = useSelector((state: RootState) => state.theme.isDark)
     const user = useSelector((state: RootState) => state.user.user)
 
     console.log(user)
 
     return (
-        <InitialMenuStyled
+        <TopMenuDiv
         isDark={isDark}>
-            <div id='container'>
+            <div id='topMenuContainer'>
                 {!user &&
                     <>
                         <div className='signin'>
@@ -31,6 +31,6 @@ export const InitionalMenu = () => {
                     </>
                 }
             </div>
-        </InitialMenuStyled>
+        </TopMenuDiv>
     )
 }

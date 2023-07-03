@@ -1,5 +1,5 @@
 import { IndexDiv } from '../styles/Index.module'
-import { InitionalMenu } from '../components/initialMenu'
+import { TopMenu } from '../components/topMenu'
 import { RootState } from '@/redux/store'
 import { useSelector, useDispatch } from 'react-redux'
 import { useEffect } from 'react'
@@ -17,7 +17,7 @@ export default function Home() {
   return (
     <>
       <IndexDiv isDark={isDark}>
-        <InitionalMenu/>
+        <TopMenu/>
 
         <h1>YourNote</h1>
 

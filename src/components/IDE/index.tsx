@@ -8,7 +8,7 @@ import { RootState } from '@/redux/store';
 type props = {
   defaultValue: string
   index: number
-  onDataReceived: (index:number, data:string) => void
+  onDataReceived?: (index:number, data:string) => void
 }
 
 const CodeInputComponent = ({defaultValue, index, onDataReceived}: props) => {
@@ -21,6 +21,8 @@ const CodeInputComponent = ({defaultValue, index, onDataReceived}: props) => {
   
     const processModel = (model: EditorType.ITextModel | null) => {
       if (model) {
+        if(!onDataReceived) return 
+        
         const codeValue = model.getValue();
         const lineCount = model.getLineCount();
         setLines(lineCount);

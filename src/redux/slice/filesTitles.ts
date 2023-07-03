@@ -17,11 +17,13 @@ export interface changeSpecTitlePayload {
 export interface FilesState {
   files: File[]
   specTitle: string
+  specificId: string | null
 }
 
 const initialState: FilesState = {
     files: [],
-    specTitle: ''
+    specTitle: '',
+    specificId: null
 }
 
 export const filesSlice = createSlice({
@@ -47,10 +49,13 @@ export const filesSlice = createSlice({
       if (file) {
         state.specTitle = file.title;
       }
+    }, 
+    changeSpecificId: (state, action: PayloadAction<string>) => {
+      state.specificId = action.payload
     }
   },
 })
 
-export const { changeFilesTitles, deleteFileInTheList, changeFileTitle, changeSpecTitle } = filesSlice.actions
+export const { changeFilesTitles, deleteFileInTheList, changeFileTitle, changeSpecTitle, changeSpecificId } = filesSlice.actions
 
 export default filesSlice.reducer

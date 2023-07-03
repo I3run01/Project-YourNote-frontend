@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-type props = {
+type Props = {
     isDark: boolean
     isPopUpOpened?: boolean
 }
@@ -11,37 +11,28 @@ const bgColorlight = '#E3D7CD'
 const fontColorDark = '#ececec'
 const fontColorLight = 'black'
 
-export const RightMenuDiv = styled.div<props>`
+export const RightMenuDiv = styled.div<Props>`
     width: 50px;
-
     height: 100vh;
-
     background-color: ${props => props.isDark ? bgColorDark : bgColorlight};
-
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    align-items: center;
+    align-items: start;
 
-    
-    #newElement {
+    .sharedContent {
+        width: 100%;
+        height: 80px;
+
         display: flex;
         justify-content: center;
+        align-items: center;
 
-        #plusIMG {
-            width: 90%;
-            filter: drop-shadow(1px 1px 1px black);
-        
-        }
+        cursor: pointer;
 
-        :hover #plusIMG {
-            cursor: pointer;
-        }
-
-        :active {
-            transform: scale(80%);
+        .wwwIcon {
+            width: 80%;
+            filter: invert(${props => props.isDark ? 1 : 0});
         }
     }
-
-
 `

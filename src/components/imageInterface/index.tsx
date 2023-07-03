@@ -7,7 +7,7 @@ type Props = {
     src: string
     alt: string
     index: number
-    onDataReceived: (index:number, data:string) => void
+    onDataReceived?: (index:number, data:string) => void
 }
 
 export const ImageInterface = ({src, alt, index, onDataReceived}: Props) => {
@@ -18,6 +18,8 @@ export const ImageInterface = ({src, alt, index, onDataReceived}: Props) => {
     const isDark = useSelector((state: RootState) => state.theme.isDark)
 
     const handleChangeImage = (event: React.ChangeEvent<HTMLInputElement>) => {
+        if(!onDataReceived) return 
+
         const file = event.target.files ? event.target.files[0] : null;
         if (file) {
             const validImageTypes = ['image/gif', 'image/jpeg', 'image/png', 'image/svg'];

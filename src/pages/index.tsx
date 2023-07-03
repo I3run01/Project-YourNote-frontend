@@ -10,9 +10,6 @@ export default function Home() {
   const isDark = useSelector((state: RootState) => state.theme.isDark)
   const dispatch = useDispatch();
 
-  useEffect(() => {
-    dispatch(fetchUser());
-  }, [])
 
   return (
     <>

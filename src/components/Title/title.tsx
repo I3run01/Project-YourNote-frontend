@@ -7,6 +7,7 @@ import { useDispatch } from 'react-redux'
 
 type props = {
     fileID: string
+    readOnly?: boolean
 }
 
 export const Title = ({fileID}:props) => {

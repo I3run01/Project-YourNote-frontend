@@ -21,12 +21,12 @@ const CodeInputComponent = ({defaultValue, index, onDataReceived}: props) => {
   
     const processModel = (model: EditorType.ITextModel | null) => {
       if (model) {
-        if(!onDataReceived) return 
         
         const codeValue = model.getValue();
         const lineCount = model.getLineCount();
         setLines(lineCount);
-        onDataReceived(index, codeValue);
+        
+        if(onDataReceived) onDataReceived(index, codeValue);
       }
     };
 

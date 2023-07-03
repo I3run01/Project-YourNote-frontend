@@ -30,6 +30,10 @@ export const RightMenuDiv = styled.div<Props>`
 
         cursor: pointer;
 
+        :hover {
+            background-color: #737373;
+        }
+
         .wwwIcon {
             width: 80%;
             filter: invert(${props => props.isDark ? 1 : 0});

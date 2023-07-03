@@ -9,15 +9,15 @@ export const RightMenu = () => {
     const router = useRouter()
 
     let goToFile = () => {
-        if(!specificID) return
+        if(!specificID) return alert('You should open a file before')
 
-        router.push(`../read/${specificID}`)
+        window.open(`${router.basePath}/read/${specificID}`, "_blank")
     }
 
     return (
         <RightMenuDiv isDark={isDark} id='rightMenu' onClick={goToFile}>
             <div className='sharedContent' >
-                www
+                <img className='wwwIcon' src="/images/icons/wwwIcon.svg" alt="" />
             </div>
         </RightMenuDiv>
     )

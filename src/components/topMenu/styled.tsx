@@ -20,6 +20,7 @@ export const TopMenuDiv = styled.div<props>`
     @import url('https://fonts.googleapis.com/css2?family=Dosis:wght@700&display=swap');
         
     height: ${menuHeight};
+    z-index: 10;
 
     * {
         color: ${ props => props.isDark ? textDarkFont : textLightFont};

@@ -4,7 +4,6 @@ import { RootState } from '@/redux/store'
 import { ReadIdDiv } from '@/styles/ReadId.module'
 import { useEffect, useState } from 'react'
 import { filesType } from '@/types/files'
-import { Title } from '@/components/Title/title'
 import MyEditor from '@/components/Editor/myEditor'
 import { ImageInterface } from '@/components/imageInterface/index'
 import IDE from '@/components/IDE/index'
@@ -12,8 +11,35 @@ import { FilesRequest } from '@/Request/filesRequests'
 import { useRouter } from 'next/router';
 import { useDispatch } from 'react-redux'
 import { changeTheme } from '@/redux/slice/themeSlice'
+import { GetServerSideProps } from 'next'
 
-const read = () => {
+export const getServerSideProps: GetServerSideProps = async (context) => {
+    let response;
+
+    if (context.params) {
+        try {
+            response = await new FilesRequest().getSpecificFile(context.params.id as string)
+        } catch (err: any) {
+            return {
+                notFound: true, // This will automatically render the 404 page.
+            }
+        }
+        return {
+            props: {
+                file: JSON.parse(response),
+            },
+        }
+    }
+
+    return {
+        notFound: true,
+    }
+}
+
+
+
+
+const read = ({ file }: { file: filesType }) => {
     let isDark = useSelector((state: RootState) => state.theme.isDark)
     const router = useRouter()
     const dispatch = useDispatch()
@@ -21,20 +47,8 @@ const read = () => {
     const { id } = router.query
 
     useEffect(() => {
-        const requestFile = async () => {      
-            try {
-                let response = await new FilesRequest().getSpecificFile(id as string)
-                let json = JSON.parse(response)
-                
-                setFileState(json.data)
-            } catch( err: any) {
-                alert(err)
-            }
-        }
-        if(!id) return 
-
-        requestFile()
-    }, [id])
+        setFileState(file)
+    }, [])
 
     useEffect(() => {
         console.log(fileState)

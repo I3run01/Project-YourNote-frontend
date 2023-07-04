@@ -80,9 +80,7 @@ export class FilesRequest {
         const apiRoute = `${fileID}`;
 
         try {
-            const response = await this.api.get(apiRoute, {
-                withCredentials: true
-            });
+            const response = await this.api.get(apiRoute);
 
             return JSON.stringify(response);
         } catch(error: any) {

@@ -14,30 +14,21 @@ import { changeTheme } from '@/redux/slice/themeSlice'
 import { GetServerSideProps } from 'next'
 
 export const getServerSideProps: GetServerSideProps = async (context) => {
-    let response;
+    try {
+        let response = await new FilesRequest().getSpecificFile("64a0b9c08790e1e3690d98db")
 
-    if (context.params) {
-        try {
-            response = await new FilesRequest().getSpecificFile("64a0b9c08790e1e3690d98db")
-            // response = await new FilesRequest().getSpecificFile(context.params.id as string)
-        } catch (err: any) {
-            return {
-                notFound: true,
-            }
-        }
         return {
             props: {
-                file: JSON.parse(response),
-            },
+                file: JSON.parse(response)
+            }
+        }
+
+    } catch {
+        return {
+            notFound: true,
         }
     }
-
-    return {
-        notFound: true,
-    }
 }
-
-
 
 
 const read = ({ file }: { file: filesType }) => {

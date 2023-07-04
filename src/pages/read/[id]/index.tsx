@@ -9,29 +9,11 @@ import { ImageInterface } from '@/components/imageInterface/index'
 import IDE from '@/components/IDE/index'
 import { FilesRequest } from '@/Request/filesRequests'
 import { useRouter } from 'next/router';
-import { useDispatch } from 'react-redux'
 import { changeTheme } from '@/redux/slice/themeSlice'
-import { GetServerSideProps } from 'next'
+import { useDispatch } from 'react-redux'
+import { fetchUser } from '@/redux/slice/userSlice' 
 
-export const getServerSideProps: GetServerSideProps = async (context) => {
-    try {
-        let response = await new FilesRequest().getSpecificFile("64a0b9c08790e1e3690d98db")
-
-        return {
-            props: {
-                file: JSON.parse(response)
-            }
-        }
-
-    } catch {
-        return {
-            notFound: true,
-        }
-    }
-}
-
-
-const read = ({ file }: { file: filesType }) => {
+const read = () => {
     let isDark = useSelector((state: RootState) => state.theme.isDark)
     const router = useRouter()
     const dispatch = useDispatch()
@@ -39,12 +21,30 @@ const read = ({ file }: { file: filesType }) => {
     const { id } = router.query
 
     useEffect(() => {
-        setFileState(file)
+        dispatch(fetchUser());
     }, [])
 
     useEffect(() => {
-        console.log(fileState)
-    }, [fileState])
+        if(!id) return
+
+        const fileRequest = async () => {
+            console.log('some')
+            try {
+                let response = await new FilesRequest().getSpecificFile(id as string)
+                let json = await JSON.parse(response)
+            
+                setFileState(json.data)
+            } catch  (err: any) {
+                if (err?.data?.message)  return alert(err.data.message);
+           
+                else if (err?.message) alert(err.message)
+        
+                else alert('Something wrong happened');
+            }
+        }
+
+        fileRequest()
+    }, [id])
 
     return (
         <ReadIdDiv

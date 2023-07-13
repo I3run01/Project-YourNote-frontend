@@ -1,4 +1,4 @@
-import { ForgotPasswordDiv } from '../../styles//Forgot-password.module'
+import { ForgotPasswordDiv } from '../../styles/Forgot-password.module'
 import { useState } from 'react'
 import { Auth } from '../../Auth/request'
 import { Loading } from '../../components/loading'
